@@ -10,9 +10,11 @@ import sys
 from pathlib import Path
 
 import boto3
+from dovet.evidence import InvalidRunEvidence, RunEvidenceStore
 
 ROOT = Path(__file__).resolve().parents[1]
 RELEASE_REPORT = ROOT / "artifacts" / "release-evidence.json"
+DATA_ROOT = Path.home() / "Library" / "Application Support" / "Dovet"
 
 
 def run(argv: tuple[str, ...], *, environment: dict[str, str] | None = None) -> None:
@@ -26,6 +28,13 @@ def run(argv: tuple[str, ...], *, environment: dict[str, str] | None = None) -> 
         raise RuntimeError(f"{Path(argv[0]).name} failed with exit {result.returncode}")
 
 
+def current_commit() -> str:
+    result = subprocess.run(  # noqa: S603
+        ("git", "rev-parse", "HEAD"), cwd=ROOT, capture_output=True, text=True, check=True
+    )
+    return result.stdout.strip()
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-id", default="amazon.nova-micro-v1:0")
@@ -35,38 +44,42 @@ def main() -> int:
     args = parser.parse_args()
     if args.budget_microusd <= 0:
         raise ValueError("budget must be a positive explicit bound")
-    if os.environ.get("DOVET_LIVE_BEDROCK") != "approved":
-        raise RuntimeError("set DOVET_LIVE_BEDROCK=approved for the bounded paid run")
-    bedrock = boto3.client("bedrock", region_name=args.region)
-    availability = bedrock.get_foundation_model_availability(modelId=args.model_id)
-    if availability.get("authorizationStatus") != "AUTHORIZED":
-        print(
-            json.dumps(
-                {
-                    "status": "BLOCKED",
-                    "reason": "Bedrock model remains unauthorized",
-                    "authorization": availability.get("authorizationStatus", "UNKNOWN"),
-                }
-            )
-        )
-        return 2
-
     environment = os.environ.copy()
-    run(
-        (
-            sys.executable,
-            "scripts/run_recovery_vertical.py",
-            "--model-id",
-            args.model_id,
-            "--region",
-            args.region,
-            "--price-card",
-            str(args.price_card.resolve()),
-            "--budget-microusd",
-            str(args.budget_microusd),
-        ),
-        environment=environment,
-    )
+    try:
+        existing = RunEvidenceStore(DATA_ROOT / "receipts").read("vertical_run")
+    except (FileNotFoundError, InvalidRunEvidence):
+        existing = None
+    if existing is None or existing.release_commit != current_commit():
+        if os.environ.get("DOVET_LIVE_BEDROCK") != "approved":
+            raise RuntimeError("set DOVET_LIVE_BEDROCK=approved for the bounded paid run")
+        bedrock = boto3.client("bedrock", region_name=args.region)
+        availability = bedrock.get_foundation_model_availability(modelId=args.model_id)
+        if availability.get("authorizationStatus") != "AUTHORIZED":
+            print(
+                json.dumps(
+                    {
+                        "status": "BLOCKED",
+                        "reason": "Bedrock model remains unauthorized",
+                        "authorization": availability.get("authorizationStatus", "UNKNOWN"),
+                    }
+                )
+            )
+            return 2
+        run(
+            (
+                sys.executable,
+                "scripts/run_recovery_vertical.py",
+                "--model-id",
+                args.model_id,
+                "--region",
+                args.region,
+                "--price-card",
+                str(args.price_card.resolve()),
+                "--budget-microusd",
+                str(args.budget_microusd),
+            ),
+            environment=environment,
+        )
     run(("pnpm", "video:sound"))
     run(("pnpm", "demo:record"))
     run(("pnpm", "video:render"))
