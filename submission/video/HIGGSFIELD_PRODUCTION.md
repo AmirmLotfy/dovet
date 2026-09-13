@@ -54,8 +54,8 @@ gates. Audio is never time-stretched. Accent and timbre remain pending until the
 ## Edit and sound
 
 - Use the generated shot only for the opening and, if useful, a short closing match cut.
-- Use native Higgsedit motion for title cards, evidence labels, and UI moves so interface text and
-  geometry remain exact.
+- Use restrained deterministic post-production motion for title cards, evidence labels, and UI
+  moves so interface text and geometry remain exact.
 - Keep screen recording at 1920×1080 and show an on-screen `intentional interruption` label.
 - Show `time compressed` only where actual waiting is shortened; preserve source event times.
 - Use a low, original procedural bed under narration. Higgsfield's exposed speech tool does not

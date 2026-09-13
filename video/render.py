@@ -103,12 +103,22 @@ def scene_duration(scene: dict[str, Any], audio_duration: float) -> float:
 
 
 def normalize_scene(clip: Path, audio: Path, output: Path, target_seconds: float) -> None:
-    video_filter = (
+    base_filter = (
         "scale=1920:1080:force_original_aspect_ratio=decrease,"
         "pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color=#171512,"
-        "setsar=1,fps=30,tpad=stop_mode=clone:stop_duration=300"
+        "setsar=1"
     )
     image_input = clip.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}
+    if image_input:
+        video_filter = (
+            f"{base_filter},"
+            "zoompan=z='min(max(zoom,pzoom)+0.00004,1.035)':"
+            "x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+            "d=1:s=1920x1080:fps=30,"
+            "tpad=stop_mode=clone:stop_duration=300"
+        )
+    else:
+        video_filter = f"{base_filter},fps=30,tpad=stop_mode=clone:stop_duration=300"
     clip_args = ("-loop", "1", "-i", str(clip)) if image_input else (
         "-stream_loop",
         "-1",

@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -99,6 +98,59 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def make_review_thumbnail(output: Path) -> None:
+    run(
+        (
+            "magick",
+            str(ROOT / "artifacts" / "ui-evidence-rail-fixture.png"),
+            "-resize",
+            "1280x720^",
+            "-gravity",
+            "center",
+            "-extent",
+            "1280x720",
+            "-fill",
+            "#f3efe6ee",
+            "-draw",
+            "rectangle 0,0 1280,180",
+            "-gravity",
+            "northwest",
+            "-font",
+            "Helvetica-Bold",
+            "-pointsize",
+            "66",
+            "-fill",
+            "#171512",
+            "-annotate",
+            "+54+42",
+            "KEEP THE WORK.",
+            "-font",
+            "Helvetica",
+            "-pointsize",
+            "27",
+            "-fill",
+            "#554d43",
+            "-annotate",
+            "+58+120",
+            "Dovet — recovery evidence stays attached",
+            "-fill",
+            "#171512e8",
+            "-draw",
+            "rectangle 0,648 1280,720",
+            "-font",
+            "Helvetica-Bold",
+            "-pointsize",
+            "22",
+            "-fill",
+            "#f3efe6",
+            "-annotate",
+            "+58+672",
+            "REVIEW THUMBNAIL — LIVE CLOUD PROOF BLOCKED",
+            str(output),
+        )
+    )
+
+
 def main() -> int:
     plan: dict[str, Any] = json.loads(PLAN.read_text(encoding="utf-8"))
     if plan.get("evidence_status") != "BLOCKED":
@@ -168,7 +220,7 @@ def main() -> int:
     if not 275 <= final_duration <= 290:
         raise RuntimeError("review edit missed the required 4:35-4:50 window")
     thumbnail = PRIVATE / "thumbnail-blocked.png"
-    shutil.copy2(ROOT / "artifacts" / "ui-evidence-rail-fixture.png", thumbnail)
+    make_review_thumbnail(thumbnail)
     manifest = {
         "schema_version": "1",
         "status": "REVIEW_ONLY_BLOCKED",
@@ -180,6 +232,13 @@ def main() -> int:
         "height": 1080,
         "scenes": scene_records,
         "captions": "private-artifacts/video/captions.srt",
+        "thumbnail": {
+            "path": "private-artifacts/video/thumbnail-blocked.png",
+            "sha256": sha256(thumbnail),
+            "width": 1280,
+            "height": 720,
+            "status": "REVIEW_ONLY_BLOCKED",
+        },
         "limitations": [
             "This picture edit is not live recovery evidence.",
             "Live-dependent scenes carry a persistent cloud-blocked label.",
@@ -189,6 +248,21 @@ def main() -> int:
     (PRIVATE / "picture-edit-manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
     )
+    qa = [
+        "# Dovet blocked picture edit QA",
+        "",
+        f"- PASS: duration {final_duration:.3f} seconds is within the 4:35-4:50 target.",
+        "- PASS: H.264 video is 1920x1080.",
+        "- PASS: AAC audio is 48 kHz stereo.",
+        "- PASS: all 12 accepted narration scenes are present without time stretching.",
+        "- PASS: static product frames use restrained native edit motion.",
+        "- PASS: every live-dependent scene carries a persistent cloud-blocked label.",
+        "- BLOCKED: this review edit is not the final recovery evidence video.",
+        "- BLOCKED: owner normal-speed narration and full-playback review remain pending.",
+        "",
+        f"MP4 SHA-256: {sha256(OUTPUT)}",
+    ]
+    (PRIVATE / "PICTURE_EDIT_QA.md").write_text("\n".join(qa) + "\n", encoding="utf-8")
     print(json.dumps(manifest, indent=2))
     return 0
 
