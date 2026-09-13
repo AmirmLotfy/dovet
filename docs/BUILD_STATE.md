@@ -4,7 +4,7 @@ Last updated: 2026-09-13
 
 ## Active gate
 
-**G3 — BLOCKED (OWNER LEGAL ACTION):** the real Strands recovery vertical slice awaits the owner's first Nova Micro playground invocation after reviewing the model EULA.
+**G3 — BLOCKED (AWS ACCOUNT PROVISIONING):** the owner completed the Nova Micro first-use attempt, but AWS still denies inference and exposes zero, non-adjustable on-demand quotas.
 
 ## Completed evidence
 
@@ -40,7 +40,8 @@ Last updated: 2026-09-13
 - **PASS:** the updated marketing site now presents the evidence UI, daemon durability, portable recovery, isolated install, and exact cloud blocker. Local 1920x1080 and 390x844 QA passed; the updated build remains intentionally undeployed for owner publication.
 - **PASS:** an 8.6-second Higgsfield production look test combines the accepted opening, Dylan audition, actual site footage, restrained motion, and an original deterministic music bed. It is labelled `NOT RECOVERY EVIDENCE`, probes as 1920x1080 H.264 with 48 kHz stereo AAC, and remains local.
 - **FAIL (pre-recovery baseline):** 13 protected importer acceptance cases cannot import `parcel_import`; these remain red until the authorized recovery worker produces and independently verifies the fixture.
-- **BLOCKED:** Bedrock's current console says the Model access page is retired and serverless models activate on first invocation. Nova Micro availability reports agreement, entitlement, and region available but account authorization `NOT_AUTHORIZED`; Strands `ConverseStream`, direct `Converse`, and a documented one-token first-use probe return `ValidationException: Operation not allowed`. The Nova catalog states that using it agrees to its EULA, so the authenticated playground is prepared for the owner to perform that legal acceptance. No working model invocation is claimed.
+- **PASS:** the owner completed the Nova Micro first-use action in the authenticated playground after the model EULA gate was surfaced.
+- **BLOCKED:** the playground, Strands `ConverseStream`, and a direct one-token `Converse` call all return `ValidationException: Operation not allowed`. Nova Micro authorization remains `NOT_AUTHORIZED`; its on-demand requests-per-minute and tokens-per-minute quotas are both `0.0` and non-adjustable. Agreement, entitlement, region, model discovery, and the active inference profile all pass. The account is outside AWS Organizations and the account root reproduces the error, isolating this to AWS account verification/provisioning. An existing verification case is still unassigned after 10 days. No working model invocation is claimed.
 
 ## Current commands
 
@@ -64,8 +65,8 @@ curl -I https://dovet.site
 
 ## Next actions
 
-1. In the already-open authenticated `us-east-1` Nova Micro playground, the owner reviews the linked EULA, enters a harmless prompt, and chooses **Run** once. This first use is the console's activation path and constitutes acceptance of the displayed model EULA.
-2. Rerun the bounded live vertical: managed Codex interruption, Strands recommendation, deterministic authorization, restricted recovery worker, and independent protected verification.
+1. Send the prepared diagnostic reply to the existing AWS account-verification case after explicit action-time approval; AWS must provision non-zero Nova Micro on-demand capacity or identify the remaining owner prerequisite.
+2. As soon as authorization changes, rerun the bounded live vertical: managed Codex interruption, Strands recommendation, deterministic authorization, restricted recovery worker, and independent protected verification.
 3. Review a least-privilege CloudFormation change set, record and render the evidence-linked demo,
    then prepare the final source, website and submission package for owner-controlled publication.
 

@@ -3,13 +3,14 @@
 These actions require the account owner or a final approval that Codex must not infer. Complete them
 in order so later approvals are based on finished, reviewable evidence.
 
-## 1. Enable the bounded recovery proof
+## 1. Clear the AWS account-provisioning block
 
-- Use the already-open Amazon Bedrock Nova Micro playground in `us-east-1`; the old Model access
-  page is retired and the console says serverless models activate on first invocation.
-- Personally review the linked model EULA. Enter a harmless prompt and choose **Run** once only if
-  you accept it; using the model constitutes agreement. Do not send credentials or session data.
-- Tell Codex whether the playground returns a model response or an exact error. The live runner will still enforce the two-model
+- **Complete:** the owner performed the Nova Micro first-use action in the authenticated playground.
+- **Blocked by AWS:** the playground and API return `Operation not allowed`; authorization remains
+  `NOT_AUTHORIZED`, and both non-adjustable on-demand quotas are `0.0`.
+- Review and approve the sanitized follow-up in `artifacts/private/aws-bedrock-support-reply.md` for
+  the existing account-verification case. AWS must provision Bedrock or identify the exact owner
+  identity/payment prerequisite. The live runner will still enforce the two-model
   allowlist, deterministic policy, one-request recovery path, and per-model cost cap.
 
 ## 2. Review the finished release

@@ -1,6 +1,6 @@
 {
   "schema_version": "1",
-  "checked_at": "2026-09-13T07:18:10Z",
+  "checked_at": "2026-09-13T07:31:59Z",
   "region": "us-east-1",
   "authenticated_principal_type": "account_root",
   "discovery": {
@@ -20,14 +20,33 @@
     "strands_converse_stream": "BLOCKED",
     "direct_converse": "BLOCKED",
     "one_token_first_use_probe": "BLOCKED",
+    "owner_playground_first_use": "BLOCKED",
     "provider_error": "ValidationException: Operation not allowed",
     "successful_requests": 0,
     "reported_usage": null
   },
+  "service_quotas": {
+    "on_demand_requests_per_minute": {
+      "quota_code": "L-E118F160",
+      "value": 0.0,
+      "adjustable": false
+    },
+    "on_demand_tokens_per_minute": {
+      "quota_code": "L-CFA4FA0D",
+      "value": 0.0,
+      "adjustable": false
+    }
+  },
+  "account_controls": {
+    "aws_organization_membership": "NONE",
+    "account_root_reproduces_error": true,
+    "existing_account_verification_case": "OPEN_UNASSIGNED"
+  },
   "limits": [
     "Discoverability is not invocation permission.",
     "The retired Model access page says serverless models activate automatically on first invocation.",
-    "The Nova Micro model page states that using the model agrees to its EULA; the owner must perform that legal acceptance in the prepared playground.",
+    "The owner completed the Nova Micro first-use action and the provider still denied it before inference.",
+    "Zero non-adjustable on-demand quotas and reproduction with the account root isolate the remaining gate to AWS account verification or provisioning.",
     "No live model response was produced and Dovet does not claim a working Bedrock adapter.",
     "Account identifiers and credential material are excluded from this artifact."
   ]
