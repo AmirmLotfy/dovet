@@ -4,9 +4,9 @@
 
 - PASS — local checkpoint, policy, approval, budget, lease, verifier, daemon, MCP bridge, and Codex usage code
 - PASS — real managed Codex interruption and byte-identical checkpoint restore
-- PASS — 38 local unit, integration, and tooling tests
+- PASS — 41 local unit, integration, and tooling tests
 - FAIL baseline — 13 protected importer checks before recovery
-- BLOCKED — successful live Strands and Bedrock recovery
+- BLOCKED — Amazon Nova Micro account authorization and successful live Strands/Bedrock recovery
 - BLOCKED — AgentCore Runtime and Code Interpreter deployment proof
 
 ## Public assets

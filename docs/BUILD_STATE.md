@@ -4,7 +4,7 @@ Last updated: 2026-09-13
 
 ## Active gate
 
-**G3 — IN PROGRESS:** real Strands recovery vertical slice.
+**G3 — BLOCKED:** real Strands recovery vertical slice awaits owner-controlled Amazon Nova model access.
 
 ## Completed evidence
 
@@ -22,11 +22,12 @@ Last updated: 2026-09-13
 - **PASS:** `dovet.site` now delegates to `ns1.vercel-dns.com` and `ns2.vercel-dns.com`; HTTPS apex returns 200 and a signed-out browser loaded the expected Dovet title.
 - **PASS:** G4 mechanics reject stale/replayed approvals, unconfirmed writer takeover, unknown/over-cap costs, credential-like checkpoint paths, corrupt newest checkpoints and stale/unknown Codex usage.
 - **PASS:** launchd daemon restart plus authenticated loopback usage read; install-time Codex path fixes the restricted launchd PATH.
-- **PASS:** 38 Python unit/integration/tooling tests; current sanitized core JUnit report is `artifacts/test-report-core.xml`.
+- **PASS:** 41 Python unit/integration/tooling tests; current sanitized core JUnit report is `artifacts/test-report-core.xml`.
+- **PASS:** the live vertical runner stops before provider invocation when Nova is unauthorized, enforces a current official price card and run cap, keeps capability tokens out of model-visible schemas, and binds protected verification to the recovered candidate root.
 - **PASS:** full Apache-2.0 text, security policy, AI/dependency disclosure, architecture diagram and fail-closed release/video scripts.
 - **PASS:** Polly `DescribeVoices` returned the selected English voice/engine; no synthesis request was sent because recovery evidence is incomplete.
 - **FAIL (pre-recovery baseline):** 13 protected importer acceptance cases cannot import `parcel_import`; these remain red until the authorized recovery worker produces and independently verifies the fixture.
-- **BLOCKED:** AWS authentication and Bedrock discovery pass, but both Strands `ConverseStream` and direct `Converse` probes return `ValidationException: Operation not allowed`; no working model invocation is claimed.
+- **BLOCKED:** Nova Micro availability reports agreement, entitlement, and region available but account authorization `NOT_AUTHORIZED`; both Strands `ConverseStream` and direct `Converse` probes return `ValidationException: Operation not allowed` and no working model invocation is claimed.
 
 ## Current commands
 
@@ -43,10 +44,11 @@ curl -I https://dovet-site-ahyoqy2rn-mellardoos-projects.vercel.app
 
 ## Next actions
 
-1. Obtain explicit authorization for a least-privilege Bedrock invocation role, then run the bounded live Strands recovery probe.
-2. Execute the recovered fixture with the restricted worker and independent verifier.
-3. Record and render the evidence-linked demo, then reconcile public claims and submission materials.
+1. The owner enables Amazon Nova Micro model access in the `us-east-1` Bedrock console after reviewing its displayed terms.
+2. Rerun the bounded live vertical: managed Codex interruption, Strands recommendation, deterministic authorization, restricted recovery worker, and independent protected verification.
+3. Review a least-privilege CloudFormation change set, record and render the evidence-linked demo, then reconcile public claims and submission materials.
 
-## Last working commit
+## Working commit evidence
 
-17c30ab on codex/dovet-build. This file is updated at each verified gate.
+The exact current SHA is generated after each commit in `artifacts/release-evidence.json`; verify
+it with `git rev-parse HEAD`. This file is updated at each verified gate.

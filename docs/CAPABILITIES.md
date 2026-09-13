@@ -10,10 +10,10 @@ Statuses describe evidence from this checkout only.
 | Codex Desktop arbitrary-session takeover | NOT SUPPORTED | Dovet controls only runs it starts or receives through supported APIs |
 | Strands structured output imports | PASS | strands-agents 1.55.1 with Pydantic 2.13.5 |
 | AWS authenticated identity | PASS | `aws login` completed in `us-east-1`; current principal is account root, so deployments remain withheld pending least-privilege review |
-| Strands live Bedrock invocation | BLOCKED | Listed Nova Micro profile rejects `ConverseStream` with `Operation not allowed` |
-| Bedrock worker | BLOCKED | Direct Nova Micro `Converse` also rejects invocation; no successful model response |
+| Strands live Bedrock invocation | BLOCKED | Nova Micro is region/entitlement/agreement available but account authorization is `NOT_AUTHORIZED`; `ConverseStream` rejects the call |
+| Bedrock worker | BLOCKED | Direct Nova Micro `Converse` also rejects invocation; no successful model response or conformance claim |
 | AgentCore Runtime and Code Interpreter | BLOCKED | SDK shapes verified; live permissions and isolation pending |
-| Local deterministic recovery | PASS | 38 core unit/integration/tooling tests plus real Codex interruption and byte-identical restore; 13 protected fixture checks remain red before recovery |
+| Local deterministic recovery | PASS | 41 core unit/integration/tooling tests plus real Codex interruption and byte-identical restore; 13 protected fixture checks remain red before recovery |
 | Generated browser contracts | PASS | FastAPI OpenAPI generated through openapi-typescript 7.13.0 |
 | Local console/public site builds | PASS | Vite 8.3.0 and Next.js 16.3.5 production builds |
 | Codex plugin bridge | PASS | Plugin and skill validators pass; exiting the stdio bridge leaves the launchd daemon healthy |
@@ -26,4 +26,4 @@ Statuses describe evidence from this checkout only.
 | Polly narration synthesis | BLOCKED | Script and timing pipeline implemented; evidence is not yet reconciled, so no paid synthesis request was sent |
 | GitHub authentication | PASS | Authenticated CLI; public repository not created |
 | Vercel authentication | PASS | Authenticated CLI; `dovet-site` preview deployed and anonymous access verified |
-| `dovet.site` ownership | REPORTED | Owner confirmed; registrar/DNS control not yet observed |
+| `dovet.site` ownership and routing | PASS | Public DNS delegates to Vercel; apex and `www` were verified signed out |

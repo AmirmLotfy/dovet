@@ -1,6 +1,6 @@
 {
   "schema_version": "1",
-  "checked_at": "2026-09-13T00:35:00Z",
+  "checked_at": "2026-09-13T01:26:06Z",
   "region": "us-east-1",
   "authenticated_principal_type": "account_root",
   "discovery": {
@@ -8,6 +8,13 @@
     "inference_profile_list": "PASS",
     "selected_profile": "us.amazon.nova-micro-v1:0",
     "selected_direct_model": "amazon.nova-micro-v1:0"
+  },
+  "model_availability": {
+    "model_id": "amazon.nova-micro-v1:0",
+    "agreement": "AVAILABLE",
+    "authorization": "NOT_AUTHORIZED",
+    "entitlement": "AVAILABLE",
+    "region": "AVAILABLE"
   },
   "invocation": {
     "strands_converse_stream": "BLOCKED",
@@ -18,6 +25,7 @@
   },
   "limits": [
     "Discoverability is not invocation permission.",
+    "The account must enable Amazon Nova Micro model access in the Bedrock console before a conformance call can succeed.",
     "No live model response was produced and Dovet does not claim a working Bedrock adapter.",
     "Account identifiers and credential material are excluded from this artifact."
   ]

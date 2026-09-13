@@ -26,29 +26,34 @@ class CandidateReport(BaseModel):
 
 def build_worker(*, model_id: str, region: str, restricted: RestrictedTools) -> Agent:
     @tool
-    def list_files(scope_token: str) -> list[str]:
+    def list_files() -> list[str]:
         """List relative file paths authorized for this worker."""
-        return restricted.list_files(scope_token)
+        return restricted.list_files(restricted.scope.token)
 
     @tool
-    def read_file(scope_token: str, path: str, expected_sha256: str | None = None) -> str:
+    def read_file(path: str, expected_sha256: str | None = None) -> str:
         """Read one authorized UTF-8 file, optionally asserting its SHA-256."""
-        return restricted.read_file(scope_token, path, expected_sha256)
+        return restricted.read_file(restricted.scope.token, path, expected_sha256)
 
     @tool
-    def apply_patch(scope_token: str, path: str, base_sha256: str, unified_patch: str) -> str:
+    def apply_patch(path: str, base_sha256: str, unified_patch: str) -> str:
         """Apply a unified diff to one authorized file at the asserted source hash."""
-        return restricted.apply_patch(scope_token, path, base_sha256, unified_patch)
+        return restricted.apply_patch(
+            restricted.scope.token,
+            path,
+            base_sha256,
+            unified_patch,
+        )
 
     @tool
-    def create_file(scope_token: str, path: str, content: str) -> str:
+    def create_file(path: str, content: str) -> str:
         """Create one missing authorized UTF-8 file and return its content hash."""
-        return restricted.create_file(scope_token, path, content)
+        return restricted.create_file(restricted.scope.token, path, content)
 
     @tool
-    def run_check(scope_token: str, approved_command_id: str) -> dict[str, object]:
+    def run_check(approved_command_id: str) -> dict[str, object]:
         """Run a trusted immutable command template and return bounded output."""
-        result = restricted.run_check(scope_token, approved_command_id)
+        result = restricted.run_check(restricted.scope.token, approved_command_id)
         return {
             "command_id": result.command_id,
             "exit_code": result.exit_code,

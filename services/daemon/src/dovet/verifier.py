@@ -70,11 +70,14 @@ class Verifier:
             )
         environment = {
             "PATH": os.environ.get("PATH", "/usr/bin:/bin"),
+            "HOME": str(candidate_root / ".verifier-home"),
             "LANG": "C.UTF-8",
             "LC_ALL": "C.UTF-8",
             "PYTHONDONTWRITEBYTECODE": "1",
+            "DOVET_CANDIDATE_ROOT": str(candidate_root),
             "DOVET_PROTECTED_SUITE": str(protected_suite),
         }
+        (candidate_root / ".verifier-home").mkdir(exist_ok=True)
         started = time.monotonic()
         try:
             completed = subprocess.run(  # noqa: S603 - approved immutable argv only

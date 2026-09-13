@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 from dovet.canonical import sha256_bytes
+from dovet_worker.agent import build_worker
 from dovet_worker.tools import RestrictedTools, WorkerScope
 
 
@@ -49,3 +50,17 @@ def test_only_approved_argv_can_run(tmp_path: Path) -> None:
     assert result.output == "checked\n"
     with pytest.raises(PermissionError, match="not approved"):
         tools.run_check("token", "arbitrary")
+
+
+def test_capability_token_is_not_exposed_to_model_tool_schemas(tmp_path: Path) -> None:
+    secret = "never-send-this-token-to-the-model"  # noqa: S105 -- inert test sentinel
+    tools = RestrictedTools(WorkerScope(secret, tmp_path, frozenset(), 1))
+    agent = build_worker(
+        model_id="amazon.nova-micro-v1:0",
+        region="us-east-1",
+        restricted=tools,
+    )
+
+    specs = agent.tool_registry.get_all_tool_specs()
+    assert "scope_token" not in repr(specs)
+    assert secret not in repr(specs)

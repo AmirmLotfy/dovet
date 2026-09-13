@@ -6,7 +6,10 @@ The Code Interpreter role can read only the released synthetic fixture and prote
 can write only candidate artifacts. Neither role exposes a route to a local machine.
 
 The stack deliberately does not create a public API or an AgentCore runtime until a model
-invocation conformance probe succeeds. `infra/deploy.sh` refuses to execute without an explicit
+invocation conformance probe succeeds. Nova Micro currently reports `NOT_AUTHORIZED` for this
+account even though its region, entitlement, and agreement are available. The account owner must
+review and submit model access in the Bedrock console before the bounded probe can run.
+`infra/deploy.sh` refuses to execute without an explicit
 `DOVET_APPLY=approved` environment value. Generate and inspect a CloudFormation change set first.
 
 ```sh

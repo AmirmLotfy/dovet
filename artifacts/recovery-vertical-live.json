@@ -1,0 +1,6 @@
+{
+  "status": "BLOCKED",
+  "model_id": "amazon.nova-micro-v1:0",
+  "authorization_status": "NOT_AUTHORIZED",
+  "successful_provider_requests": 0
+}
