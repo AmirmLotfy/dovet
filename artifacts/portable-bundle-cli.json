@@ -1,0 +1,21 @@
+{
+  "schema_version": "1",
+  "status": "PASS",
+  "checked_at": "2026-09-13T07:10:05.801205+00:00",
+  "bundle_sha256": "0d3b83217dd16e956d003517818f7c4cdd65c704a860dcbefbef45225da1028e",
+  "checkpoint_snapshot_sha256": "b484258bcf710f1c9c6d9763fd659e463deeebd2422c300ecc2a0891d6106349",
+  "commands": [
+    {
+      "argv": "uv run dovet bundle verify <temporary paths>",
+      "exit_code": 0
+    },
+    {
+      "argv": "uv run dovet bundle restore <temporary paths>",
+      "exit_code": 0
+    }
+  ],
+  "restored_sha256": "ce43e46acf35855eb8725c14f6c85d19a0c4bc116970ec4c2a429e4257072577",
+  "expected_sha256": "ce43e46acf35855eb8725c14f6c85d19a0c4bc116970ec4c2a429e4257072577",
+  "byte_identical": true,
+  "temporary_data_retained": false
+}

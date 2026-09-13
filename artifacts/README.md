@@ -13,3 +13,6 @@ material, not evidence that the blocked cloud recovery passed.
 
 `video-style-preview.json` validates the local 8.6-second H.264/AAC production look test. The MP4
 itself remains private and visibly says that it is not recovery evidence.
+
+`portable-bundle-cli.json` records an end-to-end CLI verify and separate-directory restore using
+temporary owner data. The restored Unicode payload is byte-identical and no temporary data remains.

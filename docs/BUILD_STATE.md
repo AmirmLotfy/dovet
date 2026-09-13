@@ -24,6 +24,7 @@ Last updated: 2026-09-13
 - **PASS:** launchd daemon restart plus authenticated loopback usage read; install-time Codex path fixes the restricted launchd PATH.
 - **PASS:** 51 Python unit/integration/tooling tests; the explicit live test is deselected offline and skips with a precise authorization message when invoked without its paid-run flag.
 - **PASS:** deterministic owner-only `.dovet` checkpoint export, whole-archive validation, idempotent content import, and separate-directory restore. Traversal, unexpected members, prohibited paths, and corrupt objects are rejected before any local store mutation.
+- **PASS:** an end-to-end `dovet bundle verify` and `dovet bundle restore` CLI proof restored a Unicode payload byte-identically in an isolated temporary home.
 - **PASS:** six desktop/mobile console browser checks, including the validated evidence rail, have no serious or critical axe findings; the recording project stays skipped until a live receipt exists.
 - **PASS:** the daemon now exposes only validated PASS receipts through an authenticated run route; failed, mismatched, oversized, symlinked, or chain-of-thought-marked receipts cannot receive a verified UI state.
 - **PASS:** `pnpm demo:record` builds the console, pairs with the independent service without printing its credential, records at 1920x1080, and writes a checksum-bound manifest only after a real PASS receipt. Its current preflight correctly returns BLOCKED before recording.
