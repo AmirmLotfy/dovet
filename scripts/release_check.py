@@ -179,13 +179,15 @@ def install_smoke_check() -> Check:
     passed = (
         data.get("status") == "PASS"
         and data.get("packaged_schema_migration") == "PASS"
+        and data.get("checkpoint_bundle_import") == "PASS"
     )
     return Check(
         "isolated_install",
         "PASS" if passed else "FAIL",
         (
             f"wheel {data.get('wheel', 'unknown')}; packaged schema "
-            f"{data.get('packaged_schema_migration', 'unknown')}"
+            f"{data.get('packaged_schema_migration', 'unknown')}; bundle import "
+            f"{data.get('checkpoint_bundle_import', 'unknown')}"
         ),
     )
 

@@ -22,19 +22,22 @@ Last updated: 2026-09-13
 - **PASS:** `dovet.site` now delegates to `ns1.vercel-dns.com` and `ns2.vercel-dns.com`; HTTPS apex returns 200 and a signed-out browser loaded the expected Dovet title.
 - **PASS:** G4 mechanics reject stale/replayed approvals, unconfirmed writer takeover, unknown/over-cap costs, credential-like checkpoint paths, corrupt newest checkpoints and stale/unknown Codex usage.
 - **PASS:** launchd daemon restart plus authenticated loopback usage read; install-time Codex path fixes the restricted launchd PATH.
-- **PASS:** 47 Python unit/integration/tooling tests; the explicit live test is deselected offline and skips with a precise authorization message when invoked without its paid-run flag.
+- **PASS:** 51 Python unit/integration/tooling tests; the explicit live test is deselected offline and skips with a precise authorization message when invoked without its paid-run flag.
+- **PASS:** deterministic owner-only `.dovet` checkpoint export, whole-archive validation, idempotent content import, and separate-directory restore. Traversal, unexpected members, prohibited paths, and corrupt objects are rejected before any local store mutation.
 - **PASS:** six desktop/mobile console browser checks, including the validated evidence rail, have no serious or critical axe findings; the recording project stays skipped until a live receipt exists.
 - **PASS:** the daemon now exposes only validated PASS receipts through an authenticated run route; failed, mismatched, oversized, symlinked, or chain-of-thought-marked receipts cannot receive a verified UI state.
 - **PASS:** `pnpm demo:record` builds the console, pairs with the independent service without printing its credential, records at 1920x1080, and writes a checksum-bound manifest only after a real PASS receipt. Its current preflight correctly returns BLOCKED before recording.
 - **PASS:** the built `dovet-0.1.0` wheel installs in a fresh Python 3.12 environment; its CLI, packaged SQLite migration, supervisor import, and restricted worker import pass outside the checkout.
 - **PASS:** the live vertical runner stops before provider invocation when Nova is unauthorized, enforces a current official price card and run cap, keeps capability tokens out of model-visible schemas, and binds protected verification to the recovered candidate root.
 - **PASS:** full Apache-2.0 text, security policy, AI/dependency disclosure, architecture diagram and fail-closed release/video scripts.
-- **PASS:** Devpost and Builder.aws drafts now match the 47-test report, isolated-install evidence,
+- **PASS:** Devpost and Builder.aws drafts now match the 51-test report, isolated-install evidence,
   validated receipt UI, recording gate, and exact Nova authorization blocker; owner-only actions are
   ordered in `submission/OWNER_ACTIONS.md`.
 - **PASS:** the generated deadline clock confirms the build window and records the eight-hour media
   reserve boundary without hard-coding a stale remaining-time claim in submission copy.
-- **PASS:** Polly `DescribeVoices` returned the selected English voice/engine; no synthesis request was sent because recovery evidence is incomplete.
+- **PASS:** Higgsfield produced one restrained 1920x1080 opening insert and an accepted timing-gated Dylan narration audition; IDs, hashes, cost and rejection evidence are recorded without claiming an accent review.
+- **PASS:** the updated marketing site now presents the evidence UI, daemon durability, portable recovery, isolated install, and exact cloud blocker. Local 1920x1080 and 390x844 QA passed; the updated build remains intentionally undeployed for owner publication.
+- **PASS:** an 8.6-second Higgsfield production look test combines the accepted opening, Dylan audition, actual site footage, restrained motion, and an original deterministic music bed. It is labelled `NOT RECOVERY EVIDENCE`, probes as 1920x1080 H.264 with 48 kHz stereo AAC, and remains local.
 - **FAIL (pre-recovery baseline):** 13 protected importer acceptance cases cannot import `parcel_import`; these remain red until the authorized recovery worker produces and independently verifies the fixture.
 - **BLOCKED:** Nova Micro availability reports agreement, entitlement, and region available but account authorization `NOT_AUTHORIZED`; both Strands `ConverseStream` and direct `Converse` probes return `ValidationException: Operation not allowed` and no working model invocation is claimed.
 
@@ -52,6 +55,8 @@ pnpm test:integration
 pnpm build
 pnpm test:e2e
 pnpm demo:record
+pnpm video:sound
+pnpm video:preview
 uv run python scripts/deadline_status.py
 curl -I https://dovet.site
 ```
@@ -61,7 +66,7 @@ curl -I https://dovet.site
 1. The owner enables Amazon Nova Micro model access in the `us-east-1` Bedrock console after reviewing its displayed terms.
 2. Rerun the bounded live vertical: managed Codex interruption, Strands recommendation, deterministic authorization, restricted recovery worker, and independent protected verification.
 3. Review a least-privilege CloudFormation change set, record and render the evidence-linked demo,
-   then bind the prepared public claims and submission materials to that release.
+   then prepare the final source, website and submission package for owner-controlled publication.
 
 ## Working commit evidence
 

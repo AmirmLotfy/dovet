@@ -1,0 +1,30 @@
+{
+  "schema_version": "1",
+  "status": "PASS",
+  "source": "local production build",
+  "publication": "OWNER_ACTION",
+  "checks": [
+    {
+      "viewport": "desktop",
+      "width": 1920,
+      "height": 1080,
+      "http_status": 200,
+      "horizontal_overflow": false,
+      "evidence_count": "51 + 6",
+      "product_image_alt_present": true,
+      "serious_or_critical_axe_violations": 0,
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "http_status": 200,
+      "horizontal_overflow": false,
+      "evidence_count": "51 + 6",
+      "product_image_alt_present": true,
+      "serious_or_critical_axe_violations": 0,
+      "status": "PASS"
+    }
+  ]
+}

@@ -76,7 +76,7 @@ requests and keeps the live recovery gate blocked instead of replacing it with a
 
 - A real Dovet-managed Codex turn was intentionally interrupted through the installed SDK.
 - The resulting checkpoint restored byte-for-byte from an immutable SHA-256 snapshot.
-- Forty-seven local unit, integration, and tooling tests pass, alongside six desktop and mobile
+- Fifty-one local unit, integration, and tooling tests pass, alongside six desktop and mobile
   browser checks.
 - Tests cover corrupt blobs, secret exclusion, stale approvals, replay, unknown cost, and
   competing writers.
@@ -101,8 +101,8 @@ The authenticated AWS account currently reports the Nova Micro agreement, entitl
 as available, but model authorization as `NOT_AUTHORIZED`. The owner must first review and submit
 the access terms shown by the Bedrock console. One bounded successful invocation then unblocks the
 actual Strands recovery and protected importer verification. After that evidence exists, the team
-can review the least-privilege deployment change set, record the evidence-linked demo, add Polly
-narration, publish the source tag, and complete the submission. Future adapters will be advertised
+can review the least-privilege deployment change set, record the evidence-linked demo, add the
+locked Higgsfield narration, publish the source tag, and complete the submission. Future adapters will be advertised
 only after their conformance tests pass.
 
 ## Built with
@@ -114,6 +114,6 @@ Amazon Bedrock AgentCore, boto3, Codex supported APIs, Playwright, FFmpeg, and V
 
 OpenAI Codex assisted with implementation, research, testing, documentation, and submission
 preparation. Standard open-source frameworks and SDKs are pinned in repository lockfiles. Emergit,
-a separate pre-existing recovery project, informed three independently implemented safety
+a separate pre-existing recovery project, informed four independently implemented safety
 behaviors described in the repository disclosure. The owner must confirm eligibility, dates,
 authorship, contributors, and legal terms before submission.

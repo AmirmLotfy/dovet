@@ -33,6 +33,10 @@ def build_parser() -> argparse.ArgumentParser:
     status.add_argument("--json", action="store_true")
     usage = commands.add_parser("usage", help="read supported Codex usage without auth-file access")
     usage.add_argument("--json", action="store_true")
+    bundle = commands.add_parser("bundle", help="verify or restore a portable checkpoint bundle")
+    bundle.add_argument("action", choices=("verify", "restore"))
+    bundle.add_argument("path", type=Path)
+    bundle.add_argument("--to", type=Path, help="new destination directory for restore")
     return parser
 
 
@@ -69,6 +73,38 @@ def main() -> int:
             print(json.dumps(usage_result, indent=2, default=str))
         else:
             print(f"Codex usage: {snapshot.state.value}; preservation: {advice.level.value}")
+        return 0
+    if args.command == "bundle":
+        from .artifacts import ArtifactStore
+        from .bundles import import_bundle, inspect_bundle
+        from .checkpoints import CheckpointEngine
+
+        if args.action == "verify":
+            inspection = inspect_bundle(args.path)
+        else:
+            if args.to is None:
+                raise SystemExit("bundle restore requires --to")
+            if args.to.is_symlink():
+                raise SystemExit("restore destination must not be a symlink")
+            if args.to.exists() and not args.to.is_dir():
+                raise SystemExit("restore destination must be a directory")
+            if args.to.exists() and any(args.to.iterdir()):
+                raise SystemExit("restore destination must be absent or empty")
+            store = ArtifactStore(_data_root() / "artifacts")
+            inspection = import_bundle(args.path, store)
+            CheckpointEngine(store).restore(inspection.checkpoint, args.to)
+        print(
+            json.dumps(
+                {
+                    "status": "verified" if args.action == "verify" else "restored",
+                    "checkpoint_id": inspection.checkpoint.id,
+                    "snapshot_sha256": inspection.checkpoint.snapshot_sha256,
+                    "bundle_sha256": inspection.bundle_sha256,
+                    "object_count": inspection.object_count,
+                },
+                indent=2,
+            )
+        )
         return 0
     if args.command == "serve":
         import uvicorn

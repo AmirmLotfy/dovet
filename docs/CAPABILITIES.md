@@ -13,10 +13,11 @@ Statuses describe evidence from this checkout only.
 | Strands live Bedrock invocation | BLOCKED | Nova Micro is region/entitlement/agreement available but account authorization is `NOT_AUTHORIZED`; `ConverseStream` rejects the call |
 | Bedrock worker | BLOCKED | Direct Nova Micro `Converse` also rejects invocation; no successful model response or conformance claim |
 | AgentCore Runtime and Code Interpreter | BLOCKED | SDK shapes verified; live permissions and isolation pending |
-| Local deterministic recovery | PASS | 47 core unit/integration/tooling tests plus real Codex interruption and byte-identical restore; 13 protected fixture checks remain red before recovery |
+| Local deterministic recovery | PASS | 51 core unit/integration/tooling tests plus real Codex interruption and byte-identical restore; 13 protected fixture checks remain red before recovery |
 | Generated browser contracts | PASS | FastAPI OpenAPI generated through openapi-typescript 7.13.0 |
 | Local console/public site builds | PASS | Vite 8.3.0 and Next.js 16.3.5 production builds |
 | Isolated Python installation | PASS | Built wheel installed into a fresh Python 3.12 environment; CLI, packaged schema, supervisor, and worker imports pass |
+| Portable checkpoint bundle | PASS | Deterministic owner-only export; whole-archive validation rejects traversal, unexpected members, prohibited paths, and corrupt objects before separate-directory restore |
 | Codex plugin bridge | PASS | Plugin and skill validators pass; exiting the stdio bridge leaves the launchd daemon healthy |
 | Public website preview | PASS | Anonymous HTTP 200; desktop and mobile browser passes with no overflow or serious/critical axe findings |
 | Vercel production alias | PASS | `https://dovet-site.vercel.app` returns HTTP 200 |
@@ -25,8 +26,12 @@ Statuses describe evidence from this checkout only.
 | Evidence receipt UI | PASS | Authenticated API accepts only validated live PASS receipts; desktop/mobile evidence-rail accessibility checks pass |
 | Demo recording preflight | BLOCKED | 1920x1080 recorder and manifest pipeline are ready; it refuses to record before the live recovery receipt exists |
 | Media encoding | PASS | FFmpeg 9.0.1 exposes libx264 and AAC |
-| Polly voice discovery | PASS | Authorized read-only `DescribeVoices`; selected voice and engine were returned |
-| Polly narration synthesis | BLOCKED | Script and timing pipeline implemented; evidence is not yet reconciled, so no paid synthesis request was sent |
+| Thumbnail/title rasterization | PASS | ImageMagick 7.1.2-3; used because the installed FFmpeg build does not expose `drawtext` |
+| Higgsfield opening insert | PASS | One restrained 1920x1080 Kling 3.0 Pro insert generated and checksum-bound; 9 credits spent |
+| Higgsfield narration audition | PARTIAL | Dylan preset passed duration/pause/rate gates; owner normal-speed accent and timbre review remains pending before the full batch |
+| Higgsfield media | PARTIAL | 1920x1080 opening insert, timing-gated Dylan voice audition, and labelled 8.6-second production look test pass; final evidence-bound narration and edit remain blocked on live recovery |
 | GitHub authentication | PASS | Authenticated CLI; public repository not created |
 | Vercel authentication | PASS | Authenticated CLI; `dovet-site` preview deployed and anonymous access verified |
 | `dovet.site` ownership and routing | PASS | Public DNS delegates to Vercel; apex and `www` were verified signed out |
+| YouTube delivery path | PASS | Authenticated YouTube Studio dashboard exists; owner requested manual upload, so no media was uploaded |
+| Devpost account readiness | UNKNOWN | Correct hackathon page loaded, but the browser accessibility surface did not expose account controls; owner will submit personally |

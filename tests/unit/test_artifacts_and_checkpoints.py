@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+import zipfile
 from pathlib import Path
 
 import pytest
 from dovet.artifacts import ArtifactStore
+from dovet.bundles import InvalidCheckpointBundle, export_bundle, import_bundle, inspect_bundle
+from dovet.canonical import canonical_json, digest_json, sha256_bytes
 from dovet.checkpoints import CheckpointEngine
+from dovet.models import Checkpoint, CheckpointManifest, ManifestFile
 
 
 def test_checkpoint_roundtrip_is_binary_safe(tmp_path: Path) -> None:
@@ -140,3 +144,110 @@ def test_corrupt_newest_checkpoint_falls_back_to_older_valid_one(tmp_path: Path)
     assert newest_digest is not None
     store.object_path(newest_digest).write_bytes(b"corrupt")
     assert engine.latest_valid([newest, older]) == older
+
+
+def test_portable_bundle_is_deterministic_and_restores_after_import(tmp_path: Path) -> None:
+    source = tmp_path / "source"
+    source.mkdir()
+    (source / "work.txt").write_text("portable\n", encoding="utf-8")
+    source_store = ArtifactStore(tmp_path / "source-store")
+    checkpoint = CheckpointEngine(source_store).capture(
+        root=source,
+        paths=["work.txt"],
+        run_id="run_1",
+        task_version=1,
+        policy_sha256="a" * 64,
+        base_commit="b" * 40,
+    )
+    first = export_bundle(checkpoint, source_store, tmp_path / "first.dovet")
+    second = export_bundle(checkpoint, source_store, tmp_path / "second.dovet")
+    assert first.bundle_sha256 == second.bundle_sha256
+    assert first.object_count == 1
+
+    target_store = ArtifactStore(tmp_path / "target-store")
+    imported = import_bundle(tmp_path / "first.dovet", target_store)
+    restored = tmp_path / "restored"
+    CheckpointEngine(target_store).restore(imported.checkpoint, restored)
+    assert (restored / "work.txt").read_text(encoding="utf-8") == "portable\n"
+
+
+def test_bundle_rejects_duplicate_or_unexpected_members(tmp_path: Path) -> None:
+    source = tmp_path / "source"
+    source.mkdir()
+    (source / "work.txt").write_text("trusted", encoding="utf-8")
+    store = ArtifactStore(tmp_path / "store")
+    checkpoint = CheckpointEngine(store).capture(
+        root=source,
+        paths=["work.txt"],
+        run_id="run_1",
+        task_version=1,
+        policy_sha256="a" * 64,
+        base_commit="b" * 40,
+    )
+    bundle = tmp_path / "checkpoint.dovet"
+    export_bundle(checkpoint, store, bundle)
+    with zipfile.ZipFile(bundle, "a") as archive:
+        archive.writestr("../outside", b"untrusted")
+    with pytest.raises(InvalidCheckpointBundle, match="unsafe bundle member"):
+        inspect_bundle(bundle)
+
+
+def test_bundle_rejects_corrupt_object_before_import(tmp_path: Path) -> None:
+    source = tmp_path / "source"
+    source.mkdir()
+    (source / "work.txt").write_text("trusted", encoding="utf-8")
+    store = ArtifactStore(tmp_path / "store")
+    checkpoint = CheckpointEngine(store).capture(
+        root=source,
+        paths=["work.txt"],
+        run_id="run_1",
+        task_version=1,
+        policy_sha256="a" * 64,
+        base_commit="b" * 40,
+    )
+    clean = tmp_path / "clean.dovet"
+    export_bundle(checkpoint, store, clean)
+    corrupt = tmp_path / "corrupt.dovet"
+    digest = checkpoint.manifest.files[0].sha256
+    assert digest is not None
+    with zipfile.ZipFile(clean, "r") as source_archive, zipfile.ZipFile(corrupt, "w") as target:
+        for info in source_archive.infolist():
+            data = b"changed" if info.filename == f"objects/{digest}" else source_archive.read(info)
+            target.writestr(info, data)
+    target_store = ArtifactStore(tmp_path / "target")
+    with pytest.raises(InvalidCheckpointBundle, match="failed integrity"):
+        import_bundle(corrupt, target_store)
+    assert not any(target_store.objects.rglob(digest))
+
+
+def test_bundle_rejects_credential_like_manifest_path(tmp_path: Path) -> None:
+    data = b"TOKEN=private"
+    digest = sha256_bytes(data)
+    manifest = CheckpointManifest(
+        run_id="run_1",
+        task_version=1,
+        policy_sha256="a" * 64,
+        base_commit="b" * 40,
+        files=[
+            ManifestFile(
+                path=".env",
+                operation="modify",
+                sha256=digest,
+                size_bytes=len(data),
+                mode=0o600,
+            )
+        ],
+    )
+    checkpoint = Checkpoint(
+        id="ck_untrusted",
+        manifest=manifest,
+        snapshot_sha256=digest_json(manifest.model_dump(mode="json")),
+        completeness="ready",
+    )
+    bundle = tmp_path / "untrusted.dovet"
+    with zipfile.ZipFile(bundle, "w") as archive:
+        archive.writestr("checkpoint.json", canonical_json(checkpoint.model_dump(mode="json")))
+        archive.writestr("handoff.md", CheckpointEngine.render_handoff(checkpoint))
+        archive.writestr(f"objects/{digest}", data)
+    with pytest.raises(InvalidCheckpointBundle, match="prohibited path"):
+        inspect_bundle(bundle)

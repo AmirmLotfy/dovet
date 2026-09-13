@@ -1,12 +1,13 @@
 {
   "schema_version": "1",
-  "checked_at": "2026-09-13T06:18:32.307518+00:00",
+  "checked_at": "2026-09-13T06:58:38.144794+00:00",
   "status": "PASS",
   "wheel": "dovet-0.1.0-py3-none-any.whl",
-  "wheel_sha256": "f21aa654d2dd42a01ffd889215db4f93f762782a5502b5c9bec7717c9de036ce",
+  "wheel_sha256": "7bcd9ff50716e9cfe665072efc1b4091c3dd832011b92bda2bb3bd7944a674c8",
   "cli_version": "0.1.0",
   "packaged_schema_migration": "PASS",
   "supervisor_import": "PASS",
   "worker_import": "PASS",
+  "checkpoint_bundle_import": "PASS",
   "temporary_environment_retained": false
 }

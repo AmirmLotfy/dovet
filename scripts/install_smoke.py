@@ -45,10 +45,12 @@ def main() -> int:
                 str(python),
                 "-c",
                 (
-                    "from pathlib import Path; from dovet.database import Ledger; "
+                    "from pathlib import Path; from dovet.bundles import inspect_bundle; "
+                    "from dovet.database import Ledger; "
                     "from dovet_supervisor.agent import EvidenceEnvelope; "
                     "from dovet_worker.tools import WorkerScope; "
                     "Ledger(Path('smoke-state.sqlite3')).migrate(); "
+                    "assert callable(inspect_bundle); "
                     "assert EvidenceEnvelope({}).records == {}; "
                     "assert WorkerScope('x', Path('.'), frozenset(), 1).lease_generation == 1"
                 ),
@@ -66,6 +68,7 @@ def main() -> int:
                 "packaged_schema_migration": "PASS",
                 "supervisor_import": "PASS",
                 "worker_import": "PASS",
+                "checkpoint_bundle_import": "PASS",
                 "temporary_environment_retained": False,
             },
             indent=2,

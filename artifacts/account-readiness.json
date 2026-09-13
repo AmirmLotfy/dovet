@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-09-13T09:34:00+03:00",
+  "youtube_studio": {
+    "status": "PASS",
+    "evidence": "Authenticated Channel dashboard loaded in the existing Chrome profile.",
+    "action": "Owner will upload and publish the finished video manually."
+  },
+  "devpost": {
+    "status": "UNKNOWN",
+    "evidence": "The Agents for Humans page loaded, but Chrome accessibility did not expose account controls.",
+    "action": "Owner will sign in if needed and submit the prepared fields personally."
+  },
+  "automated_upload": {
+    "status": "NOT_REQUESTED",
+    "evidence": "Owner explicitly requested local deliverables only.",
+    "action": "No upload or submission will be performed by Codex."
+  }
+}

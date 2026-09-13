@@ -30,6 +30,15 @@ h2 { font-size: clamp(32px, 4vw, 52px); letter-spacing: -.05em; line-height: 1.0
 .rail time { grid-row: span 2; font-family: var(--font-code); color: var(--muted); font-size: 12px; }
 .rail strong { font-size: 14px; }
 .rail span { color: var(--muted); font-size: 13px; }
+.product-proof { padding-block: 120px 40px; display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(44px, 7vw, 92px); align-items: start; }
+.product-proof-copy > p:not(.eyebrow) { color: var(--muted); }
+.product-proof dl { margin: 32px 0 0; border-top: 1px solid var(--ink); }
+.product-proof dl div { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.product-proof dt { font-size: 12px; font-weight: 700; }
+.product-proof dd { margin: 3px 0 0; color: var(--muted); font-size: 13px; }
+.product-proof figure { margin: 0; }
+.product-proof img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: var(--surface); }
+.product-proof figcaption { margin-top: 10px; color: var(--muted); font-size: 11px; }
 .prose-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 9vw, 110px); padding-block: 120px; }
 .row-list { list-style: none; margin: 32px 0 0; padding: 0; border-top: 1px solid var(--ink); }
 .row-list li { padding: 14px 0; border-bottom: 1px solid var(--line); font-weight: 640; }
@@ -72,5 +81,5 @@ footer p { margin: 8px 0 0; }
 table { width: 100%; border-collapse: collapse; margin-top: 28px; text-align: left; }
 th, td { padding: 13px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { border-bottom-color: var(--ink); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
-@media (max-width: 760px) { .site-header nav a:not(.nav-action) { display: none; }.evidence-layout, .prose-split, .boundary { grid-template-columns: 1fr; }.process > ol { grid-template-columns: 1fr; }.process li, .process li + li { min-height: auto; padding: 20px 0 28px; border-right: 0; border-bottom: 1px solid var(--line); }.final-cta { display: block; }.final-cta .actions { margin-top: 28px; }footer { grid-template-columns: 1fr; }footer nav { flex-wrap: wrap; }}
+@media (max-width: 760px) { .site-header nav a:not(.nav-action) { display: none; }.evidence-layout, .product-proof, .prose-split, .boundary { grid-template-columns: 1fr; }.process > ol { grid-template-columns: 1fr; }.process li, .process li + li { min-height: auto; padding: 20px 0 28px; border-right: 0; border-bottom: 1px solid var(--line); }.final-cta { display: block; }.final-cta .actions { margin-top: 28px; }footer { grid-template-columns: 1fr; }footer nav { flex-wrap: wrap; }}
 @media (max-width: 390px) { .wrap { width: min(100% - 32px, 1160px); }.site-header { width: calc(100% - 32px); }.hero { padding-top: 70px; }.rail li { grid-template-columns: 1fr; }.rail time { grid-row: auto; }.secondary, .primary { width: 100%; }.doc-links a { grid-template-columns: 1fr; gap: 4px; } }

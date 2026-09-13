@@ -1,46 +1,99 @@
 {
-  "schema_version": "1",
+  "schema_version": "2",
   "evidence_status": "BLOCKED",
   "blocker": "Live Strands and Bedrock recovery has zero successful provider requests.",
-  "region": "us-east-1",
-  "voice_id": "Joanna",
-  "engine": "neural",
+  "provider": "Higgsfield",
+  "voice_id": "b847bc29-f184-583a-8ad9-d1f1e16d1a60",
+  "voice_name": "Dylan",
+  "voice_type": "preset",
+  "model": "Text to Speech V2 / ElevenLabs",
+  "voice_direction": "neutral American product narrator, clear dry timbre, calm authority, conversational pace, no trailer voice, starts immediately",
+  "voice_review": "PENDING_OWNER_NORMAL_SPEED_REVIEW",
+  "target_duration_seconds": 210,
   "scenes": [
     {
-      "id": "01-problem",
-      "text": "An interrupted coding agent should not become another task for the developer. Dovet keeps observable working state so a new authorized agent can continue without making you reconstruct the session. Keep the work. Change the agent."
+      "id": "01-promise",
+      "target_seconds": 8,
+      "visual": "Higgsfield paper checkpoint opener, then exact Dovet wordmark",
+      "evidence_dependency": "LOCKED",
+      "text": "When a coding agent stops Dovet preserves the working evidence and changes the agent safely before independent checks verify the recovered result."
     },
     {
-      "id": "02-bounded-task",
-      "text": "This managed task has an explicit objective, approved source files, a spending policy, and acceptance checks. Dovet does not claim access to private reasoning, unsaved bytes, or arbitrary Codex Desktop sessions."
+      "id": "02-problem",
+      "target_seconds": 18,
+      "visual": "Real Work view, then task objective and approved scope",
+      "evidence_dependency": "LOCKED",
+      "text": "An interrupted coding session leaves more than unfinished code. The developer still has to reconstruct the objective, inspect partial edits, remember what failed, and decide what another worker may safely do. Dovet keeps that recovery work attached to the task."
     },
     {
-      "id": "03-interruption",
-      "text": "The managed Codex worker has made a real change. The operator deliberately interrupts the owned turn. The local service stays running, and another writer remains blocked until termination is confirmed."
+      "id": "03-boundary",
+      "target_seconds": 18,
+      "visual": "Approved files, budget, checks, and Stop control",
+      "evidence_dependency": "LOCKED",
+      "text": "Before a run begins, Dovet records the project, allowed paths, verification commands, provider list, and spending limit. It supervises only runs it starts. It never rotates accounts, copies Codex credentials, or claims control over arbitrary desktop sessions."
     },
     {
-      "id": "04-checkpoint",
-      "text": "Dovet seals selected files into content-addressed artifacts. Credential-like files and build outputs are omitted and listed. A failed capture cannot replace the last verified checkpoint."
+      "id": "04-interruption",
+      "target_seconds": 16,
+      "visual": "Actual managed Codex turn and on-screen intentional interruption label",
+      "evidence_dependency": "LIVE_RECEIPT",
+      "text": "Here is the real failure. Dovet starts this managed Codex worker, observes its events, and triggers an intentional interruption. The supervisor waits for confirmed termination. A lease timeout by itself can never authorize a second writer."
     },
     {
-      "id": "05-strands",
-      "text": "This scene remains blocked until the release records a successful Strands decision from Amazon Bedrock. The final narration will describe only the evidence produced by that run."
+      "id": "05-checkpoint",
+      "target_seconds": 19,
+      "visual": "Actual checkpoint event, manifest hash, and separate restore",
+      "evidence_dependency": "LIVE_RECEIPT",
+      "text": "After the process stops, Dovet captures the approved working set into immutable content objects. The manifest binds paths, modes, sizes, operations, and source hashes. Every object is checked again before restore, and credential-like or generated files stay outside the checkpoint."
     },
     {
-      "id": "06-replacement",
-      "text": "This scene remains blocked until an authorized replacement worker completes the synthetic importer fixture. No replay or manually written fixture will be presented as a live recovery."
+      "id": "06-strands",
+      "target_seconds": 19,
+      "visual": "Actual Strands recommendation and evidence identifiers",
+      "evidence_dependency": "LIVE_RECEIPT",
+      "text": "A real Strands supervisor reads bounded evidence and recommends the next action. Its typed result includes the checkpoint, target worker, evidence identifiers, uncertainty, and a short explanation. The model does not receive a tool that can grant permissions or approve its own proposal."
     },
     {
-      "id": "07-verification",
-      "text": "A worker saying done is only a candidate result. Protected checks run independently against an identified snapshot. Missing evidence and changed tests remain failures."
+      "id": "07-policy",
+      "target_seconds": 18,
+      "visual": "Policy receipt: snapshot, approval, cost, lease",
+      "evidence_dependency": "LIVE_RECEIPT",
+      "text": "Deterministic policy decides whether that recommendation may execute. It checks the current snapshot, one-use approval, known request cost, budget reservation, worker allowlist, and confirmed workspace ownership. A changed or replayed action stops here and moves to Needs you."
     },
     {
-      "id": "08-human-boundary",
-      "text": "Strands can recommend. Deterministic policy decides. Approvals are bound to one action and snapshot, budgets reject unknown cost, and lease expiry alone never grants a second writer."
+      "id": "08-worker",
+      "target_seconds": 17,
+      "visual": "Restricted recovery worker changing only the fixture source",
+      "evidence_dependency": "LIVE_RECEIPT",
+      "text": "The authorized fallback runs in a restricted candidate workspace. Its file tools require the expected source hash and an active lease generation. Its command tool exposes fixed argument templates. Prompts, repository notes, diffs, and log output remain untrusted input."
     },
     {
-      "id": "09-architecture",
-      "text": "The Codex plugin is a short-lived bridge. The independent local daemon owns durable state. The public website and demo use synthetic evidence and keep local-machine control private."
+      "id": "09-verification",
+      "target_seconds": 20,
+      "visual": "Protected tests turn from baseline failure to independently verified pass",
+      "evidence_dependency": "LIVE_RECEIPT",
+      "text": "Then Dovet checks the result outside the worker's writable scope. Thirteen protected importer cases cover quoted fields, leading zero identifiers, byte order marks, decimals, duplicates, formula-like text, and structured errors. The agent saying done never counts as a passed test."
+    },
+    {
+      "id": "10-portable",
+      "target_seconds": 16,
+      "visual": "Portable checkpoint verify and restore commands",
+      "evidence_dependency": "LOCKED",
+      "text": "The same verified checkpoint can travel in a portable Dovet bundle. The importer rejects traversal, symlinks, unexpected members, prohibited paths, conflicting sizes, and corrupt hashes before it writes anything, then restores into a separate empty directory."
+    },
+    {
+      "id": "11-durable",
+      "target_seconds": 17,
+      "visual": "Architecture diagram: Codex bridge, local daemon, AWS worker boundary",
+      "evidence_dependency": "LOCKED",
+      "text": "The Codex plugin is only a bridge. An independent local daemon owns the durable event ledger, checkpoint store, approvals, budgets, and leases, so recovery state survives when the host process exits. Public demo services never expose control of the local machine."
+    },
+    {
+      "id": "12-close",
+      "target_seconds": 14,
+      "visual": "History receipt, product wordmark, and dovet.site",
+      "evidence_dependency": "LIVE_RECEIPT",
+      "text": "The final History view keeps every claim tied to its source: observed, reported, inferred, or independently verified. That is Dovet. Keep the work. Change the agent."
     }
   ]
 }

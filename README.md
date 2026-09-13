@@ -27,6 +27,16 @@ Read the supported Codex usage snapshot without accessing authentication files:
 uv run dovet usage --json
 ```
 
+Validate or restore a portable checkpoint bundle without overwriting an existing directory:
+
+```sh
+uv run dovet bundle verify /path/to/checkpoint.dovet
+uv run dovet bundle restore /path/to/checkpoint.dovet --to /new/recovery/directory
+```
+
+The importer validates the checkpoint schema, snapshot digest, handoff text, archive paths, file
+allowlist, object sizes, and every SHA-256 hash before writing any object into the local store.
+
 Live-provider tests are opt-in and require an approved Dovet policy and funded budget:
 
 ```sh

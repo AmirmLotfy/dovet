@@ -21,6 +21,7 @@ from urllib.parse import urlparse
 
 import boto3
 from dovet.artifacts import ArtifactStore
+from dovet.bundles import export_bundle, inspect_bundle
 from dovet.canonical import digest_json
 from dovet.checkpoints import CheckpointEngine
 from dovet.policy import GuardContext, evaluate
@@ -283,6 +284,26 @@ def main() -> int:
         snapshot_sha256=final_checkpoint.snapshot_sha256,
         suite_digest=suite_digest,
     )
+    bundle_evidence: dict[str, object] | None = None
+    if final["status"] == "passed":
+        bundle_directory = PRIVATE / "checkpoint-bundles"
+        bundle_directory.mkdir(parents=True, exist_ok=True, mode=0o700)
+        bundle_path = bundle_directory / (
+            f"vertical_run-{final_checkpoint.snapshot_sha256[:12]}.dovet"
+        )
+        inspection = (
+            inspect_bundle(bundle_path)
+            if bundle_path.exists()
+            else export_bundle(final_checkpoint, store, bundle_path)
+        )
+        if inspection.checkpoint.snapshot_sha256 != final_checkpoint.snapshot_sha256:
+            raise RuntimeError("existing checkpoint bundle belongs to a different snapshot")
+        bundle_evidence = {
+            "bundle_sha256": inspection.bundle_sha256,
+            "checkpoint_id": inspection.checkpoint.id,
+            "object_count": inspection.object_count,
+            "total_object_bytes": inspection.total_object_bytes,
+        }
     receipt = {
         "status": "PASS" if final["status"] == "passed" else "FAIL",
         "run_id": "vertical_run",
@@ -308,6 +329,7 @@ def main() -> int:
         "worker_events": worker_events,
         "final_snapshot_sha256": final_checkpoint.snapshot_sha256,
         "verification": final,
+        "checkpoint_bundle": bundle_evidence,
         "budget": {
             "reserved_cap_microusd": cap_microusd,
             "approved_cap_microusd": args.budget_microusd,

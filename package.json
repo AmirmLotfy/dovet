@@ -14,7 +14,8 @@
     "test:e2e": "pnpm --filter @dovet/console test:e2e",
     "build": "pnpm -r build && uv build",
     "demo:record": "uv run python scripts/record_demo.py",
-    "video:narrate": "uv run python video/polly_narrate.py",
+    "video:sound": "uv run python video/sound_design.py",
+    "video:preview": "uv run python video/style_preview.py",
     "video:render": "uv run python video/render.py",
     "release:check": "uv run python scripts/release_check.py",
     "release:package": "uv run python scripts/release_package.py"

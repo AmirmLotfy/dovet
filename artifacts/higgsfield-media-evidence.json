@@ -1,0 +1,35 @@
+{
+  "schema_version": "1",
+  "status": "PARTIAL",
+  "opening": {
+    "provider": "Higgsfield",
+    "model": "Kling 3.0 Pro",
+    "job_id": "05e03908-b293-4786-8fa2-711bf9a3a49c",
+    "duration_seconds": 6.041667,
+    "width": 1920,
+    "height": 1080,
+    "sha256": "99bf785845152e91b49142acfb9f668b5728f0d83149f866da346bd05f9c0cf2",
+    "visual_inspection": "PASS"
+  },
+  "narration_audition": {
+    "provider": "Higgsfield",
+    "model": "Text to Speech V2 / ElevenLabs",
+    "voice_name": "Dylan",
+    "voice_id": "b847bc29-f184-583a-8ad9-d1f1e16d1a60",
+    "voice_type": "preset",
+    "job_id": "d735e7fd-9d84-4b0f-a3a6-d7acfaff5d41",
+    "duration_seconds": 7.89,
+    "words_per_second": 2.79,
+    "long_pause_count": 0,
+    "sha256": "32e720304df287605ddbd7de508182fbca30d703e6a2052c3cfdaaf14ca7f8d4",
+    "timing_gate": "PASS",
+    "owner_listening_review": "PENDING"
+  },
+  "credits": {
+    "before": 1262.8,
+    "after": 1249.3,
+    "observed_aggregate_change": 13.5
+  },
+  "final_video": "BLOCKED_ON_LIVE_RECOVERY_EVIDENCE",
+  "publication": "OWNER_ACTION"
+}

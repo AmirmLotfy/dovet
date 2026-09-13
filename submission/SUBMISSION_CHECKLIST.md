@@ -8,7 +8,8 @@ recording, upload processing, and form troubleshooting.
 
 - PASS — local checkpoint, policy, approval, budget, lease, verifier, daemon, MCP bridge, and Codex usage code
 - PASS — real managed Codex interruption and byte-identical checkpoint restore
-- PASS — 47 local unit, integration, and tooling tests plus six desktop/mobile browser checks
+- PASS — 51 local unit, integration, and tooling tests plus six desktop/mobile browser checks
+- PASS — deterministic portable checkpoint bundle validation and separate-directory restore
 - PASS — authenticated, validated recovery-receipt API and evidence-rail UI
 - PASS — fail-closed 1920x1080 recording preflight and checksum-bound manifest tooling
 - PASS — isolated wheel installation, CLI, packaged migration, supervisor, and worker smoke test
@@ -18,11 +19,13 @@ recording, upload processing, and form troubleshooting.
 
 ## Public assets
 
-- PASS — https://dovet.site works signed out
+- PASS — https://dovet.site works signed out at the previously deployed release
+- PREPARED — updated marketing build and responsive QA evidence; owner will deploy it
 - PASS — architecture diagram, Apache-2.0 license, security policy, and disclosures
 - BLOCKED — public GitHub repository and immutable release tag
 - BLOCKED — live hosted fixture run and labelled recorded replay
-- BLOCKED — finished narrated video, thumbnail, captions, chapters, and public watch URL
+- IN PROGRESS — Higgsfield opening insert and timing-gated narration audition
+- BLOCKED — evidence-bound finished video, thumbnail, captions, chapters, and public watch URL
 
 ## Submission
 
@@ -31,5 +34,5 @@ recording, upload processing, and form troubleshooting.
 - PREPARED — YouTube title and metadata structure
 - PREPARED — ordered owner-only action sheet for model terms, publication review, and legal fields
 - BLOCKED — owner eligibility, authorship, contributor, and legal attestations
-- BLOCKED — owner approval for public source, video, stories, and Devpost publication
+- OWNER ACTION — upload the prepared source, site, video, stories, and Devpost entry
 - BLOCKED — Devpost receipt and signed-out verification of all submitted URLs

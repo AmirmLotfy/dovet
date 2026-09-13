@@ -4,7 +4,7 @@
   "title": "Dovet - Keep the work. Change the agent. | Agents for Humans",
   "description_lines": [
     "Dovet helps developers recover interrupted managed coding-agent work.",
-    "This demo shows a real interrupted run, preserved working state, Strands-supervised recovery and independent verification.",
+    "This demo shows a real interrupted run, an immutable portable checkpoint, Strands-supervised recovery, deterministic authorization, and independent verification.",
     "",
     "Project: https://dovet.site",
     "Source and setup: BLOCKED until the public tagged release exists",
@@ -13,7 +13,7 @@
     "Built for Agents for Humans, Professional Agents.",
     "",
     "This demonstration uses synthetic code and an intentionally triggered interruption. Hosted and local adapter differences are labelled in the video.",
-    "Narration will use an authorized Amazon Polly voice after the evidence-linked edit is locked."
+    "The short opening visual and synthetic narration were produced with Higgsfield. The product interaction and recovery evidence are recordings of the working Dovet application."
   ],
   "chapters": [],
   "thumbnail": "submission/video/thumbnail.png",

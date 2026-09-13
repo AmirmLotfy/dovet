@@ -1,4 +1,4 @@
-"""Assemble evidence-linked screen recordings, Polly audio, captions, and QA evidence."""
+"""Assemble evidence-linked footage, narration, captions, music, and QA evidence."""
 
 from __future__ import annotations
 
@@ -10,8 +10,12 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
+from dovet.evidence import RunEvidenceStore
+
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "submission" / "video"
+PRIVATE = ROOT / "private-artifacts" / "video"
+DATA_ROOT = Path.home() / "Library" / "Application Support" / "Dovet"
 
 
 def run(argv: tuple[str, ...]) -> subprocess.CompletedProcess[str]:
@@ -62,14 +66,29 @@ def sentence_marks(path: Path) -> list[tuple[float, str]]:
     return marks
 
 
-def write_captions(items: list[tuple[float, float, str]]) -> None:
+def scene_marks(scene: dict[str, Any], audio_duration: float) -> list[tuple[float, str]]:
+    timing_value = scene.get("timing")
+    if timing_value:
+        timing = ROOT / str(timing_value)
+        if not timing.is_file():
+            raise FileNotFoundError(f"scene {scene.get('id', 'unknown')} timing is missing")
+        return sentence_marks(timing)
+    caption = str(scene.get("caption", "")).strip()
+    if not caption:
+        raise ValueError(f"scene {scene.get('id', 'unknown')} has no timing or caption")
+    if audio_duration <= 0:
+        raise ValueError("narration audio duration must be positive")
+    return [(0.0, caption)]
+
+
+def write_captions(items: list[tuple[float, float, str]], output_root: Path) -> None:
     srt: list[str] = []
     vtt = ["WEBVTT", ""]
     for index, (start, end, text) in enumerate(items, start=1):
         srt.extend([str(index), f"{clock(start)} --> {clock(end)}", text, ""])
         vtt.extend([f"{clock(start, vtt=True)} --> {clock(end, vtt=True)}", text, ""])
-    (OUTPUT / "captions.srt").write_text("\n".join(srt), encoding="utf-8")
-    (OUTPUT / "captions.vtt").write_text("\n".join(vtt), encoding="utf-8")
+    (output_root / "captions.srt").write_text("\n".join(srt), encoding="utf-8")
+    (output_root / "captions.vtt").write_text("\n".join(vtt), encoding="utf-8")
 
 
 def normalize_scene(clip: Path, audio: Path, output: Path) -> None:
@@ -114,31 +133,85 @@ def normalize_scene(clip: Path, audio: Path, output: Path) -> None:
     )
 
 
-def make_thumbnail(video: Path, output: Path) -> None:
-    font = Path("/System/Library/Fonts/Helvetica.ttc")
-    if not font.exists():
-        raise RuntimeError("thumbnail font is unavailable")
-    filter_value = (
-        "scale=1280:720:force_original_aspect_ratio=increase,crop=1280:720,"
-        "drawbox=x=0:y=0:w=1280:h=190:color=#f3efe6@0.94:t=fill,"
-        f"drawtext=fontfile={font}:text='KEEP THE WORK.':"
-        "fontcolor=#171512:fontsize=70:x=56:y=48"
-    )
+def add_soundtrack(video: Path, soundtrack: Path, output: Path, total: float) -> None:
+    fade_start = max(0.0, total - 3)
     run(
         (
             "ffmpeg",
             "-y",
-            "-ss",
-            "2",
             "-i",
             str(video),
-            "-frames:v",
-            "1",
-            "-vf",
-            filter_value,
+            "-stream_loop",
+            "-1",
+            "-i",
+            str(soundtrack),
+            "-filter_complex",
+            (
+                "[0:a]loudnorm=I=-16:TP=-1.5:LRA=7,"
+                "aformat=channel_layouts=stereo[voice];"
+                f"[1:a]atrim=duration={total:.3f},volume=0.12,"
+                f"afade=t=out:st={fade_start:.3f}:d=3[bed];"
+                "[voice][bed]amix=inputs=2:duration=first:dropout_transition=2[a]"
+            ),
+            "-map",
+            "0:v:0",
+            "-map",
+            "[a]",
+            "-c:v",
+            "copy",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "192k",
+            "-ar",
+            "48000",
+            "-movflags",
+            "+faststart",
             str(output),
         )
     )
+
+
+def make_thumbnail(video: Path, output: Path, at_seconds: float) -> None:
+    with tempfile.TemporaryDirectory(prefix="dovet-thumbnail-") as temporary:
+        frame = Path(temporary) / "frame.png"
+        run(
+            (
+                "ffmpeg",
+                "-y",
+                "-ss",
+                f"{at_seconds:.3f}",
+                "-i",
+                str(video),
+                "-frames:v",
+                "1",
+                "-vf",
+                "scale=1280:720:force_original_aspect_ratio=increase,crop=1280:720",
+                str(frame),
+            )
+        )
+        run(
+            (
+                "magick",
+                str(frame),
+                "-fill",
+                "#f3efe6ee",
+                "-draw",
+                "rectangle 0,0 1280,190",
+                "-font",
+                "Helvetica",
+                "-fill",
+                "#171512",
+                "-pointsize",
+                "70",
+                "-gravity",
+                "northwest",
+                "-annotate",
+                "+56+48",
+                "KEEP THE WORK.",
+                str(output),
+            )
+        )
 
 
 def sha256(path: Path) -> str:
@@ -150,18 +223,32 @@ def main() -> int:
     parser.add_argument(
         "--manifest",
         type=Path,
-        default=OUTPUT / "recording-manifest.json",
+        default=PRIVATE / "recording-manifest.json",
     )
+    parser.add_argument("--output-dir", type=Path, default=OUTPUT)
     args = parser.parse_args()
     manifest: dict[str, Any] = json.loads(args.manifest.read_text(encoding="utf-8"))
-    if not manifest.get("release_commit"):
-        raise ValueError("recording manifest is not bound to a release commit")
-    if not manifest.get("run_id") or not manifest.get("checkpoint_sha256"):
-        raise ValueError("recording manifest lacks recovery lineage")
+    if manifest.get("capture_status") != "RECORDED":
+        raise ValueError("recording manifest is not a completed capture")
+    if manifest.get("capture_mode") != "evidence_replay_of_live_run":
+        raise ValueError("recording manifest is not a live evidence replay")
+    run_id = str(manifest.get("run_id", ""))
+    evidence = RunEvidenceStore(DATA_ROOT / "receipts").read(run_id)
+    lineage = {
+        "release_commit": evidence.release_commit,
+        "run_id": evidence.run_id,
+        "checkpoint_sha256": evidence.final_snapshot_sha256,
+        "codex_thread_id": evidence.codex_thread_id,
+        "codex_turn_id": evidence.codex_turn_id,
+        "model_id": evidence.model_id,
+    }
+    if any(manifest.get(key) != value for key, value in lineage.items()):
+        raise ValueError("recording manifest does not match the validated live receipt")
     scenes = manifest.get("scenes")
     if not isinstance(scenes, list) or not scenes:
         raise ValueError("recording manifest has no scenes")
-    OUTPUT.mkdir(parents=True, exist_ok=True)
+    output_root = args.output_dir.resolve()
+    output_root.mkdir(parents=True, exist_ok=True)
     caption_items: list[tuple[float, float, str]] = []
     offset = 0.0
     with tempfile.TemporaryDirectory(prefix="dovet-render-") as temporary:
@@ -170,11 +257,14 @@ def main() -> int:
         for index, scene in enumerate(scenes):
             clip = ROOT / str(scene["clip"])
             audio = ROOT / str(scene["audio"])
-            timing = ROOT / str(scene["timing"])
-            if not clip.is_file() or not audio.is_file() or not timing.is_file():
+            if not clip.is_file() or not audio.is_file():
                 raise FileNotFoundError(f"scene {scene.get('id', index)} input is missing")
+            if sha256(clip) != scene.get("clip_sha256"):
+                raise ValueError(f"scene {scene.get('id', index)} clip checksum changed")
+            if sha256(audio) != scene.get("audio_sha256"):
+                raise ValueError(f"scene {scene.get('id', index)} audio checksum changed")
             audio_duration = duration(audio)
-            marks = sentence_marks(timing)
+            marks = scene_marks(scene, audio_duration)
             for mark_index, (start, text) in enumerate(marks):
                 end = (
                     marks[mark_index + 1][0] - 0.05
@@ -191,7 +281,7 @@ def main() -> int:
             "".join(f"file '{path.name}'\n" for path in intermediates),
             encoding="utf-8",
         )
-        final = OUTPUT / "dovet-demo.mp4"
+        joined = temporary_root / "joined.mp4"
         run(
             (
                 "ffmpeg",
@@ -206,10 +296,19 @@ def main() -> int:
                 "copy",
                 "-movflags",
                 "+faststart",
-                str(final),
+                str(joined),
             )
         )
-    write_captions(caption_items)
+        final = output_root / "dovet-demo.mp4"
+        soundtrack_value = manifest.get("soundtrack")
+        if soundtrack_value:
+            soundtrack = ROOT / str(soundtrack_value)
+            if not soundtrack.is_file():
+                raise FileNotFoundError("soundtrack input is missing")
+            add_soundtrack(joined, soundtrack, final, duration(joined))
+        else:
+            final.write_bytes(joined.read_bytes())
+    write_captions(caption_items, output_root)
     media = probe(final)
     final_duration = float(media["format"]["duration"])
     video_streams = [item for item in media["streams"] if item.get("codec_type") == "video"]
@@ -222,19 +321,25 @@ def main() -> int:
         or final_duration >= 300
     ):
         raise RuntimeError("final media failed duration, dimension, or audio checks")
-    make_thumbnail(final, OUTPUT / "thumbnail.png")
+    thumbnail_time = float(manifest.get("thumbnail_time_seconds", 8.0))
+    if manifest.get("thumbnail_source") != "application_footage":
+        raise ValueError("thumbnail_source must identify application footage")
+    if not 0 <= thumbnail_time < final_duration:
+        raise ValueError("thumbnail time is outside the finished video")
+    make_thumbnail(final, output_root / "thumbnail.png", thumbnail_time)
     qa = [
         "# Dovet video QA",
         "",
         f"- PASS: duration {final_duration:.3f} seconds is below five minutes.",
         "- PASS: video is 1920x1080.",
         "- PASS: audio stream is present.",
-        "- PASS: captions were derived from Polly sentence timing.",
-        "- BLOCKED: owner playback review and public signed-out upload verification.",
+        "- PASS: captions were derived from narration scene timing and approved script text.",
+        "- PASS: the thumbnail frame is declared as actual application footage.",
+        "- BLOCKED: owner playback review and signed-out verification after manual upload.",
         "",
         f"MP4 SHA-256: {sha256(final)}",
     ]
-    (OUTPUT / "QA_REPORT.md").write_text("\n".join(qa) + "\n", encoding="utf-8")
+    (output_root / "QA_REPORT.md").write_text("\n".join(qa) + "\n", encoding="utf-8")
     reviewed = dict(manifest)
     reviewed["final_video"] = {
         "path": "submission/video/dovet-demo.mp4",
@@ -244,7 +349,9 @@ def main() -> int:
         "height": 1080,
         "audio_present": True,
     }
-    args.manifest.write_text(json.dumps(reviewed, indent=2) + "\n", encoding="utf-8")
+    (output_root / "recording-manifest.json").write_text(
+        json.dumps(reviewed, indent=2) + "\n", encoding="utf-8"
+    )
     print(final.relative_to(ROOT))
     return 0
 

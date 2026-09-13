@@ -24,7 +24,7 @@ older checkpoint remains available, and tests a corrupted newest blob falling ba
 valid state. This matters because replacing the only good recovery point with a partial scan would
 turn preservation into data loss.
 
-The current test report records 47 passing local checks, including binary and Unicode restoration,
+The current test report records 51 passing local checks, including binary and Unicode restoration,
 corrupt-object rejection, sensitive-file omission, and previous-checkpoint retention. Six desktop
 and mobile browser checks cover the evidence UI. A separate real managed Codex probe records an
 intentional interruption and byte-identical restore, and an isolated Python 3.12 environment proves

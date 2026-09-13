@@ -1,0 +1,11 @@
+{
+  "schema_version": "1",
+  "status": "PASS",
+  "kind": "production_look_test_not_recovery_evidence",
+  "path": "private-artifacts/video/dovet-style-preview.mp4",
+  "sha256": "7bfa8d292a25fc7c463d240046ad9d2514f6347564ce24414ad827b91b52b431",
+  "duration_seconds": 8.6,
+  "width": 1920,
+  "height": 1080,
+  "publication": "OWNER_ACTION"
+}
