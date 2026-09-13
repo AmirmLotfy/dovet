@@ -76,10 +76,15 @@ requests and keeps the live recovery gate blocked instead of replacing it with a
 
 - A real Dovet-managed Codex turn was intentionally interrupted through the installed SDK.
 - The resulting checkpoint restored byte-for-byte from an immutable SHA-256 snapshot.
-- Thirty-eight local unit, integration, and tooling tests pass.
+- Forty-seven local unit, integration, and tooling tests pass, alongside six desktop and mobile
+  browser checks.
 - Tests cover corrupt blobs, secret exclusion, stale approvals, replay, unknown cost, and
   competing writers.
 - The plugin validates and the independent launchd daemon survives bridge exit.
+- A fresh Python 3.12 environment installs the built wheel, runs the packaged database migration,
+  and imports the Strands supervisor and worker.
+- The authenticated evidence view accepts only a validated PASS receipt, and the 1920x1080
+  recorder refuses to start without one.
 - The public site works signed out at https://dovet.site on desktop and narrow screens.
 - Deployable AWS infrastructure validates without provisioning under the authenticated root user.
 
@@ -92,10 +97,13 @@ evidence, not a summary that sounds confident.
 
 ## What is next
 
-The release needs a least-privilege AWS role that can invoke one approved Bedrock model. That proof
-unblocks the actual Strands recovery, protected importer verification, evidence-linked recording,
-Polly narration, public source tag, and final submission. Future adapters will be advertised only
-after their conformance tests pass.
+The authenticated AWS account currently reports the Nova Micro agreement, entitlement, and region
+as available, but model authorization as `NOT_AUTHORIZED`. The owner must first review and submit
+the access terms shown by the Bedrock console. One bounded successful invocation then unblocks the
+actual Strands recovery and protected importer verification. After that evidence exists, the team
+can review the least-privilege deployment change set, record the evidence-linked demo, add Polly
+narration, publish the source tag, and complete the submission. Future adapters will be advertised
+only after their conformance tests pass.
 
 ## Built with
 

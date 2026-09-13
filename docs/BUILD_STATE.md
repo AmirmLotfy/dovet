@@ -29,6 +29,11 @@ Last updated: 2026-09-13
 - **PASS:** the built `dovet-0.1.0` wheel installs in a fresh Python 3.12 environment; its CLI, packaged SQLite migration, supervisor import, and restricted worker import pass outside the checkout.
 - **PASS:** the live vertical runner stops before provider invocation when Nova is unauthorized, enforces a current official price card and run cap, keeps capability tokens out of model-visible schemas, and binds protected verification to the recovered candidate root.
 - **PASS:** full Apache-2.0 text, security policy, AI/dependency disclosure, architecture diagram and fail-closed release/video scripts.
+- **PASS:** Devpost and Builder.aws drafts now match the 47-test report, isolated-install evidence,
+  validated receipt UI, recording gate, and exact Nova authorization blocker; owner-only actions are
+  ordered in `submission/OWNER_ACTIONS.md`.
+- **PASS:** the generated deadline clock confirms the build window and records the eight-hour media
+  reserve boundary without hard-coding a stale remaining-time claim in submission copy.
 - **PASS:** Polly `DescribeVoices` returned the selected English voice/engine; no synthesis request was sent because recovery evidence is incomplete.
 - **FAIL (pre-recovery baseline):** 13 protected importer acceptance cases cannot import `parcel_import`; these remain red until the authorized recovery worker produces and independently verifies the fixture.
 - **BLOCKED:** Nova Micro availability reports agreement, entitlement, and region available but account authorization `NOT_AUTHORIZED`; both Strands `ConverseStream` and direct `Converse` probes return `ValidationException: Operation not allowed` and no working model invocation is claimed.
@@ -47,6 +52,7 @@ pnpm test:integration
 pnpm build
 pnpm test:e2e
 pnpm demo:record
+uv run python scripts/deadline_status.py
 curl -I https://dovet.site
 ```
 
@@ -54,7 +60,8 @@ curl -I https://dovet.site
 
 1. The owner enables Amazon Nova Micro model access in the `us-east-1` Bedrock console after reviewing its displayed terms.
 2. Rerun the bounded live vertical: managed Codex interruption, Strands recommendation, deterministic authorization, restricted recovery worker, and independent protected verification.
-3. Review a least-privilege CloudFormation change set, record and render the evidence-linked demo, then reconcile public claims and submission materials.
+3. Review a least-privilege CloudFormation change set, record and render the evidence-linked demo,
+   then bind the prepared public claims and submission materials to that release.
 
 ## Working commit evidence
 

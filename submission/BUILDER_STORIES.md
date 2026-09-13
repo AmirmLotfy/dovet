@@ -24,9 +24,11 @@ older checkpoint remains available, and tests a corrupted newest blob falling ba
 valid state. This matters because replacing the only good recovery point with a partial scan would
 turn preservation into data loss.
 
-The current test report records 38 passing local checks, including binary and Unicode restoration,
-corrupt-object rejection, sensitive-file omission, and previous-checkpoint retention. A separate
-real managed Codex probe records an intentional interruption and byte-identical restore.
+The current test report records 47 passing local checks, including binary and Unicode restoration,
+corrupt-object rejection, sensitive-file omission, and previous-checkpoint retention. Six desktop
+and mobile browser checks cover the evidence UI. A separate real managed Codex probe records an
+intentional interruption and byte-identical restore, and an isolated Python 3.12 environment proves
+the built wheel includes its database migration and recovery modules.
 
 The lesson is practical: preserve early, label omissions, and keep the last state you can still
 prove. Recovery should be based on durable facts rather than a summary that no longer has a source.
@@ -51,10 +53,12 @@ Those boundaries now have passing adversarial tests. The cloud implementation us
 1.55.1 and defines separate least-privilege AgentCore roles. CloudFormation validation and Bedrock
 model discovery pass.
 
-The live evidence is still incomplete. The listed Nova profile rejected both Strands streaming and
-direct boto3 invocation with “Operation not allowed,” so Dovet records zero successful requests.
-This story must not be published as a working Strands recovery until a least-privilege authorized
-role produces a sanitized successful trace and the protected fixture passes.
+The live evidence is still incomplete. The authenticated account reports the Nova Micro agreement,
+entitlement, and region as available while authorization remains `NOT_AUTHORIZED`. The listed Nova
+profile rejected both Strands streaming and direct boto3 invocation with “Operation not allowed,”
+so Dovet records zero successful requests. This story must not be published as a working Strands
+recovery until the owner reviews the displayed access terms, a bounded request succeeds, and the
+protected fixture passes. A reviewed least-privilege role is required before hosted deployment.
 
 That blocked result is part of the architecture, not something to polish away. Agentic judgment and
 reliable control complement each other only when the integration itself is proven.

@@ -1,5 +1,9 @@
 # Submission completion checklist
 
+Deadline clock: run `python scripts/deadline_status.py`. The authoritative deadline is September
+14, 2026 at 17:00 Pacific (September 15 at 03:00 Cairo), with the final eight hours reserved for
+recording, upload processing, and form troubleshooting.
+
 ## Working product
 
 - PASS — local checkpoint, policy, approval, budget, lease, verifier, daemon, MCP bridge, and Codex usage code
@@ -25,6 +29,7 @@
 - PREPARED — Devpost copy and field map
 - PREPARED — three distinct Builder.aws story drafts
 - PREPARED — YouTube title and metadata structure
+- PREPARED — ordered owner-only action sheet for model terms, publication review, and legal fields
 - BLOCKED — owner eligibility, authorship, contributor, and legal attestations
 - BLOCKED — owner approval for public source, video, stories, and Devpost publication
 - BLOCKED — Devpost receipt and signed-out verification of all submitted URLs
