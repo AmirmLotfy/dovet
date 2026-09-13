@@ -1,7 +1,10 @@
 {
   "schema_version": "1",
-  "checked_at": "2026-09-13T01:06:00Z",
+  "checked_at": "2026-09-13T06:21:58Z",
   "vercel_project": "dovet-site",
+  "deployment_id": "dpl_6rF76t6XRZ5j3Px7i755R1QbtCLy",
+  "deployment_url": "https://dovet-site-m7nhmrzeg-mellardoos-projects.vercel.app",
+  "source_commit": "fd4ba4574cea6bf3b4cc27befb3c38bd39fa36f9",
   "production_alias": "https://dovet-site.vercel.app",
   "production_alias_http_status": 200,
   "domains": [
@@ -30,6 +33,7 @@
   "signed_out_browser": {
     "status": "PASS",
     "title": "Dovet - Recovery and verification for coding work",
-    "canonical_url": "https://dovet.site/"
+    "canonical_url": "https://dovet.site/",
+    "demo_call_to_action": "View demo status"
   }
 }
