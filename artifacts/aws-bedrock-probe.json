@@ -1,6 +1,6 @@
 {
   "schema_version": "1",
-  "checked_at": "2026-09-13T07:31:59Z",
+  "checked_at": "2026-09-13T07:37:40Z",
   "region": "us-east-1",
   "authenticated_principal_type": "account_root",
   "discovery": {
@@ -40,7 +40,14 @@
   "account_controls": {
     "aws_organization_membership": "NONE",
     "account_root_reproduces_error": true,
-    "existing_account_verification_case": "OPEN_UNASSIGNED"
+    "existing_account_verification_case": "OPEN_UNASSIGNED",
+    "support_follow_up": {
+      "status": "SUBMITTED",
+      "submitted_at": "2026-09-13T07:37:04Z",
+      "attachments": 0,
+      "case_status_after_submission": "UNASSIGNED",
+      "authorization_after_submission": "NOT_AUTHORIZED"
+    }
   },
   "limits": [
     "Discoverability is not invocation permission.",
