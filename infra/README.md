@@ -7,8 +7,10 @@ can write only candidate artifacts. Neither role exposes a route to a local mach
 
 The stack deliberately does not create a public API or an AgentCore runtime until a model
 invocation conformance probe succeeds. Nova Micro currently reports `NOT_AUTHORIZED` for this
-account even though its region, entitlement, and agreement are available. The account owner must
-review and submit model access in the Bedrock console before the bounded probe can run.
+account even though its region, entitlement, and agreement are available. The owner completed the
+console first-use action; the provider still denies both playground and API inference. AWS Support
+now has the exact authorization, request, root-account, and zero-quota evidence. A read-only sweep
+found zero authorized alternatives among all 89 discovered text models in `us-east-1`.
 `infra/deploy.sh` refuses to execute without an explicit
 `DOVET_APPLY=approved` environment value. Generate and inspect a CloudFormation change set first.
 

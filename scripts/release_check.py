@@ -11,9 +11,11 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 import httpx
+from dovet.evidence import InvalidRunEvidence, RunEvidenceStore
 
 ROOT = Path(__file__).resolve().parents[1]
 ARTIFACTS = ROOT / "artifacts"
+DATA_ROOT = Path.home() / "Library" / "Application Support" / "Dovet"
 SKIP_PARTS = {
     ".git",
     ".mypy_cache",
@@ -114,6 +116,16 @@ def public_page(name: str, url: str) -> Check:
 
 
 def bedrock_check() -> Check:
+    try:
+        evidence = RunEvidenceStore(DATA_ROOT / "receipts").read("vertical_run")
+    except (FileNotFoundError, InvalidRunEvidence):
+        evidence = None
+    if evidence is not None:
+        return Check(
+            "live_strands_bedrock",
+            "PASS",
+            f"validated run {evidence.run_id}; model {evidence.model_id}",
+        )
     path = ARTIFACTS / "aws-bedrock-probe.json"
     if not path.exists():
         return Check("live_strands_bedrock", "BLOCKED", "probe evidence is missing")

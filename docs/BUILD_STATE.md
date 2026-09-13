@@ -46,6 +46,10 @@ Last updated: 2026-09-13
 - **PASS:** a broader read-only sweep checked all 89 discovered Bedrock text models in `us-east-1`; zero were authorized across 17 providers. There is no already-authorized Bedrock fallback on this account.
 - **PASS:** all 12 Higgsfield Dylan narration scenes pass measured duration, rate, and pause gates. One short scene was rewritten once. The accepted assets, job IDs, hashes, rejection, and estimated 11.7-credit batch cost are recorded; owner normal-speed listening remains pending.
 - **PASS:** the recording/render contract now emits checksum-bound scene entries and pads each scene with silence instead of stretching narration. The final renderer enforces the required 4:35–4:50 window. A separate 4:40 review renderer keeps every live-dependent scene visibly cloud-blocked and cannot create the final submission filename.
+- **PASS:** `release:finish-after-aws` checks authorization before cost, then runs the real vertical,
+  evidence recording, locked narration render, full checks, and release report under an explicit
+  microusd ceiling. Its current dry invocation exits BLOCKED before provider use and performs no
+  deployment or publication.
 - **BLOCKED:** the playground, Strands `ConverseStream`, and a direct one-token `Converse` call all return `ValidationException: Operation not allowed`. Nova Micro authorization remains `NOT_AUTHORIZED`; its on-demand requests-per-minute and tokens-per-minute quotas are both `0.0` and non-adjustable. Agreement, entitlement, region, model discovery, and the active inference profile all pass. The account is outside AWS Organizations and the account root reproduces the error, isolating this to AWS account verification/provisioning. An existing verification case is still unassigned after 10 days. No working model invocation is claimed.
 
 ## Current commands

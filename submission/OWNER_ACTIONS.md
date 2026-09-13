@@ -11,8 +11,20 @@ in order so later approvals are based on finished, reviewable evidence.
 - **Complete:** the owner-approved sanitized follow-up in
   `artifacts/private/aws-bedrock-support-reply.md` was submitted to the existing account-verification
   case at 2026-09-13 07:37 UTC. It remained Unassigned immediately afterward.
-- Monitor that case for AWS provisioning or an exact owner identity/payment prerequisite. The live runner will still enforce the two-model
-  allowlist, deterministic policy, one-request recovery path, and per-model cost cap.
+- Monitor that case for AWS provisioning or an exact owner identity/payment prerequisite. The live
+  runner still enforces the verified model ID, deterministic policy, bounded Strands and worker
+  token limits, and an explicit run cost cap.
+- Once Nova Micro reports `AUTHORIZED`, the local finish path is one fail-closed command. Its
+  explicit 5,000-microusd ceiling is five-tenths of one cent:
+
+  ```sh
+  DOVET_LIVE_BEDROCK=approved pnpm release:finish-after-aws -- \
+    --price-card artifacts/private/nova-micro-price-card.json \
+    --budget-microusd 5000
+  ```
+
+  It runs the real recovery, 1920x1080 recording, narration render, full checks, and release report.
+  It performs no deployment, upload, public publishing, or legal attestation.
 
 ## 2. Review the finished release
 

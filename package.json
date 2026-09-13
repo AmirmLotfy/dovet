@@ -19,6 +19,7 @@
     "video:draft": "uv run python video/render_draft.py",
     "video:render": "uv run python video/render.py",
     "release:check": "uv run python scripts/release_check.py",
+    "release:finish-after-aws": "uv run python scripts/finish_after_bedrock.py",
     "release:package": "uv run python scripts/release_package.py"
   }
 }
