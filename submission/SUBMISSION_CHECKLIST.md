@@ -7,6 +7,7 @@
 - PASS — 47 local unit, integration, and tooling tests plus six desktop/mobile browser checks
 - PASS — authenticated, validated recovery-receipt API and evidence-rail UI
 - PASS — fail-closed 1920x1080 recording preflight and checksum-bound manifest tooling
+- PASS — isolated wheel installation, CLI, packaged migration, supervisor, and worker smoke test
 - FAIL baseline — 13 protected importer checks before recovery
 - BLOCKED — Amazon Nova Micro account authorization and successful live Strands/Bedrock recovery
 - BLOCKED — AgentCore Runtime and Code Interpreter deployment proof

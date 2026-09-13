@@ -30,8 +30,12 @@ uv run dovet usage --json
 Live-provider tests are opt-in and require an approved Dovet policy and funded budget:
 
 ```sh
+DOVET_LIVE_BEDROCK=approved \
+DOVET_PRICE_CARD=artifacts/private/nova-micro-price-card.json \
 pnpm test:integration
 ```
+
+Without the explicit live flag, the provider test is reported as skipped and sends no request.
 
 The local daemon binds to loopback, stores operational truth in SQLite, and uses a separate app-data directory for immutable artifacts and managed worktrees. The Codex plugin is a short-lived MCP bridge; it is not the durability layer.
 

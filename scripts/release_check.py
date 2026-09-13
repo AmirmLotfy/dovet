@@ -171,6 +171,25 @@ def recording_preflight_check() -> Check:
     )
 
 
+def install_smoke_check() -> Check:
+    path = ARTIFACTS / "install-smoke.json"
+    if not path.exists():
+        return Check("isolated_install", "BLOCKED", "isolated install evidence is missing")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    passed = (
+        data.get("status") == "PASS"
+        and data.get("packaged_schema_migration") == "PASS"
+    )
+    return Check(
+        "isolated_install",
+        "PASS" if passed else "FAIL",
+        (
+            f"wheel {data.get('wheel', 'unknown')}; packaged schema "
+            f"{data.get('packaged_schema_migration', 'unknown')}"
+        ),
+    )
+
+
 def file_check(name: str, path: Path, minimum_bytes: int) -> Check:
     size = path.stat().st_size if path.exists() else 0
     return Check(name, "PASS" if size >= minimum_bytes else "FAIL", f"{size} bytes")
@@ -184,6 +203,7 @@ def main() -> int:
         file_check("node_lockfile", ROOT / "pnpm-lock.yaml", 1_000),
         secret_scan(),
         test_report(),
+        install_smoke_check(),
         bedrock_check(),
         recording_preflight_check(),
         public_page("vercel_site", "https://dovet-site.vercel.app"),
