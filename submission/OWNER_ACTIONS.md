@@ -5,9 +5,11 @@ in order so later approvals are based on finished, reviewable evidence.
 
 ## 1. Enable the bounded recovery proof
 
-- In the Amazon Bedrock console in `us-east-1`, open model access for Amazon Nova Micro.
-- Personally review and submit any displayed access terms. Do not send credentials or session data.
-- Tell Codex when the account reports access. The live runner will still enforce the two-model
+- Use the already-open Amazon Bedrock Nova Micro playground in `us-east-1`; the old Model access
+  page is retired and the console says serverless models activate on first invocation.
+- Personally review the linked model EULA. Enter a harmless prompt and choose **Run** once only if
+  you accept it; using the model constitutes agreement. Do not send credentials or session data.
+- Tell Codex whether the playground returns a model response or an exact error. The live runner will still enforce the two-model
   allowlist, deterministic policy, one-request recovery path, and per-model cost cap.
 
 ## 2. Review the finished release

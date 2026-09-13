@@ -4,7 +4,7 @@ Last updated: 2026-09-13
 
 ## Active gate
 
-**G3 — BLOCKED:** real Strands recovery vertical slice awaits owner-controlled Amazon Nova model access.
+**G3 — BLOCKED (OWNER LEGAL ACTION):** the real Strands recovery vertical slice awaits the owner's first Nova Micro playground invocation after reviewing the model EULA.
 
 ## Completed evidence
 
@@ -40,7 +40,7 @@ Last updated: 2026-09-13
 - **PASS:** the updated marketing site now presents the evidence UI, daemon durability, portable recovery, isolated install, and exact cloud blocker. Local 1920x1080 and 390x844 QA passed; the updated build remains intentionally undeployed for owner publication.
 - **PASS:** an 8.6-second Higgsfield production look test combines the accepted opening, Dylan audition, actual site footage, restrained motion, and an original deterministic music bed. It is labelled `NOT RECOVERY EVIDENCE`, probes as 1920x1080 H.264 with 48 kHz stereo AAC, and remains local.
 - **FAIL (pre-recovery baseline):** 13 protected importer acceptance cases cannot import `parcel_import`; these remain red until the authorized recovery worker produces and independently verifies the fixture.
-- **BLOCKED:** Nova Micro availability reports agreement, entitlement, and region available but account authorization `NOT_AUTHORIZED`; both Strands `ConverseStream` and direct `Converse` probes return `ValidationException: Operation not allowed` and no working model invocation is claimed.
+- **BLOCKED:** Bedrock's current console says the Model access page is retired and serverless models activate on first invocation. Nova Micro availability reports agreement, entitlement, and region available but account authorization `NOT_AUTHORIZED`; Strands `ConverseStream`, direct `Converse`, and a documented one-token first-use probe return `ValidationException: Operation not allowed`. The Nova catalog states that using it agrees to its EULA, so the authenticated playground is prepared for the owner to perform that legal acceptance. No working model invocation is claimed.
 
 ## Current commands
 
@@ -64,7 +64,7 @@ curl -I https://dovet.site
 
 ## Next actions
 
-1. The owner enables Amazon Nova Micro model access in the `us-east-1` Bedrock console after reviewing its displayed terms.
+1. In the already-open authenticated `us-east-1` Nova Micro playground, the owner reviews the linked EULA, enters a harmless prompt, and chooses **Run** once. This first use is the console's activation path and constitutes acceptance of the displayed model EULA.
 2. Rerun the bounded live vertical: managed Codex interruption, Strands recommendation, deterministic authorization, restricted recovery worker, and independent protected verification.
 3. Review a least-privilege CloudFormation change set, record and render the evidence-linked demo,
    then prepare the final source, website and submission package for owner-controlled publication.
