@@ -1,0 +1,13 @@
+{
+  "version": "DovetManifest/1",
+  "baseCommit": "0000000000000000000000000000000000000000",
+  "files": [
+    {
+      "path": "src/parcel_import/parser.py",
+      "operation": "modify",
+      "sha256": "45d1d9210a8419052441cd015a10434a9f82d5d444423d5a0cc5c33b2dc7af7a",
+      "sizeBytes": 74,
+      "mode": 33188
+    }
+  ]
+}

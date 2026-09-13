@@ -1,0 +1,25 @@
+{
+  "version": "DovetRecovery/1",
+  "incidentId": "incident_example_1",
+  "runId": "run_example_1",
+  "action": "handoff",
+  "checkpointId": "checkpoint_example_1",
+  "targetProviderProfileId": "bedrock_example_disabled",
+  "expectedSnapshotSha256": "977f79bb61a864a7931231a84e8c1a3fd8c012d50451a80155dbbe175aafae10",
+  "expectedPolicySha256": "f7261eaa69465c51f2662c0a4dc83c4e6d7b1163dc7d86af5bf0582d6b4bff81",
+  "evidenceIds": [
+    "event_example_1"
+  ],
+  "explanation": "Illustrative proposal only. Resume the bounded task with an independently authorized replacement after all deterministic gates pass.",
+  "uncertainties": [
+    "This sample does not prove provider access or budget authorization."
+  ],
+  "preconditions": [
+    "writer_stopped",
+    "snapshot_valid",
+    "policy_unchanged",
+    "scope_permitted",
+    "provider_ready",
+    "budget_reserved"
+  ]
+}

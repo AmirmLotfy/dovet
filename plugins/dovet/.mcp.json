@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "dovet": {
+      "command": "./scripts/launch-mcp.sh",
+      "args": [],
+      "cwd": ".",
+      "enabled": true,
+      "default_tools_approval_mode": "approve",
+      "startup_timeout_sec": 10,
+      "tool_timeout_sec": 30,
+      "env_vars": ["HOME", "PATH"]
+    }
+  }
+}

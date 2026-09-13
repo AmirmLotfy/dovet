@@ -1,0 +1,16 @@
+{
+  "captured_paths": [
+    "README.md",
+    "progress.txt"
+  ],
+  "checkpoint_sha256": "d3d7f1fd49409afb50f4dee87b0649579ff58e208d45e8e79cdc6cf838c49651",
+  "elapsed_ms": 39961,
+  "interruption_observed": true,
+  "probe": "managed Codex interruption to immutable checkpoint",
+  "recovered_bytes_verified": true,
+  "snapshot_sha256": "37825aa7bdff1bb8885c153a6680cac4331eb7bb22e962bde3e0deab69eac205",
+  "status": "PASS",
+  "thread_id": "01a0980a-3375-7890-9aca-f3dc1073290c",
+  "turn_id": "01a0980a-3634-7dc1-821e-ccde0bf26bd1",
+  "worker_final_response_present": false
+}

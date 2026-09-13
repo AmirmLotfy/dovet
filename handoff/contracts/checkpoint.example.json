@@ -1,0 +1,57 @@
+{
+  "version": "DovetCheckpoint/1",
+  "id": "checkpoint_example_1",
+  "createdAt": "2026-09-13T00:00:00Z",
+  "state": "ready",
+  "task": {
+    "id": "task_example_1",
+    "version": 1,
+    "objective": "Implement the synthetic CSV importer. This is illustrative contract data, not an actual run.",
+    "constraints": [
+      "No new dependencies",
+      "Modify only approved source paths"
+    ]
+  },
+  "source": {
+    "projectId": "project_example_1",
+    "runId": "run_example_1",
+    "policyId": "policy_example_1",
+    "policySha256": "f7261eaa69465c51f2662c0a4dc83c4e6d7b1163dc7d86af5bf0582d6b4bff81",
+    "snapshotSha256": "977f79bb61a864a7931231a84e8c1a3fd8c012d50451a80155dbbe175aafae10",
+    "adapter": "codex",
+    "writerStopped": true
+  },
+  "manifest": {
+    "version": "DovetManifest/1",
+    "baseCommit": "0000000000000000000000000000000000000000",
+    "files": [
+      {
+        "path": "src/parcel_import/parser.py",
+        "operation": "modify",
+        "sha256": "45d1d9210a8419052441cd015a10434a9f82d5d444423d5a0cc5c33b2dc7af7a",
+        "sizeBytes": 74,
+        "mode": 33188
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "event_example_1",
+      "kind": "observed",
+      "summary": "Illustrative interruption event; no application was executed for this example.",
+      "artifactSha256": null
+    }
+  ],
+  "criteria": [
+    {
+      "id": "criterion_parse",
+      "description": "Parse accepted records according to the contract.",
+      "status": "pending",
+      "evidenceIds": []
+    }
+  ],
+  "failedApproaches": [],
+  "nextActions": [
+    "Validate all blobs and reproduce the current failing check before any recovery."
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dovet Recovery Decision v1",
+  "description": "Advisory model output. Does not authorize, execute, approve, or contain shell commands.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "incidentId",
+    "runId",
+    "action",
+    "checkpointId",
+    "targetProviderProfileId",
+    "expectedSnapshotSha256",
+    "expectedPolicySha256",
+    "evidenceIds",
+    "explanation",
+    "uncertainties",
+    "preconditions"
+  ],
+  "properties": {
+    "version": {
+      "const": "DovetRecovery/1"
+    },
+    "incidentId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,80}$"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,80}$"
+    },
+    "action": {
+      "enum": [
+        "resume",
+        "restart",
+        "handoff",
+        "verify",
+        "pause",
+        "ask_human"
+      ]
+    },
+    "checkpointId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,80}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "targetProviderProfileId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,80}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "expectedSnapshotSha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "expectedPolicySha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evidenceIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 30,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_-]{1,80}$"
+      }
+    },
+    "explanation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1500
+    },
+    "uncertainties": {
+      "type": "array",
+      "maxItems": 15,
+      "items": {
+        "type": "string",
+        "maxLength": 500
+      }
+    },
+    "preconditions": {
+      "type": "array",
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "writer_stopped",
+          "snapshot_valid",
+          "policy_unchanged",
+          "scope_permitted",
+          "provider_ready",
+          "budget_reserved",
+          "approval_consumable",
+          "verification_profile_trusted"
+        ]
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "enum": [
+              "resume",
+              "restart",
+              "handoff"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "checkpointId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "targetProviderProfileId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "expectedSnapshotSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "targetProviderProfileId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "verify"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "checkpointId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "expectedSnapshotSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "targetProviderProfileId": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "enum": [
+              "pause",
+              "ask_human"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "targetProviderProfileId": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

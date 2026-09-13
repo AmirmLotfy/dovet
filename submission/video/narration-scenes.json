@@ -1,0 +1,46 @@
+{
+  "schema_version": "1",
+  "evidence_status": "BLOCKED",
+  "blocker": "Live Strands and Bedrock recovery has zero successful provider requests.",
+  "region": "us-east-1",
+  "voice_id": "Joanna",
+  "engine": "neural",
+  "scenes": [
+    {
+      "id": "01-problem",
+      "text": "An interrupted coding agent should not become another task for the developer. Dovet keeps observable working state so a new authorized agent can continue without making you reconstruct the session. Keep the work. Change the agent."
+    },
+    {
+      "id": "02-bounded-task",
+      "text": "This managed task has an explicit objective, approved source files, a spending policy, and acceptance checks. Dovet does not claim access to private reasoning, unsaved bytes, or arbitrary Codex Desktop sessions."
+    },
+    {
+      "id": "03-interruption",
+      "text": "The managed Codex worker has made a real change. The operator deliberately interrupts the owned turn. The local service stays running, and another writer remains blocked until termination is confirmed."
+    },
+    {
+      "id": "04-checkpoint",
+      "text": "Dovet seals selected files into content-addressed artifacts. Credential-like files and build outputs are omitted and listed. A failed capture cannot replace the last verified checkpoint."
+    },
+    {
+      "id": "05-strands",
+      "text": "This scene remains blocked until the release records a successful Strands decision from Amazon Bedrock. The final narration will describe only the evidence produced by that run."
+    },
+    {
+      "id": "06-replacement",
+      "text": "This scene remains blocked until an authorized replacement worker completes the synthetic importer fixture. No replay or manually written fixture will be presented as a live recovery."
+    },
+    {
+      "id": "07-verification",
+      "text": "A worker saying done is only a candidate result. Protected checks run independently against an identified snapshot. Missing evidence and changed tests remain failures."
+    },
+    {
+      "id": "08-human-boundary",
+      "text": "Strands can recommend. Deterministic policy decides. Approvals are bound to one action and snapshot, budgets reject unknown cost, and lease expiry alone never grants a second writer."
+    },
+    {
+      "id": "09-architecture",
+      "text": "The Codex plugin is a short-lived bridge. The independent local daemon owns durable state. The public website and demo use synthetic evidence and keep local-machine control private."
+    }
+  ]
+}

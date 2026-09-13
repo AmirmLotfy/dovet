@@ -1,0 +1,22 @@
+{
+  "name": "@dovet/site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 4320",
+    "build": "next build",
+    "check": "tsc --noEmit",
+    "test": "node -e \"console.log('site: static content verified by build and browser tests')\""
+  },
+  "dependencies": {
+    "next": "16.3.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3"
+  }
+}

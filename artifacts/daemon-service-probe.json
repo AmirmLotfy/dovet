@@ -1,0 +1,12 @@
+{
+  "schema_version": "1",
+  "checked_at": "2026-09-13T01:13:00Z",
+  "launch_agent": "site.dovet.supervisor",
+  "service_status": "PASS",
+  "loopback_health_http_status": 200,
+  "codex_usage_http_status": 200,
+  "codex_usage_state": "known",
+  "usage_window_count": 1,
+  "account_identifier_retained": false,
+  "finding": "The launchd service uses the Codex executable path resolved during installation."
+}

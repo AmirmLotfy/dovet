@@ -1,0 +1,1 @@
+export default function ChangelogPage() { return <article className="doc wrap"><p className="eyebrow">Changelog</p><h1>Release evidence, by version.</h1><h2>0.1.0 - in development</h2><p>Checkpoint, ledger, process control and policy foundations are implemented. This entry will be tied to a release commit after all required checks pass.</p></article>; }

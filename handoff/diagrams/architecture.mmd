@@ -1,0 +1,26 @@
+flowchart TB
+  User[Developer] --> Plugin[Codex plugin / stdio MCP bridge]
+  User --> Console[Local browser console]
+  Plugin --> IPC[Authenticated local IPC]
+  Console --> API[Loopback API]
+  IPC --> Daemon[Independent local coordinator]
+  API --> Daemon
+  Daemon --> DB[(SQLite operational ledger)]
+  Daemon --> Store[Immutable local artifact store]
+  Daemon --> Gate[Deterministic policy and budget gate]
+  Daemon --> Cloud[Strands recovery supervisor on AgentCore]
+  Cloud --> Bedrock[Authorized Bedrock model]
+  Cloud --> Proposal[Typed recovery proposal]
+  Proposal --> Gate
+  Gate --> Codex[Managed Codex worker]
+  Gate --> Fallback[Restricted Strands coding worker]
+  Codex --> Worktree[Owned isolated Git worktree]
+  Fallback --> Worktree
+  Worktree --> Verify[Protected independent verification]
+  Verify --> Daemon
+  Site[Public Vercel website] --> DemoAPI[Restricted demo API]
+  DemoAPI --> Demo[AgentCore synthetic-fixture runner]
+  Demo --> Sandbox[Dedicated AgentCore Code Interpreter session]
+  Sandbox --> DemoVerify[Fresh-session verification]
+  Demo --> DemoData[(DynamoDB metadata / private S3 artifacts)]
+  DemoVerify --> DemoData

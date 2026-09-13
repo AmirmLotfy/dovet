@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dovet Snapshot Manifest v1",
+  "description": "Declared inputs for canonical digest; blob bytes remain external.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "baseCommit",
+    "files"
+  ],
+  "properties": {
+    "version": {
+      "const": "DovetManifest/1"
+    },
+    "baseCommit": {
+      "type": "string",
+      "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+    },
+    "files": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "operation",
+          "sha256",
+          "sizeBytes",
+          "mode"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?![A-Za-z]:)(?!.*\\\\)(?!.*\\u0000).+$"
+          },
+          "operation": {
+            "enum": [
+              "add",
+              "modify",
+              "delete",
+              "unchanged"
+            ]
+          },
+          "sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sizeBytes": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000000
+          },
+          "mode": {
+            "enum": [
+              33188,
+              33261
+            ]
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "operation": {
+                  "const": "delete"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "sha256": {
+                  "type": "null"
+                },
+                "sizeBytes": {
+                  "const": 0
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

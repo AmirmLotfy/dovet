@@ -1,0 +1,177 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Dovet evidence storage and least-privilege AgentCore execution roles
+
+Parameters:
+  EnvironmentName:
+    Type: String
+    Default: demo
+    AllowedPattern: "[a-z][a-z0-9-]{1,20}"
+  AllowedModelArn:
+    Type: String
+    Description: Exact Bedrock foundation model or inference profile ARN proven by a live probe
+  ArtifactRetentionDays:
+    Type: Number
+    Default: 30
+    MinValue: 7
+    MaxValue: 365
+  LogRetentionDays:
+    Type: Number
+    Default: 14
+    AllowedValues: [7, 14, 30, 60, 90]
+
+Resources:
+  EvidenceBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
+      LifecycleConfiguration:
+        Rules:
+          - Id: ExpireDemoEvidence
+            Status: Enabled
+            Prefix: evidence/
+            ExpirationInDays: !Ref ArtifactRetentionDays
+            NoncurrentVersionExpiration:
+              NoncurrentDays: 7
+          - Id: AbortMultipartUploads
+            Status: Enabled
+            AbortIncompleteMultipartUpload:
+              DaysAfterInitiation: 1
+      Tags:
+        - Key: Project
+          Value: Dovet
+        - Key: Environment
+          Value: !Ref EnvironmentName
+
+  RunLedger:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: runId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: runId
+          KeyType: HASH
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      SSESpecification:
+        SSEEnabled: true
+      TimeToLiveSpecification:
+        AttributeName: expiresAt
+        Enabled: true
+      Tags:
+        - Key: Project
+          Value: Dovet
+        - Key: Environment
+          Value: !Ref EnvironmentName
+
+  RuntimeLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub "/dovet/${EnvironmentName}/agentcore"
+      RetentionInDays: !Ref LogRetentionDays
+
+  RuntimeRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub "Dovet-${EnvironmentName}-AgentCoreRuntime"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: AgentCoreAssumeRole
+            Effect: Allow
+            Principal:
+              Service: bedrock-agentcore.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+              ArnLike:
+                aws:SourceArn: !Sub "arn:${AWS::Partition}:bedrock-agentcore:${AWS::Region}:${AWS::AccountId}:*"
+      Policies:
+        - PolicyName: DovetRuntimeMinimum
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: InvokeApprovedModel
+                Effect: Allow
+                Action:
+                  - bedrock:InvokeModel
+                  - bedrock:InvokeModelWithResponseStream
+                Resource: !Ref AllowedModelArn
+              - Sid: ReadRuntimePackage
+                Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:GetObjectVersion
+                Resource: !Sub "${EvidenceBucket.Arn}/runtime/*"
+              - Sid: WriteRuntimeLogs
+                Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub "${RuntimeLogGroup.Arn}:*"
+
+  CodeInterpreterRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub "Dovet-${EnvironmentName}-CodeInterpreter"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: AgentCoreAssumeRole
+            Effect: Allow
+            Principal:
+              Service: bedrock-agentcore.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+              ArnLike:
+                aws:SourceArn: !Sub "arn:${AWS::Partition}:bedrock-agentcore:${AWS::Region}:${AWS::AccountId}:code-interpreter/*"
+      Policies:
+        - PolicyName: FixtureOnlyArtifacts
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: ReadImmutableFixture
+                Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:GetObjectVersion
+                Resource:
+                  - !Sub "${EvidenceBucket.Arn}/fixtures/*"
+                  - !Sub "${EvidenceBucket.Arn}/protected-tests/*"
+              - Sid: WriteCandidateOnly
+                Effect: Allow
+                Action: s3:PutObject
+                Resource: !Sub "${EvidenceBucket.Arn}/candidates/*"
+
+Outputs:
+  EvidenceBucketName:
+    Value: !Ref EvidenceBucket
+  RunLedgerName:
+    Value: !Ref RunLedger
+  RuntimeRoleArn:
+    Value: !GetAtt RuntimeRole.Arn
+  CodeInterpreterRoleArn:
+    Value: !GetAtt CodeInterpreterRole.Arn
+  RuntimeLogGroupName:
+    Value: !Ref RuntimeLogGroup

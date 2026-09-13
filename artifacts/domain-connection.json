@@ -1,0 +1,35 @@
+{
+  "schema_version": "1",
+  "checked_at": "2026-09-13T01:06:00Z",
+  "vercel_project": "dovet-site",
+  "production_alias": "https://dovet-site.vercel.app",
+  "production_alias_http_status": 200,
+  "domains": [
+    {
+      "name": "dovet.site",
+      "attached": true,
+      "dns_configured": true,
+      "anonymous_http_status": 200
+    },
+    {
+      "name": "www.dovet.site",
+      "attached": true,
+      "dns_configured": true,
+      "redirect": "https://dovet.site",
+      "redirect_status": 308
+    }
+  ],
+  "current_nameservers": [
+    "ns1.vercel-dns.com",
+    "ns2.vercel-dns.com"
+  ],
+  "required_nameservers": [
+    "ns1.vercel-dns.com",
+    "ns2.vercel-dns.com"
+  ],
+  "signed_out_browser": {
+    "status": "PASS",
+    "title": "Dovet - Recovery and verification for coding work",
+    "canonical_url": "https://dovet.site/"
+  }
+}

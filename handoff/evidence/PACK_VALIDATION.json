@@ -1,0 +1,252 @@
+{
+  "kind": "Dovet specification-pack validation",
+  "preparedDate": "2026-09-13",
+  "executedAtContainerClock": "2026-09-12T22:15:23.130598+00:00",
+  "applicationBuilt": false,
+  "deploymentVerified": false,
+  "videoCreated": false,
+  "submissionMade": false,
+  "passed": true,
+  "checksPassed": 43,
+  "checks": [
+    {
+      "name": "required files",
+      "passed": true,
+      "detail": 33
+    },
+    {
+      "name": "all JSON parses",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "manifest schema and example",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint schema and example",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "recovery schema and example",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "event schema and example",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject arbitrary command",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject handoff without target",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject invalid snapshot digest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject unknown action",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject unsafe path '../escape'",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject unsafe path '/absolute'",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject unsafe path 'a/../../escape'",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject unsafe path 'C:/outside'",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject unsafe path 'a\\\\b'",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject unsafe path 'a\\x00b'",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "example blob digest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "example blob size",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "canonical manifest digest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "SQLite migration executes",
+      "passed": true,
+      "detail": 19
+    },
+    {
+      "name": "reject cross-project task policy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject cross-task parent run",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject missing provider FK",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject invalid run status",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reject duplicate event sequence",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "SQLite foreign_key_check",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "light contrast ink/canvas",
+      "passed": true,
+      "detail": 13.39
+    },
+    {
+      "name": "light contrast muted/canvas",
+      "passed": true,
+      "detail": 5.05
+    },
+    {
+      "name": "light contrast on-accent/accent",
+      "passed": true,
+      "detail": 8.66
+    },
+    {
+      "name": "light contrast success/success-soft",
+      "passed": true,
+      "detail": 5.54
+    },
+    {
+      "name": "light contrast warning/warning-soft",
+      "passed": true,
+      "detail": 5.14
+    },
+    {
+      "name": "light contrast danger/danger-soft",
+      "passed": true,
+      "detail": 5.88
+    },
+    {
+      "name": "light contrast focus/surface",
+      "passed": true,
+      "detail": 5.68
+    },
+    {
+      "name": "dark contrast ink/canvas",
+      "passed": true,
+      "detail": 15.17
+    },
+    {
+      "name": "dark contrast muted/canvas",
+      "passed": true,
+      "detail": 8.43
+    },
+    {
+      "name": "dark contrast on-accent/accent",
+      "passed": true,
+      "detail": 7.36
+    },
+    {
+      "name": "dark contrast success/success-soft",
+      "passed": true,
+      "detail": 6.9
+    },
+    {
+      "name": "dark contrast warning/warning-soft",
+      "passed": true,
+      "detail": 7.49
+    },
+    {
+      "name": "dark contrast danger/danger-soft",
+      "passed": true,
+      "detail": 7.51
+    },
+    {
+      "name": "dark contrast focus/surface",
+      "passed": true,
+      "detail": 8.89
+    },
+    {
+      "name": "no font binaries",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deadline timezone conversion",
+      "passed": true,
+      "detail": "2026-09-15T03:00:00+03:00"
+    },
+    {
+      "name": "source IDs resolve in ledger",
+      "passed": true,
+      "detail": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ]
+    }
+  ],
+  "limitations": [
+    "Does not validate future implementation, real providers, sandbox isolation, domain availability, deployment or video.",
+    "JSON Schema checks are not substitutes for runtime path, lineage and authorization validation."
+  ]
+}

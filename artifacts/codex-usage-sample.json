@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T01:00:41.002677+00:00",
+  "state": "known",
+  "windows": [
+    {
+      "limit_id": "codex",
+      "window": "primary",
+      "used_percent": 22.0,
+      "remaining_percent": 78.0,
+      "window_minutes": 10080,
+      "resets_at": 1789865359
+    }
+  ],
+  "source": "codex-app-server",
+  "error": null,
+  "advice": {
+    "level": "normal",
+    "checkpoint_requested": false,
+    "pause_managed_run_requested": false,
+    "reason": "Lowest observed Codex window has 78% remaining; only a Dovet-managed run may be paused."
+  }
+}

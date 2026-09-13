@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dovet Event Envelope v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "id",
+    "runId",
+    "sequence",
+    "type",
+    "source",
+    "knowledge",
+    "observedAt",
+    "payload"
+  ],
+  "properties": {
+    "version": {
+      "const": "DovetEvent/1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,80}$"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,80}$"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "type": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.]{0,79}$"
+    },
+    "source": {
+      "enum": [
+        "adapter",
+        "filesystem",
+        "verifier",
+        "supervisor",
+        "policy",
+        "human",
+        "system"
+      ]
+    },
+    "knowledge": {
+      "enum": [
+        "observed",
+        "reported",
+        "inferred",
+        "verified"
+      ]
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "payload": {
+      "type": "object",
+      "maxProperties": 32
+    },
+    "sourceEventId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,80}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

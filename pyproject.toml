@@ -1,0 +1,77 @@
+[project]
+name = "dovet"
+version = "0.1.0"
+description = "Local-first coding-work recovery and verification supervisor"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "Apache-2.0" }
+dependencies = [
+  "bedrock-agentcore==1.23.0",
+  "boto3==1.43.93",
+  "botocore[crt]==1.43.93",
+  "fastapi==0.141.1",
+  "mcp==2.1.1",
+  "openai-codex==0.154.0",
+  "psutil==7.2.2",
+  "pydantic==2.13.5",
+  "strands-agents==1.55.1",
+  "uvicorn==0.41.0",
+]
+
+[project.scripts]
+dovet = "dovet.cli:main"
+dovet-mcp = "dovet.mcp_bridge:main"
+dovet-supervisor = "dovet_supervisor.runtime:main"
+
+[dependency-groups]
+dev = [
+  "httpx==0.28.1",
+  "jsonschema==4.26.0",
+  "mypy==1.19.1",
+  "pytest==9.1.1",
+  "pytest-asyncio==1.3.0",
+  "pytest-cov==7.1.0",
+  "pyyaml==6.0.3",
+  "ruff==0.15.6",
+  "types-psutil==7.2.2.20260906",
+]
+
+[build-system]
+requires = ["hatchling==1.29.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = [
+  "services/daemon/src/dovet",
+  "services/supervisor/src/dovet_supervisor",
+  "services/worker/src/dovet_worker",
+]
+
+[tool.hatch.build.targets.wheel.force-include]
+"handoff/contracts/schema.sql" = "dovet/schema.sql"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra --strict-markers"
+markers = ["live: consumes authorized external provider capacity"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S"]
+ignore = ["S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"services/daemon/src/dovet/service.py" = ["S603"]
+"services/worker/src/dovet_worker/tools.py" = ["S603"]
+"services/daemon/src/dovet/mcp_bridge.py" = ["S310"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["dovet", "dovet_supervisor", "dovet_worker"]
+mypy_path = ["services/daemon/src", "services/supervisor/src", "services/worker/src"]
+exclude = ["handoff/"]

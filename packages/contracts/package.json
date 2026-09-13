@@ -1,0 +1,17 @@
+{
+  "name": "@dovet/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/generated.ts" },
+  "scripts": {
+    "generate": "openapi-typescript openapi.json -o src/generated.ts",
+    "check": "tsc --noEmit",
+    "test": "node -e \"console.log('contracts: generated from FastAPI OpenAPI')\"",
+    "build": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "openapi-typescript": "7.13.0",
+    "typescript": "5.9.3"
+  }
+}

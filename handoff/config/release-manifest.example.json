@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "DovetRelease/1",
+  "status": "planned",
+  "product": "Dovet",
+  "intendedDomain": "dovet.site",
+  "releaseCommit": null,
+  "releaseTag": null,
+  "capabilityReport": null,
+  "testReport": null,
+  "cloudInvocationEvidence": null,
+  "publicSiteUrl": null,
+  "publicSourceUrl": null,
+  "publicVideoUrl": null,
+  "devpostUrl": null,
+  "submissionReceipt": null,
+  "bonusPostUrls": [],
+  "ownerApprovals": {
+    "spending": false,
+    "publicSource": false,
+    "videoPublication": false,
+    "legalAttestations": false
+  },
+  "limitations": [
+    "Specification only. No application, deployment, video or submission exists yet."
+  ]
+}

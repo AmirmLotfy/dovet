@@ -1,0 +1,24 @@
+{
+  "schema_version": "1",
+  "checked_at": "2026-09-13T00:35:00Z",
+  "region": "us-east-1",
+  "authenticated_principal_type": "account_root",
+  "discovery": {
+    "foundation_model_list": "PASS",
+    "inference_profile_list": "PASS",
+    "selected_profile": "us.amazon.nova-micro-v1:0",
+    "selected_direct_model": "amazon.nova-micro-v1:0"
+  },
+  "invocation": {
+    "strands_converse_stream": "BLOCKED",
+    "direct_converse": "BLOCKED",
+    "provider_error": "ValidationException: Operation not allowed",
+    "successful_requests": 0,
+    "reported_usage": null
+  },
+  "limits": [
+    "Discoverability is not invocation permission.",
+    "No live model response was produced and Dovet does not claim a working Bedrock adapter.",
+    "Account identifiers and credential material are excluded from this artifact."
+  ]
+}

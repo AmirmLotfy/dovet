@@ -1,0 +1,343 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dovet Checkpoint v1",
+  "description": "An internal portable working-state contract, not an industry standard.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "id",
+    "createdAt",
+    "state",
+    "task",
+    "source",
+    "manifest",
+    "evidence",
+    "criteria",
+    "failedApproaches",
+    "nextActions"
+  ],
+  "properties": {
+    "version": {
+      "const": "DovetCheckpoint/1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,80}$"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "state": {
+      "enum": [
+        "ready",
+        "incomplete"
+      ]
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "objective",
+        "constraints"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,80}$"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "constraints": {
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "type": "string",
+            "maxLength": 1000
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectId",
+        "runId",
+        "policyId",
+        "policySha256",
+        "snapshotSha256",
+        "adapter",
+        "writerStopped"
+      ],
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,80}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,80}$"
+        },
+        "policyId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,80}$"
+        },
+        "policySha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "snapshotSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "adapter": {
+          "enum": [
+            "codex",
+            "bedrock"
+          ]
+        },
+        "writerStopped": {
+          "type": "boolean"
+        }
+      }
+    },
+    "manifest": {
+      "$ref": "#/$defs/manifest"
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "summary",
+          "artifactSha256"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "kind": {
+            "enum": [
+              "observed",
+              "reported",
+              "inferred",
+              "verified"
+            ]
+          },
+          "summary": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "artifactSha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "description",
+          "status",
+          "evidenceIds"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "reported",
+              "passed",
+              "failed",
+              "blocked"
+            ]
+          },
+          "evidenceIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,80}$"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "failedApproaches": {
+      "type": "array",
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "summary",
+          "evidenceIds"
+        ],
+        "properties": {
+          "summary": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "evidenceIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,80}$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "nextActions": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1000
+      }
+    }
+  },
+  "$defs": {
+    "manifest": {
+      "title": "Dovet Snapshot Manifest v1",
+      "description": "Declared inputs for canonical digest; blob bytes remain external.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "baseCommit",
+        "files"
+      ],
+      "properties": {
+        "version": {
+          "const": "DovetManifest/1"
+        },
+        "baseCommit": {
+          "type": "string",
+          "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+        },
+        "files": {
+          "type": "array",
+          "maxItems": 100000,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "operation",
+              "sha256",
+              "sizeBytes",
+              "mode"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024,
+                "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?![A-Za-z]:)(?!.*\\\\)(?!.*\\u0000).+$"
+              },
+              "operation": {
+                "enum": [
+                  "add",
+                  "modify",
+                  "delete",
+                  "unchanged"
+                ]
+              },
+              "sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "sizeBytes": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100000000
+              },
+              "mode": {
+                "enum": [
+                  33188,
+                  33261
+                ]
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "operation": {
+                      "const": "delete"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "sha256": {
+                      "type": "null"
+                    },
+                    "sizeBytes": {
+                      "const": 0
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

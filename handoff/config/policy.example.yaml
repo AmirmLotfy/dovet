@@ -1,0 +1,50 @@
+# Example configuration, disabled until an owner approves and enrolls a real project.
+version: DovetPolicy/1
+approved: false
+project_id: null
+recovery:
+  enabled: false
+  require_valid_checkpoint: true
+  require_confirmed_prior_writer_stop: true
+  max_attempts_per_task: 3
+  max_attempt_seconds: 600
+  max_concurrent_writers_per_worktree: 1
+  on_intentional_stop: remain_stopped
+providers:
+  allowed_profile_ids: []
+  unknown_readiness_action: pause
+usage:
+  observe: true
+  low_remaining_percent: 5
+  freshness_seconds: 120
+  switch_at_safe_turn_boundary: true
+  missing_usage_action: show_unknown
+budget:
+  currency: USD
+  daily_ceiling_microusd: 0
+  reserve_before_dispatch: true
+  unknown_cost_action: ask_human
+  require_operator_approved_price_card: true
+sharing:
+  cloud_supervisor_evidence: false
+  bedrock_source_content: false
+  include_credentials: false
+scope:
+  allowed_write_paths: []
+  protected_paths:
+    - .git/**
+    - .env*
+    - handoff/**
+    - tests/acceptance-protected/**
+    - infra/**
+  verification_profile_id: null
+actions:
+  auto_commit: false
+  auto_push: false
+  auto_merge: false
+  production_deploy: false
+  database_migrate: false
+approval:
+  single_use: true
+  bind_task_snapshot_policy_action: true
+  expiry_seconds: 900

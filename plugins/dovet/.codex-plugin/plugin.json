@@ -1,0 +1,26 @@
+{
+  "name": "dovet",
+  "version": "0.1.0",
+  "description": "Keep evidence attached to interrupted coding work.",
+  "author": {
+    "name": "Dovet contributors"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Dovet",
+    "shortDescription": "Keep the work. Change the agent.",
+    "longDescription": "Inspect checkpoints and recovery evidence for coding tasks managed by the independent local Dovet service.",
+    "developerName": "Dovet contributors",
+    "category": "Productivity",
+    "capabilities": ["Read local recovery status", "Open evidence console"],
+    "websiteURL": "https://dovet.site",
+    "privacyPolicyURL": "https://dovet.site/privacy",
+    "termsOfServiceURL": "https://dovet.site/terms",
+    "brandColor": "#7B362A",
+    "defaultPrompt": [
+      "Show my Dovet recovery status.",
+      "Open the local Dovet evidence console."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}
