@@ -1,0 +1,28 @@
+{
+  "schema_version": "1",
+  "status": "BLOCKED",
+  "title": "Dovet - Keep the work. Change the agent. | Agents for Humans",
+  "description_lines": [
+    "Dovet helps developers recover interrupted managed coding-agent work.",
+    "This demo shows a real interrupted run, preserved working state, Strands-supervised recovery and independent verification.",
+    "",
+    "Project: https://dovet.site",
+    "Source and setup: BLOCKED until the public tagged release exists",
+    "Hackathon submission: BLOCKED until Devpost returns a verified receipt",
+    "",
+    "Built for Agents for Humans, Professional Agents.",
+    "",
+    "This demonstration uses synthetic code and an intentionally triggered interruption. Hosted and local adapter differences are labelled in the video.",
+    "Narration will use an authorized Amazon Polly voice after the evidence-linked edit is locked."
+  ],
+  "chapters": [],
+  "thumbnail": "submission/video/thumbnail.png",
+  "captions": "submission/video/captions.srt",
+  "required_before_upload": [
+    "Finished MP4 passes playback QA and is under five minutes",
+    "Source and Devpost URLs replace blocked lines",
+    "Chapters are derived from the final edit",
+    "Owner approves metadata and audience setting",
+    "Public signed-out playback is verified"
+  ]
+}

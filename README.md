@@ -8,6 +8,8 @@ Dovet does not rotate ChatGPT accounts, recover private model reasoning, capture
 
 The implementation is being built against the immutable specification in `handoff/`. Current evidence and blockers live in `docs/BUILD_STATE.md`, `docs/CAPABILITIES.md`, and `docs/BLOCKERS.md`.
 
+![Dovet architecture](docs/architecture.svg)
+
 ## Development
 
 Prerequisites: Python 3.12, uv, Node 24, pnpm 11, Git, and FFmpeg.
@@ -19,6 +21,12 @@ pnpm test
 pnpm build
 ```
 
+Read the supported Codex usage snapshot without accessing authentication files:
+
+```sh
+uv run dovet usage --json
+```
+
 Live-provider tests are opt-in and require an approved Dovet policy and funded budget:
 
 ```sh
@@ -27,7 +35,10 @@ pnpm test:integration
 
 The local daemon binds to loopback, stores operational truth in SQLite, and uses a separate app-data directory for immutable artifacts and managed worktrees. The Codex plugin is a short-lived MCP bridge; it is not the durability layer.
 
+The current public documentation site is [dovet.site](https://dovet.site). A successful live
+Strands/Bedrock recovery, finished video, public source release, and Devpost receipt remain blocked;
+see `submission/SUBMISSION_CHECKLIST.md` for the exact release state.
+
 ## License
 
 Apache-2.0. See `LICENSE` and `NOTICE`.
-
