@@ -136,10 +136,10 @@ def video_check() -> Check:
             "ffprobe",
             "-v",
             "error",
-            "-show_entries",
-            "format=duration",
+            "-show_streams",
+            "-show_format",
             "-of",
-            "default=noprint_wrappers=1:nokey=1",
+            "json",
             str(path),
         ),
         capture_output=True,
@@ -147,14 +147,40 @@ def video_check() -> Check:
         check=False,
     )
     try:
-        duration = float(result.stdout.strip())
-    except ValueError:
+        media = json.loads(result.stdout)
+        duration = float(media["format"]["duration"])
+        video = next(item for item in media["streams"] if item.get("codec_type") == "video")
+        audio = next(item for item in media["streams"] if item.get("codec_type") == "audio")
+        valid = (
+            275 <= duration <= 290
+            and video.get("codec_name") == "h264"
+            and video.get("width") == 1920
+            and video.get("height") == 1080
+            and audio.get("codec_name") == "aac"
+        )
+    except (KeyError, StopIteration, TypeError, ValueError, json.JSONDecodeError):
         duration = 0
+        valid = False
     return Check(
         "final_video",
-        "PASS" if result.returncode == 0 and 0 < duration < 300 else "FAIL",
+        "PASS" if result.returncode == 0 and valid else "FAIL",
         f"duration {duration:.2f} seconds",
     )
+
+
+def review_recordings() -> list[dict[str, object]]:
+    path = ROOT / "private-artifacts" / "video" / "picture-edit-manifest.json"
+    if not path.is_file():
+        return []
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return [
+        {
+            "path": data.get("path"),
+            "sha256": data.get("sha256"),
+            "duration_seconds": data.get("duration_seconds"),
+            "status": data.get("status"),
+        }
+    ]
 
 
 def recording_preflight_check() -> Check:
@@ -234,7 +260,7 @@ def main() -> int:
             "vercel_production": "https://dovet-site.vercel.app",
             "intended_domain": "https://dovet.site",
         },
-        "recordings": [],
+        "recordings": review_recordings(),
         "test_reports": ["artifacts/test-report-core.xml"],
         "unresolved_items": [check.name for check in checks if check.status != "PASS"],
         "public_submission_links": {},

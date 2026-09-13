@@ -8,7 +8,7 @@ recording, upload processing, and form troubleshooting.
 
 - PASS — local checkpoint, policy, approval, budget, lease, verifier, daemon, MCP bridge, and Codex usage code
 - PASS — real managed Codex interruption and byte-identical checkpoint restore
-- PASS — 51 local unit, integration, and tooling tests plus six desktop/mobile browser checks
+- PASS — 54 local unit, integration, and tooling tests plus six desktop/mobile browser checks
 - PASS — deterministic portable checkpoint bundle validation and separate-directory restore
 - PASS — authenticated, validated recovery-receipt API and evidence-rail UI
 - PASS — fail-closed 1920x1080 recording preflight and checksum-bound manifest tooling
@@ -24,8 +24,9 @@ recording, upload processing, and form troubleshooting.
 - PASS — architecture diagram, Apache-2.0 license, security policy, and disclosures
 - BLOCKED — public GitHub repository and immutable release tag
 - BLOCKED — live hosted fixture run and labelled recorded replay
-- IN PROGRESS — Higgsfield opening insert and timing-gated narration audition
-- BLOCKED — evidence-bound finished video, thumbnail, captions, chapters, and public watch URL
+- PASS — Higgsfield opening insert and all 12 narration takes pass measurable timing gates
+- PREPARED — 4:40 review-only picture edit, captions, and thumbnail carry explicit cloud-blocked labels
+- BLOCKED — evidence-bound finished video and public watch URL
 
 ## Submission
 

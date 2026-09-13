@@ -10,7 +10,7 @@
       "height": 1080,
       "http_status": 200,
       "horizontal_overflow": false,
-      "evidence_count": "51 + 6",
+      "evidence_count": "54 + 6",
       "product_image_alt_present": true,
       "serious_or_critical_axe_violations": 0,
       "status": "PASS"
@@ -21,10 +21,12 @@
       "height": 844,
       "http_status": 200,
       "horizontal_overflow": false,
-      "evidence_count": "51 + 6",
+      "evidence_count": "54 + 6",
       "product_image_alt_present": true,
       "serious_or_critical_axe_violations": 0,
       "status": "PASS"
     }
-  ]
+  ],
+  "content_rechecked_at": "2026-09-13T08:20:00Z",
+  "content_recheck_method": "Codex in-app browser DOM and CDP viewport capture"
 }

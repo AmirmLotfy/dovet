@@ -22,7 +22,7 @@ Last updated: 2026-09-13
 - **PASS:** `dovet.site` now delegates to `ns1.vercel-dns.com` and `ns2.vercel-dns.com`; HTTPS apex returns 200 and a signed-out browser loaded the expected Dovet title.
 - **PASS:** G4 mechanics reject stale/replayed approvals, unconfirmed writer takeover, unknown/over-cap costs, credential-like checkpoint paths, corrupt newest checkpoints and stale/unknown Codex usage.
 - **PASS:** launchd daemon restart plus authenticated loopback usage read; install-time Codex path fixes the restricted launchd PATH.
-- **PASS:** 51 Python unit/integration/tooling tests; the explicit live test is deselected offline and skips with a precise authorization message when invoked without its paid-run flag.
+- **PASS:** 54 Python unit/integration/tooling tests; the explicit live test is deselected offline and skips with a precise authorization message when invoked without its paid-run flag.
 - **PASS:** deterministic owner-only `.dovet` checkpoint export, whole-archive validation, idempotent content import, and separate-directory restore. Traversal, unexpected members, prohibited paths, and corrupt objects are rejected before any local store mutation.
 - **PASS:** an end-to-end `dovet bundle verify` and `dovet bundle restore` CLI proof restored a Unicode payload byte-identically in an isolated temporary home.
 - **PASS:** six desktop/mobile console browser checks, including the validated evidence rail, have no serious or critical axe findings; the recording project stays skipped until a live receipt exists.
@@ -31,7 +31,7 @@ Last updated: 2026-09-13
 - **PASS:** the built `dovet-0.1.0` wheel installs in a fresh Python 3.12 environment; its CLI, packaged SQLite migration, supervisor import, and restricted worker import pass outside the checkout.
 - **PASS:** the live vertical runner stops before provider invocation when Nova is unauthorized, enforces a current official price card and run cap, keeps capability tokens out of model-visible schemas, and binds protected verification to the recovered candidate root.
 - **PASS:** full Apache-2.0 text, security policy, AI/dependency disclosure, architecture diagram and fail-closed release/video scripts.
-- **PASS:** Devpost and Builder.aws drafts now match the 51-test report, isolated-install evidence,
+- **PASS:** Devpost and Builder.aws drafts now match the 54-test report, isolated-install evidence,
   validated receipt UI, recording gate, and exact Nova authorization blocker; owner-only actions are
   ordered in `submission/OWNER_ACTIONS.md`.
 - **PASS:** the generated deadline clock confirms the build window and records the eight-hour media
@@ -42,6 +42,9 @@ Last updated: 2026-09-13
 - **FAIL (pre-recovery baseline):** 13 protected importer acceptance cases cannot import `parcel_import`; these remain red until the authorized recovery worker produces and independently verifies the fixture.
 - **PASS:** the owner completed the Nova Micro first-use action in the authenticated playground after the model EULA gate was surfaced.
 - **PASS:** the owner-approved diagnostic follow-up was submitted to the existing AWS account-verification case through the authenticated in-app browser. The newest correspondence visibly contains the Nova authorization, active profile, zero non-adjustable quota, organization, root reproduction, request ID, bounded-use, and deadline evidence. No attachment, credential, or personal identifier was sent.
+- **PASS:** a read-only fallback audit checked Nova Micro in `us-east-1`, `us-west-2`, `eu-west-1`, and `ap-southeast-2`; every route remained `NOT_AUTHORIZED` with zero request/token quota. Every discovered callable Amazon Nova text model in `us-east-1` was also unauthorized. A region or Nova-model switch cannot unblock the live proof.
+- **PASS:** all 12 Higgsfield Dylan narration scenes pass measured duration, rate, and pause gates. One short scene was rewritten once. The accepted assets, job IDs, hashes, rejection, and estimated 11.7-credit batch cost are recorded; owner normal-speed listening remains pending.
+- **PASS:** the recording/render contract now emits checksum-bound scene entries and pads each scene with silence instead of stretching narration. The final renderer enforces the required 4:35–4:50 window. A separate 4:40 review renderer keeps every live-dependent scene visibly cloud-blocked and cannot create the final submission filename.
 - **BLOCKED:** the playground, Strands `ConverseStream`, and a direct one-token `Converse` call all return `ValidationException: Operation not allowed`. Nova Micro authorization remains `NOT_AUTHORIZED`; its on-demand requests-per-minute and tokens-per-minute quotas are both `0.0` and non-adjustable. Agreement, entitlement, region, model discovery, and the active inference profile all pass. The account is outside AWS Organizations and the account root reproduces the error, isolating this to AWS account verification/provisioning. An existing verification case is still unassigned after 10 days. No working model invocation is claimed.
 
 ## Current commands

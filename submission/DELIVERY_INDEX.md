@@ -11,9 +11,11 @@ This index separates the files available for review now from the final owner upl
 | Updated desktop capture | `artifacts/site-updated-desktop.png` | PASS |
 | Updated mobile capture | `artifacts/site-updated-mobile.png` | PASS |
 | Browser QA report | `artifacts/site-updated-verification.json` | PASS |
-| Higgsfield production record | `submission/video/HIGGSFIELD_PRODUCTION.md` | IN PROGRESS |
+| Higgsfield production record | `submission/video/HIGGSFIELD_PRODUCTION.md` | TIMING PASS; owner listening pending |
 | Higgsfield look test | `private-artifacts/video/dovet-style-preview.mp4` | PASS; not recovery evidence |
 | Dylan voice audition | `private-artifacts/video/higgsfield/voice-01-d735e7fd.wav` | Timing PASS; owner listening review pending |
+| Complete narration review | `private-artifacts/video/higgsfield/dovet-narration-review.wav` | 12 timing-gated scenes; owner listening review pending |
+| Review-only 4:40 picture edit | `private-artifacts/video/dovet-picture-edit-blocked.mp4` | Clearly labelled BLOCKED; not recovery evidence |
 | Devpost draft | `submission/DEVPOST.md` | PREPARED |
 | Builder.aws drafts | `submission/BUILDER_STORIES.md` | PREPARED |
 | YouTube metadata | `submission/YOUTUBE_METADATA.json` | PREPARED; final URLs/chapters pending |

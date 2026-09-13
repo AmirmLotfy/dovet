@@ -37,6 +37,29 @@
       "adjustable": false
     }
   },
+  "regional_audit": {
+    "regions_checked": [
+      "us-east-1",
+      "us-west-2",
+      "eu-west-1",
+      "ap-southeast-2"
+    ],
+    "authorization": "NOT_AUTHORIZED_IN_EVERY_CHECKED_REGION",
+    "cross_region_request_and_token_quotas": "0.0_IN_EVERY_CHECKED_REGION",
+    "in_region_quotas": "0.0_WHERE_EXPOSED"
+  },
+  "amazon_text_model_audit": {
+    "region": "us-east-1",
+    "families_checked": [
+      "Nova Micro",
+      "Nova Lite",
+      "Nova Pro",
+      "Nova 2 Lite",
+      "Nova Premier",
+      "Nova Sonic variants"
+    ],
+    "authorization": "NOT_AUTHORIZED_FOR_EVERY_DISCOVERED_CALLABLE_MODEL"
+  },
   "account_controls": {
     "aws_organization_membership": "NONE",
     "account_root_reproduces_error": true,
@@ -54,6 +77,8 @@
     "The retired Model access page says serverless models activate automatically on first invocation.",
     "The owner completed the Nova Micro first-use action and the provider still denied it before inference.",
     "Zero non-adjustable on-demand quotas and reproduction with the account root isolate the remaining gate to AWS account verification or provisioning.",
+    "Checks across four documented Nova regions found no authorized or non-zero-quota fallback.",
+    "Checks across every discovered callable Amazon Nova text model in us-east-1 found no authorized model fallback.",
     "No live model response was produced and Dovet does not claim a working Bedrock adapter.",
     "Account identifiers and credential material are excluded from this artifact."
   ]

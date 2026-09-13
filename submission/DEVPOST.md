@@ -76,7 +76,7 @@ requests and keeps the live recovery gate blocked instead of replacing it with a
 
 - A real Dovet-managed Codex turn was intentionally interrupted through the installed SDK.
 - The resulting checkpoint restored byte-for-byte from an immutable SHA-256 snapshot.
-- Fifty-one local unit, integration, and tooling tests pass, alongside six desktop and mobile
+- Fifty-four local unit, integration, and tooling tests pass, alongside six desktop and mobile
   browser checks.
 - Tests cover corrupt blobs, secret exclusion, stale approvals, replay, unknown cost, and
   competing writers.
@@ -98,12 +98,13 @@ evidence, not a summary that sounds confident.
 ## What is next
 
 The authenticated AWS account currently reports the Nova Micro agreement, entitlement, and region
-as available, but model authorization as `NOT_AUTHORIZED`. The owner must first review and submit
-the access terms shown by the Bedrock console. One bounded successful invocation then unblocks the
-actual Strands recovery and protected importer verification. After that evidence exists, the team
-can review the least-privilege deployment change set, record the evidence-linked demo, add the
-locked Higgsfield narration, publish the source tag, and complete the submission. Future adapters will be advertised
-only after their conformance tests pass.
+as available, but model authorization as `NOT_AUTHORIZED`. The owner completed the console's
+first-use action, yet the playground and direct API still return `Operation not allowed`; a detailed
+follow-up is now on the existing AWS account-verification case. One bounded successful invocation
+then unblocks the actual Strands recovery and protected importer verification. After that evidence
+exists, the team can review the least-privilege deployment change set, record the evidence-linked
+demo, add the already prepared narration, publish the source tag, and complete the submission.
+Future adapters will be advertised only after their conformance tests pass.
 
 ## Built with
 

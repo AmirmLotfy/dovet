@@ -8,7 +8,7 @@ import json
 import subprocess
 import tempfile
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from dovet.evidence import RunEvidenceStore
 
@@ -38,7 +38,7 @@ def probe(path: Path) -> dict[str, Any]:
             str(path),
         )
     )
-    return json.loads(result.stdout)
+    return cast(dict[str, Any], json.loads(result.stdout))
 
 
 def duration(path: Path) -> float:
@@ -91,27 +91,49 @@ def write_captions(items: list[tuple[float, float, str]], output_root: Path) -> 
     (output_root / "captions.vtt").write_text("\n".join(vtt), encoding="utf-8")
 
 
-def normalize_scene(clip: Path, audio: Path, output: Path) -> None:
+def scene_duration(scene: dict[str, Any], audio_duration: float) -> float:
+    requested = float(scene.get("edit_seconds", audio_duration))
+    if requested < audio_duration:
+        raise ValueError(
+            f"scene {scene.get('id', 'unknown')} edit window is shorter than its narration"
+        )
+    if requested <= 0 or requested > 90:
+        raise ValueError(f"scene {scene.get('id', 'unknown')} edit window is invalid")
+    return requested
+
+
+def normalize_scene(clip: Path, audio: Path, output: Path, target_seconds: float) -> None:
     video_filter = (
         "scale=1920:1080:force_original_aspect_ratio=decrease,"
         "pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color=#171512,"
         "setsar=1,fps=30,tpad=stop_mode=clone:stop_duration=300"
     )
+    image_input = clip.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}
+    clip_args = ("-loop", "1", "-i", str(clip)) if image_input else (
+        "-stream_loop",
+        "-1",
+        "-i",
+        str(clip),
+    )
     run(
         (
             "ffmpeg",
             "-y",
-            "-i",
-            str(clip),
+            *clip_args,
             "-i",
             str(audio),
             "-filter_complex",
-            f"[0:v]{video_filter}[v]",
+            (
+                f"[0:v]{video_filter},trim=duration={target_seconds:.3f},setpts=PTS-STARTPTS[v];"
+                f"[1:a]apad=pad_dur={target_seconds:.3f},"
+                f"atrim=duration={target_seconds:.3f},asetpts=PTS-STARTPTS[a]"
+            ),
             "-map",
             "[v]",
             "-map",
-            "1:a:0",
-            "-shortest",
+            "[a]",
+            "-t",
+            f"{target_seconds:.3f}",
             "-c:v",
             "libx264",
             "-preset",
@@ -264,6 +286,7 @@ def main() -> int:
             if sha256(audio) != scene.get("audio_sha256"):
                 raise ValueError(f"scene {scene.get('id', index)} audio checksum changed")
             audio_duration = duration(audio)
+            edit_duration = scene_duration(scene, audio_duration)
             marks = scene_marks(scene, audio_duration)
             for mark_index, (start, text) in enumerate(marks):
                 end = (
@@ -273,9 +296,9 @@ def main() -> int:
                 )
                 caption_items.append((offset + start, offset + max(start + 0.2, end), text))
             normalized = temporary_root / f"scene-{index:02d}.mp4"
-            normalize_scene(clip, audio, normalized)
+            normalize_scene(clip, audio, normalized, edit_duration)
             intermediates.append(normalized)
-            offset += duration(normalized)
+            offset += edit_duration
         concat = temporary_root / "concat.txt"
         concat.write_text(
             "".join(f"file '{path.name}'\n" for path in intermediates),
@@ -318,9 +341,9 @@ def main() -> int:
         or not audio_streams
         or video_streams[0].get("width") != 1920
         or video_streams[0].get("height") != 1080
-        or final_duration >= 300
+        or not 275 <= final_duration <= 290
     ):
-        raise RuntimeError("final media failed duration, dimension, or audio checks")
+        raise RuntimeError("final media failed 4:35-4:50 duration, dimension, or audio checks")
     thumbnail_time = float(manifest.get("thumbnail_time_seconds", 8.0))
     if manifest.get("thumbnail_source") != "application_footage":
         raise ValueError("thumbnail_source must identify application footage")
@@ -330,7 +353,7 @@ def main() -> int:
     qa = [
         "# Dovet video QA",
         "",
-        f"- PASS: duration {final_duration:.3f} seconds is below five minutes.",
+        f"- PASS: duration {final_duration:.3f} seconds is within the 4:35-4:50 target.",
         "- PASS: video is 1920x1080.",
         "- PASS: audio stream is present.",
         "- PASS: captions were derived from narration scene timing and approved script text.",

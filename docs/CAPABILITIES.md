@@ -13,7 +13,7 @@ Statuses describe evidence from this checkout only.
 | Strands live Bedrock invocation | BLOCKED | Nova Micro is region/entitlement/agreement available but account authorization is `NOT_AUTHORIZED`; `ConverseStream` rejects the call |
 | Bedrock worker | BLOCKED | Direct Nova Micro `Converse` also rejects invocation; no successful model response or conformance claim |
 | AgentCore Runtime and Code Interpreter | BLOCKED | SDK shapes verified; live permissions and isolation pending |
-| Local deterministic recovery | PASS | 51 core unit/integration/tooling tests plus real Codex interruption and byte-identical restore; 13 protected fixture checks remain red before recovery |
+| Local deterministic recovery | PASS | 54 core unit/integration/tooling tests plus real Codex interruption and byte-identical restore; 13 protected fixture checks remain red before recovery |
 | Generated browser contracts | PASS | FastAPI OpenAPI generated through openapi-typescript 7.13.0 |
 | Local console/public site builds | PASS | Vite 8.3.0 and Next.js 16.3.5 production builds |
 | Isolated Python installation | PASS | Built wheel installed into a fresh Python 3.12 environment; CLI, packaged schema, supervisor, and worker imports pass |

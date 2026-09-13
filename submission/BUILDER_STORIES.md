@@ -24,7 +24,7 @@ older checkpoint remains available, and tests a corrupted newest blob falling ba
 valid state. This matters because replacing the only good recovery point with a partial scan would
 turn preservation into data loss.
 
-The current test report records 51 passing local checks, including binary and Unicode restoration,
+The current test report records 54 passing local checks, including binary and Unicode restoration,
 corrupt-object rejection, sensitive-file omission, and previous-checkpoint retention. Six desktop
 and mobile browser checks cover the evidence UI. A separate real managed Codex probe records an
 intentional interruption and byte-identical restore, and an isolated Python 3.12 environment proves
@@ -54,11 +54,14 @@ Those boundaries now have passing adversarial tests. The cloud implementation us
 model discovery pass.
 
 The live evidence is still incomplete. The authenticated account reports the Nova Micro agreement,
-entitlement, and region as available while authorization remains `NOT_AUTHORIZED`. The listed Nova
-profile rejected both Strands streaming and direct boto3 invocation with “Operation not allowed,”
-so Dovet records zero successful requests. This story must not be published as a working Strands
-recovery until the owner reviews the displayed access terms, a bounded request succeeds, and the
-protected fixture passes. A reviewed least-privilege role is required before hosted deployment.
+entitlement, and region as available while authorization remains `NOT_AUTHORIZED`. The owner
+completed the console's first-use action, but the listed Nova profile rejected both Strands
+streaming and direct boto3 invocation with “Operation not allowed,” so Dovet records zero successful
+requests. Checks across four documented Nova regions and every discovered callable Nova text model
+found no authorized fallback. The account root reproduces the denial, and AWS Support has the exact
+request and zero-quota evidence. This story must not be published as a working Strands recovery
+until a bounded request succeeds and the protected fixture passes. A reviewed least-privilege role
+is required before hosted deployment.
 
 That blocked result is part of the architecture, not something to polish away. Agentic judgment and
 reliable control complement each other only when the integration itself is proven.

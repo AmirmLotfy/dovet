@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOT = Path.home() / "Library" / "Application Support" / "Dovet"
 PRIVATE_VIDEO = ROOT / "private-artifacts" / "video"
 PREFLIGHT = ROOT / "artifacts" / "recording-preflight.json"
+NARRATION_PLAN = ROOT / "submission" / "video" / "narration-scenes.json"
 
 
 def run(argv: tuple[str, ...], *, environment: dict[str, str] | None = None) -> None:
@@ -133,6 +134,34 @@ def main() -> int:
     if not videos:
         raise RuntimeError("Playwright did not finalize a recording")
     clip = videos[-1]
+    narration = json.loads(NARRATION_PLAN.read_text(encoding="utf-8"))
+    scenes = []
+    for index, scene in enumerate(narration["scenes"], start=1):
+        audio = PRIVATE_VIDEO / "higgsfield" / "narration" / f"scene-{scene['id'][:2]}.wav"
+        if not audio.is_file():
+            raise RuntimeError(f"accepted narration is missing for scene {scene['id']}")
+        if index == 1:
+            visual = PRIVATE_VIDEO / "higgsfield" / "dovet-opening-05e03908.mp4"
+        elif index in {2, 3, 10}:
+            visual = ROOT / "artifacts" / "site-updated-desktop.png"
+        elif index == 11:
+            visual = ROOT / "artifacts" / "architecture-preview.png"
+        else:
+            visual = clip
+        if not visual.is_file():
+            raise RuntimeError(f"visual source is missing for scene {scene['id']}")
+        scenes.append(
+            {
+                "id": scene["id"],
+                "clip": str(visual.relative_to(ROOT)),
+                "clip_sha256": sha256(visual),
+                "audio": str(audio.relative_to(ROOT)),
+                "audio_sha256": sha256(audio),
+                "caption": scene["text"],
+                "edit_seconds": scene["edit_seconds"],
+                "evidence_dependency": scene["evidence_dependency"],
+            }
+        )
     manifest = {
         "schema_version": "1",
         "capture_status": "RECORDED",
@@ -146,6 +175,10 @@ def main() -> int:
         "codex_turn_id": evidence.codex_turn_id,
         "clip": str(clip.relative_to(ROOT)),
         "clip_sha256": sha256(clip),
+        "scenes": scenes,
+        "soundtrack": "private-artifacts/video/sound/dovet-bed.wav",
+        "thumbnail_source": "application_footage",
+        "thumbnail_time_seconds": 55,
         "viewport": {"width": 1920, "height": 1080},
         "accelerated_portions": [],
         "limitations": [

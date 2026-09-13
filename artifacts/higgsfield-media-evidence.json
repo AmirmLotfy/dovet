@@ -1,6 +1,6 @@
 {
   "schema_version": "1",
-  "status": "PARTIAL",
+  "status": "TIMING_PASS_OWNER_LISTENING_PENDING",
   "opening": {
     "provider": "Higgsfield",
     "model": "Kling 3.0 Pro",
@@ -25,10 +25,21 @@
     "timing_gate": "PASS",
     "owner_listening_review": "PENDING"
   },
+  "narration_batch": {
+    "accepted_scenes": 12,
+    "timing_passed": 12,
+    "pause_checks_passed": 12,
+    "first_pass_estimated_credits": 10.8,
+    "rewrite_count": 1,
+    "rewrite_estimated_credits": 0.9,
+    "accepted_scene_12_job_id": "3675851d-ceaa-4bdc-b989-318b511c9218",
+    "owner_listening_review": "PENDING"
+  },
   "credits": {
     "before": 1262.8,
-    "after": 1249.3,
-    "observed_aggregate_change": 13.5
+    "after_opening_and_audition": 1249.3,
+    "observed_change_at_pre_batch_checkpoint": 13.5,
+    "post_batch_balance": null
   },
   "final_video": "BLOCKED_ON_LIVE_RECOVERY_EVIDENCE",
   "publication": "OWNER_ACTION"

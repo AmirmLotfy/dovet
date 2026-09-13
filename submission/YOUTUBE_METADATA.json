@@ -15,7 +15,20 @@
     "This demonstration uses synthetic code and an intentionally triggered interruption. Hosted and local adapter differences are labelled in the video.",
     "The short opening visual and synthetic narration were produced with Higgsfield. The product interaction and recovery evidence are recordings of the working Dovet application."
   ],
-  "chapters": [],
+  "chapters": [
+    "00:00 Keep the work",
+    "00:12 The recovery problem",
+    "00:30 Authorized boundaries",
+    "00:50 Managed interruption",
+    "01:12 Immutable checkpoint",
+    "01:42 Strands recommendation",
+    "02:10 Deterministic policy",
+    "02:35 Restricted worker",
+    "03:03 Independent verification",
+    "03:33 Portable recovery",
+    "03:53 Durable local daemon",
+    "04:20 Evidence-linked history"
+  ],
   "thumbnail": "submission/video/thumbnail.png",
   "captions": "submission/video/captions.srt",
   "required_before_upload": [
