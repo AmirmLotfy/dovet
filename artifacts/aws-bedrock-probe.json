@@ -60,6 +60,32 @@
     ],
     "authorization": "NOT_AUTHORIZED_FOR_EVERY_DISCOVERED_CALLABLE_MODEL"
   },
+  "all_text_model_audit": {
+    "region": "us-east-1",
+    "discovered_models": 89,
+    "models_reporting_authorization": 85,
+    "authorized_models": 0,
+    "authorization": "NO_AUTHORIZED_TEXT_MODEL",
+    "providers_checked": [
+      "AI21 Labs",
+      "Amazon",
+      "Anthropic",
+      "Cohere",
+      "DeepSeek",
+      "Google",
+      "Meta",
+      "MiniMax",
+      "Mistral AI",
+      "Moonshot AI",
+      "NVIDIA",
+      "OpenAI",
+      "Qwen",
+      "TwelveLabs",
+      "Writer",
+      "Z.AI",
+      "xAI"
+    ]
+  },
   "account_controls": {
     "aws_organization_membership": "NONE",
     "account_root_reproduces_error": true,
@@ -79,6 +105,7 @@
     "Zero non-adjustable on-demand quotas and reproduction with the account root isolate the remaining gate to AWS account verification or provisioning.",
     "Checks across four documented Nova regions found no authorized or non-zero-quota fallback.",
     "Checks across every discovered callable Amazon Nova text model in us-east-1 found no authorized model fallback.",
+    "A read-only availability sweep across 89 discovered text models in us-east-1 found zero authorized models, so a provider switch cannot bypass the account-level gate.",
     "No live model response was produced and Dovet does not claim a working Bedrock adapter.",
     "Account identifiers and credential material are excluded from this artifact."
   ]
