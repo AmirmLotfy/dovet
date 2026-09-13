@@ -74,11 +74,16 @@ def main() -> int:
         import uvicorn
 
         from .api import SessionState, create_app, ensure_bridge_token
+        from .evidence import RunEvidenceStore
 
         state = SessionState()
         state.set_bridge_token(ensure_bridge_token(_data_root()))
         checkout_console = Path(__file__).resolve().parents[4] / "apps" / "console" / "dist"
-        local_app = create_app(state=state, console_dir=checkout_console)
+        local_app = create_app(
+            state=state,
+            console_dir=checkout_console,
+            evidence_store=RunEvidenceStore(_data_root() / "receipts"),
+        )
         if args.pair:
             nonce = state.issue_pairing_nonce()
             print(f"http://{args.host}:{args.port}/#pair={nonce}")

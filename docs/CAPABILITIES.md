@@ -13,7 +13,7 @@ Statuses describe evidence from this checkout only.
 | Strands live Bedrock invocation | BLOCKED | Nova Micro is region/entitlement/agreement available but account authorization is `NOT_AUTHORIZED`; `ConverseStream` rejects the call |
 | Bedrock worker | BLOCKED | Direct Nova Micro `Converse` also rejects invocation; no successful model response or conformance claim |
 | AgentCore Runtime and Code Interpreter | BLOCKED | SDK shapes verified; live permissions and isolation pending |
-| Local deterministic recovery | PASS | 41 core unit/integration/tooling tests plus real Codex interruption and byte-identical restore; 13 protected fixture checks remain red before recovery |
+| Local deterministic recovery | PASS | 47 core unit/integration/tooling tests plus real Codex interruption and byte-identical restore; 13 protected fixture checks remain red before recovery |
 | Generated browser contracts | PASS | FastAPI OpenAPI generated through openapi-typescript 7.13.0 |
 | Local console/public site builds | PASS | Vite 8.3.0 and Next.js 16.3.5 production builds |
 | Codex plugin bridge | PASS | Plugin and skill validators pass; exiting the stdio bridge leaves the launchd daemon healthy |
@@ -21,6 +21,8 @@ Statuses describe evidence from this checkout only.
 | Vercel production alias | PASS | `https://dovet-site.vercel.app` returns HTTP 200 |
 | `dovet.site` routing | PASS | Vercel nameservers authoritative; HTTPS apex 200, `www` 308 to apex, signed-out browser title verified |
 | Browser automation | PASS | System Chrome launched at 1920x1080 through Playwright 1.63.0 |
+| Evidence receipt UI | PASS | Authenticated API accepts only validated live PASS receipts; desktop/mobile evidence-rail accessibility checks pass |
+| Demo recording preflight | BLOCKED | 1920x1080 recorder and manifest pipeline are ready; it refuses to record before the live recovery receipt exists |
 | Media encoding | PASS | FFmpeg 9.0.1 exposes libx264 and AAC |
 | Polly voice discovery | PASS | Authorized read-only `DescribeVoices`; selected voice and engine were returned |
 | Polly narration synthesis | BLOCKED | Script and timing pipeline implemented; evidence is not yet reconciled, so no paid synthesis request was sent |

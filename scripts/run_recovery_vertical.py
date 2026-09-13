@@ -33,6 +33,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PROTECTED = ROOT / "tests" / "acceptance-protected"
 FIXTURE = ROOT / "examples" / "importer"
 PRIVATE = ROOT / "artifacts" / "private"
+DEFAULT_RECEIPTS = Path.home() / "Library" / "Application Support" / "Dovet" / "receipts"
 
 
 def read_price_card(path: Path, *, model_id: str) -> tuple[int, dict[str, Any]]:
@@ -90,12 +91,27 @@ def verify(
     }
 
 
+def release_commit() -> str:
+    completed = subprocess.run(  # noqa: S603
+        ("git", "rev-parse", "HEAD"),
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    commit = completed.stdout.strip()
+    if len(commit) != 40 or any(character not in "0123456789abcdef" for character in commit):
+        raise RuntimeError("release commit is invalid")
+    return commit
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-id", required=True)
     parser.add_argument("--region", default="us-east-1")
     parser.add_argument("--price-card", type=Path, required=True)
     parser.add_argument("--budget-microusd", type=int, required=True)
+    parser.add_argument("--receipt-dir", type=Path, default=DEFAULT_RECEIPTS)
     parser.add_argument(
         "--output",
         type=Path,
@@ -270,10 +286,16 @@ def main() -> int:
     receipt = {
         "status": "PASS" if final["status"] == "passed" else "FAIL",
         "run_id": "vertical_run",
+        "recorded_at": datetime.now(UTC).isoformat(),
+        "release_commit": release_commit(),
         "model_id": args.model_id,
         "region": args.region,
         "demonstration_fault": True,
         "interruption_receipt_sha256": digest_json(interruption_data),
+        "managed_codex": {
+            "thread_id": interruption_data["thread_id"],
+            "turn_id": interruption_data["turn_id"],
+        },
         "initial_snapshot_sha256": initial.snapshot_sha256,
         "supervisor_tool_calls": tool_calls,
         "recovery_decision": decision.model_dump(by_alias=True, mode="json"),
@@ -297,6 +319,11 @@ def main() -> int:
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+    if receipt["status"] == "PASS":
+        args.receipt_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
+        receipt_path = args.receipt_dir / f"{receipt['run_id']}.json"
+        receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+        receipt_path.chmod(0o600)
     print(json.dumps({"status": receipt["status"], "output": str(args.output)}))
     return 0 if receipt["status"] == "PASS" else 1
 

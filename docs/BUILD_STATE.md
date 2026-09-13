@@ -22,7 +22,10 @@ Last updated: 2026-09-13
 - **PASS:** `dovet.site` now delegates to `ns1.vercel-dns.com` and `ns2.vercel-dns.com`; HTTPS apex returns 200 and a signed-out browser loaded the expected Dovet title.
 - **PASS:** G4 mechanics reject stale/replayed approvals, unconfirmed writer takeover, unknown/over-cap costs, credential-like checkpoint paths, corrupt newest checkpoints and stale/unknown Codex usage.
 - **PASS:** launchd daemon restart plus authenticated loopback usage read; install-time Codex path fixes the restricted launchd PATH.
-- **PASS:** 41 Python unit/integration/tooling tests; current sanitized core JUnit report is `artifacts/test-report-core.xml`.
+- **PASS:** 47 Python unit/integration/tooling tests; the explicit live test is deselected offline and skips with a precise authorization message when invoked without its paid-run flag.
+- **PASS:** six desktop/mobile console browser checks, including the validated evidence rail, have no serious or critical axe findings; the recording project stays skipped until a live receipt exists.
+- **PASS:** the daemon now exposes only validated PASS receipts through an authenticated run route; failed, mismatched, oversized, symlinked, or chain-of-thought-marked receipts cannot receive a verified UI state.
+- **PASS:** `pnpm demo:record` builds the console, pairs with the independent service without printing its credential, records at 1920x1080, and writes a checksum-bound manifest only after a real PASS receipt. Its current preflight correctly returns BLOCKED before recording.
 - **PASS:** the live vertical runner stops before provider invocation when Nova is unauthorized, enforces a current official price card and run cap, keeps capability tokens out of model-visible schemas, and binds protected verification to the recovered candidate root.
 - **PASS:** full Apache-2.0 text, security policy, AI/dependency disclosure, architecture diagram and fail-closed release/video scripts.
 - **PASS:** Polly `DescribeVoices` returned the selected English voice/engine; no synthesis request was sent because recovery evidence is incomplete.
@@ -37,9 +40,13 @@ aws sts get-caller-identity --output json
 uv run pytest tests/unit tests/integration -q
 uv run python scripts/probe_managed_codex.py --output artifacts/managed-codex-interruption.json
 pnpm contracts
-pnpm -r test
-pnpm -r build
-curl -I https://dovet-site-ahyoqy2rn-mellardoos-projects.vercel.app
+pnpm check
+pnpm test
+pnpm test:integration
+pnpm build
+pnpm test:e2e
+pnpm demo:record
+curl -I https://dovet.site
 ```
 
 ## Next actions

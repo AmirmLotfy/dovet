@@ -21,6 +21,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/runs/{run_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Run Evidence */
+        get: operations["run_evidence_api_v1_runs__run_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/runs/{run_id}/pause": {
         parameters: {
             query?: never;
@@ -141,10 +158,84 @@ export interface components {
             /** Version */
             version: string;
         };
+        /**
+         * KnowledgeKind
+         * @enum {string}
+         */
+        KnowledgeKind: "observed" | "reported" | "inferred" | "verified";
         /** PairRequest */
         PairRequest: {
             /** Nonce */
             nonce: string;
+        };
+        /** RunEvidenceEventView */
+        RunEvidenceEventView: {
+            /** Detail */
+            detail: string;
+            /** Id */
+            id: string;
+            knowledge_kind: components["schemas"]["KnowledgeKind"];
+            /** Seq */
+            seq: number;
+            /** Title */
+            title: string;
+        };
+        /** RunEvidenceView */
+        RunEvidenceView: {
+            /** Changed Paths */
+            changed_paths: string[];
+            /** Codex Thread Id */
+            codex_thread_id: string;
+            /** Codex Turn Id */
+            codex_turn_id: string;
+            /** Events */
+            events: components["schemas"]["RunEvidenceEventView"][];
+            /** Final Snapshot Sha256 */
+            final_snapshot_sha256: string;
+            /** Initial Snapshot Sha256 */
+            initial_snapshot_sha256: string;
+            /** Model Id */
+            model_id: string;
+            /** Project */
+            project: string;
+            /**
+             * Recorded At
+             * Format: date-time
+             */
+            recorded_at: string;
+            /** Release Commit */
+            release_commit: string;
+            /** Run Id */
+            run_id: string;
+            /**
+             * Source
+             * @constant
+             */
+            source: "live_receipt";
+            /**
+             * Status
+             * @constant
+             */
+            status: "verified";
+            /** Title */
+            title: string;
+            verification: components["schemas"]["RunVerificationView"];
+        };
+        /** RunVerificationView */
+        RunVerificationView: {
+            /** Duration Ms */
+            duration_ms: number;
+            /** Output Sha256 */
+            output_sha256: string;
+            /** Snapshot Sha256 */
+            snapshot_sha256: string;
+            /**
+             * Status
+             * @constant
+             */
+            status: "passed";
+            /** Suite Digest */
+            suite_digest: string;
         };
         /** UsageAdviceView */
         UsageAdviceView: {
@@ -243,6 +334,41 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["UsageResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    run_evidence_api_v1_runs__run_id__get: {
+        parameters: {
+            query?: never;
+            header?: {
+                "x-dovet-bridge"?: string | null;
+            };
+            path: {
+                run_id: string;
+            };
+            cookie?: {
+                dovet_session?: string | null;
+            };
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RunEvidenceView"];
                 };
             };
             /** @description Validation Error */

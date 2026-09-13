@@ -1,0 +1,6 @@
+{
+  "status": "BLOCKED",
+  "run_id": "vertical_run",
+  "checked_at": "2026-09-13T06:13:25.181331+00:00",
+  "detail": "A validated PASS receipt from the live recovery has not been persisted."
+}

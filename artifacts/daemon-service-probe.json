@@ -1,12 +1,14 @@
 {
   "schema_version": "1",
-  "checked_at": "2026-09-13T01:13:00Z",
+  "checked_at": "2026-09-13T06:13:59Z",
   "launch_agent": "site.dovet.supervisor",
   "service_status": "PASS",
   "loopback_health_http_status": 200,
   "codex_usage_http_status": 200,
   "codex_usage_state": "known",
   "usage_window_count": 1,
+  "pairing_http_status": 200,
+  "missing_verified_receipt_http_status": 404,
   "account_identifier_retained": false,
-  "finding": "The launchd service uses the Codex executable path resolved during installation."
+  "finding": "The independent launchd service serves the built console and rejects a run detail until a validated PASS receipt exists."
 }

@@ -181,3 +181,37 @@ class UsageResponse(StrictModel):
     source: Literal["codex-app-server"]
     error: str | None
     advice: UsageAdviceView
+
+
+class RunEvidenceEventView(StrictModel):
+    id: OpaqueId
+    seq: Annotated[int, Field(ge=1)]
+    title: Annotated[str, Field(min_length=1, max_length=160)]
+    detail: Annotated[str, Field(min_length=1, max_length=1000)]
+    knowledge_kind: KnowledgeKind
+
+
+class RunVerificationView(StrictModel):
+    status: Literal["passed"]
+    snapshot_sha256: Sha256
+    suite_digest: Sha256
+    output_sha256: Sha256
+    duration_ms: Annotated[int, Field(ge=0)]
+
+
+class RunEvidenceView(StrictModel):
+    run_id: OpaqueId
+    title: Annotated[str, Field(min_length=1, max_length=160)]
+    project: Annotated[str, Field(min_length=1, max_length=160)]
+    status: Literal["verified"]
+    source: Literal["live_receipt"]
+    recorded_at: datetime
+    release_commit: Annotated[str, Field(pattern=r"^[a-f0-9]{40}$")]
+    model_id: Annotated[str, Field(min_length=1, max_length=200)]
+    codex_thread_id: OpaqueId
+    codex_turn_id: OpaqueId
+    initial_snapshot_sha256: Sha256
+    final_snapshot_sha256: Sha256
+    changed_paths: Annotated[list[str], Field(max_length=30)]
+    verification: RunVerificationView
+    events: Annotated[list[RunEvidenceEventView], Field(min_length=1, max_length=30)]

@@ -11,12 +11,21 @@ from pathlib import Path
 
 from fastapi import Cookie, FastAPI, Header, HTTPException, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
 from . import __version__
 from .canonical import digest_json
-from .models import Capability, HealthResponse, UsageAdviceView, UsageResponse, UsageWindowView
+from .evidence import InvalidRunEvidence, RunEvidenceStore
+from .models import (
+    Capability,
+    HealthResponse,
+    RunEvidenceView,
+    UsageAdviceView,
+    UsageResponse,
+    UsageWindowView,
+)
 from .usage import CodexUsageReader, preservation_advice
 
 ALLOWED_HOSTS = {"127.0.0.1:4317", "localhost:4317"}
@@ -108,7 +117,10 @@ def ensure_bridge_token(data_root: Path) -> str:
 
 
 def create_app(
-    *, state: SessionState | None = None, console_dir: Path | None = None
+    *,
+    state: SessionState | None = None,
+    console_dir: Path | None = None,
+    evidence_store: RunEvidenceStore | None = None,
 ) -> FastAPI:
     sessions = state or SessionState()
     app = FastAPI(title="Dovet local API", version=__version__, docs_url=None, redoc_url=None)
@@ -228,6 +240,27 @@ def create_app(
             advice=UsageAdviceView(**asdict(advice)),
         )
 
+    @app.get("/api/v1/runs/{run_id}", response_model=RunEvidenceView)
+    def run_evidence(
+        run_id: str,
+        dovet_session: str | None = Cookie(default=None),
+        x_dovet_bridge: str | None = Header(default=None),
+    ) -> RunEvidenceView:
+        sessions.verify(
+            dovet_session, None, mutation=False, bridge_token=x_dovet_bridge
+        )
+        if evidence_store is None:
+            raise HTTPException(status.HTTP_404_NOT_FOUND, "run evidence is unavailable")
+        try:
+            return evidence_store.read(run_id)
+        except FileNotFoundError as error:
+            raise HTTPException(status.HTTP_404_NOT_FOUND, "run evidence was not found") from error
+        except InvalidRunEvidence as error:
+            raise HTTPException(
+                status.HTTP_409_CONFLICT,
+                f"run evidence is not eligible for verified display: {error}",
+            ) from error
+
     @app.post("/api/v1/runs/{run_id}/pause")
     async def pause_run(
         run_id: str,
@@ -250,6 +283,14 @@ def create_app(
         )
 
     if console_dir is not None and (console_dir / "index.html").is_file():
+        index = console_dir / "index.html"
+
+        @app.get("/runs/{run_id}", response_class=FileResponse)
+        def run_page(run_id: str) -> FileResponse:
+            if not run_id or len(run_id) > 80:
+                raise HTTPException(status.HTTP_404_NOT_FOUND)
+            return FileResponse(index)
+
         app.mount("/", StaticFiles(directory=console_dir, html=True), name="console")
 
     return app

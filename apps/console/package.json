@@ -12,6 +12,7 @@
     "demo:record": "playwright test tests/record-demo.spec.ts --project=record"
   },
   "dependencies": {
+    "@dovet/contracts": "workspace:*",
     "@dovet/ui": "workspace:*",
     "react": "19.3.0",
     "react-dom": "19.3.0"

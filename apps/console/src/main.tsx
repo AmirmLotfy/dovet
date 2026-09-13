@@ -1,5 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import type { components } from "@dovet/contracts";
 import { DovetMark, Status } from "@dovet/ui";
 import "@dovet/ui/tokens.css";
 import "./styles.css";
@@ -7,6 +8,7 @@ import "./styles.css";
 type Capability = { name: string; status: "ready" | "blocked" | "unavailable" | "unverified"; detail: string };
 type Health = { version: string; readiness: string; capabilities: Capability[] };
 type LocalStatus = { service: string; work: unknown[]; needs_you: unknown[]; history: unknown[]; message: string };
+type RunEvidence = components["schemas"]["RunEvidenceView"];
 type Usage = {
   observed_at: string;
   state: "known" | "unknown" | "stale" | "unavailable";
@@ -27,6 +29,9 @@ function useDovet() {
   const [usage, setUsage] = React.useState<Usage | null>(null);
   const [usageLoading, setUsageLoading] = React.useState(false);
   const [usageError, setUsageError] = React.useState<string | null>(null);
+  const [run, setRun] = React.useState<RunEvidence | null>(null);
+  const [runLoading, setRunLoading] = React.useState(false);
+  const [runError, setRunError] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
   React.useEffect(() => {
     async function connect() {
@@ -49,8 +54,22 @@ function useDovet() {
         setHealth(await healthResponse.json());
         const statusResponse = await fetch("/api/v1/status", { credentials: "include" });
         if (statusResponse.ok) setStatus(await statusResponse.json());
+        const match = location.pathname.match(/^\/runs\/([A-Za-z0-9_-]{1,80})$/);
+        if (match) {
+          setRunLoading(true);
+          const runResponse = await fetch(`/api/v1/runs/${match[1]}`, { credentials: "include" });
+          if (!runResponse.ok) {
+            const detail = await runResponse.json().catch(() => null) as { detail?: string } | null;
+            throw new Error(detail?.detail ?? "Verified run evidence is unavailable.");
+          }
+          setRun(await runResponse.json());
+        }
       } catch (caught) {
-        setError(caught instanceof Error ? caught.message : "Dovet is unavailable.");
+        const message = caught instanceof Error ? caught.message : "Dovet is unavailable.";
+        if (location.pathname.startsWith("/runs/")) setRunError(message);
+        else setError(message);
+      } finally {
+        setRunLoading(false);
       }
     }
     void connect();
@@ -68,11 +87,61 @@ function useDovet() {
       setUsageLoading(false);
     }
   }, []);
-  return { health, status, error, usage, usageLoading, usageError, refreshUsage };
+  return { health, status, error, usage, usageLoading, usageError, refreshUsage, run, runLoading, runError };
+}
+
+function shortHash(value: string) {
+  return value.slice(0, 12);
+}
+
+function RunDetail({ run }: { run: RunEvidence }) {
+  return <section className="run-detail" data-testid="verified-receipt" aria-labelledby="run-title">
+    <div className="run-heading">
+      <div>
+        <p className="eyebrow">LIVE RECEIPT / {run.project.toUpperCase()}</p>
+        <h1 id="run-title">{run.title}</h1>
+        <p className="lede">Managed Codex interruption to verified Bedrock recovery.</p>
+      </div>
+      <Status tone="ready">Checks passed</Status>
+    </div>
+    <dl className="run-facts" aria-label="Run evidence">
+      <div><dt>Run</dt><dd><code>{run.run_id}</code></dd></div>
+      <div><dt>Worker</dt><dd>{run.model_id}</dd></div>
+      <div><dt>Snapshot</dt><dd><code>{shortHash(run.final_snapshot_sha256)}</code></dd></div>
+      <div><dt>Release</dt><dd><code>{run.release_commit.slice(0, 9)}</code></dd></div>
+    </dl>
+    <div className="run-layout">
+      <section className="evidence-panel" aria-labelledby="evidence-title">
+        <div className="section-head"><h2 id="evidence-title">Evidence rail</h2><span>{run.events.length} records</span></div>
+        <ol className="evidence-rail">
+          {run.events.map((event) => <li key={event.id}>
+            <span className="rail-node" aria-hidden="true" />
+            <div className="event-copy">
+              <span className={`knowledge knowledge--${event.knowledge_kind}`}>{event.knowledge_kind}</span>
+              <h3>{event.title}</h3>
+              <p>{event.detail}</p>
+            </div>
+          </li>)}
+        </ol>
+      </section>
+      <aside className="receipt" aria-labelledby="receipt-title">
+        <p className="eyebrow">INDEPENDENT VERIFICATION</p>
+        <h2 id="receipt-title">Receipt</h2>
+        <Status tone="ready">Passed</Status>
+        <dl>
+          <div><dt>Suite</dt><dd><code>{shortHash(run.verification.suite_digest)}</code></dd></div>
+          <div><dt>Output</dt><dd><code>{shortHash(run.verification.output_sha256)}</code></dd></div>
+          <div><dt>Duration</dt><dd>{run.verification.duration_ms} ms</dd></div>
+          <div><dt>Changed</dt><dd>{run.changed_paths.length} authorized path{run.changed_paths.length === 1 ? "" : "s"}</dd></div>
+        </dl>
+        <p className="receipt-note">The worker reported a candidate. Dovet assigned the verified status only after the protected suite passed on this snapshot.</p>
+      </aside>
+    </div>
+  </section>;
 }
 
 function App() {
-  const { health, status, error, usage, usageLoading, usageError, refreshUsage } = useDovet();
+  const { health, status, error, usage, usageLoading, usageError, refreshUsage, run, runLoading, runError } = useDovet();
   const [view, setView] = React.useState("Work");
   const nav = ["Work", "Needs you", "History", "Projects", "Connections", "Settings"];
   return (
@@ -93,6 +162,10 @@ function App() {
       <main className="main" id="main-content">
         <header className="topbar"><span>Local workspace</span><span>Dovet {health?.version ?? "connecting"}</span></header>
         <section className="content">
+          {runLoading && <div className="run-loading" role="status">Validating recovery receipt…</div>}
+          {runError && <div className="notice danger" role="alert"><strong>Evidence unavailable.</strong><span>{runError}</span></div>}
+          {run && <RunDetail run={run} />}
+          {!run && !runLoading && !runError && <>
           <div className="title-row"><div><p className="eyebrow">DOVET / LOCAL</p><h1>{view}</h1><p className="lede">{view === "Work" ? "Your active coding tasks." : "Evidence from managed work."}</p></div></div>
           {error && <div className="notice danger" role="alert"><strong>Local worker unavailable.</strong><span>{error}</span></div>}
           {view === "Work" && <section aria-labelledby="active-work">
@@ -133,6 +206,7 @@ function App() {
             </section>
           </>}
           {view !== "Work" && view !== "Connections" && <div className="empty compact"><h3>No recorded entries</h3><p>This view fills only from persisted Dovet events.</p></div>}
+          </>}
         </section>
       </main>
     </div>

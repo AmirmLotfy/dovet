@@ -82,6 +82,16 @@
         "title": "HealthResponse",
         "type": "object"
       },
+      "KnowledgeKind": {
+        "enum": [
+          "observed",
+          "reported",
+          "inferred",
+          "verified"
+        ],
+        "title": "KnowledgeKind",
+        "type": "string"
+      },
       "PairRequest": {
         "additionalProperties": false,
         "properties": {
@@ -96,6 +106,191 @@
           "nonce"
         ],
         "title": "PairRequest",
+        "type": "object"
+      },
+      "RunEvidenceEventView": {
+        "additionalProperties": false,
+        "properties": {
+          "detail": {
+            "maxLength": 1000,
+            "minLength": 1,
+            "title": "Detail",
+            "type": "string"
+          },
+          "id": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Id",
+            "type": "string"
+          },
+          "knowledge_kind": {
+            "$ref": "#/components/schemas/KnowledgeKind"
+          },
+          "seq": {
+            "minimum": 1.0,
+            "title": "Seq",
+            "type": "integer"
+          },
+          "title": {
+            "maxLength": 160,
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "seq",
+          "title",
+          "detail",
+          "knowledge_kind"
+        ],
+        "title": "RunEvidenceEventView",
+        "type": "object"
+      },
+      "RunEvidenceView": {
+        "additionalProperties": false,
+        "properties": {
+          "changed_paths": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 30,
+            "title": "Changed Paths",
+            "type": "array"
+          },
+          "codex_thread_id": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Codex Thread Id",
+            "type": "string"
+          },
+          "codex_turn_id": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Codex Turn Id",
+            "type": "string"
+          },
+          "events": {
+            "items": {
+              "$ref": "#/components/schemas/RunEvidenceEventView"
+            },
+            "maxItems": 30,
+            "minItems": 1,
+            "title": "Events",
+            "type": "array"
+          },
+          "final_snapshot_sha256": {
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Final Snapshot Sha256",
+            "type": "string"
+          },
+          "initial_snapshot_sha256": {
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Initial Snapshot Sha256",
+            "type": "string"
+          },
+          "model_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Model Id",
+            "type": "string"
+          },
+          "project": {
+            "maxLength": 160,
+            "minLength": 1,
+            "title": "Project",
+            "type": "string"
+          },
+          "recorded_at": {
+            "format": "date-time",
+            "title": "Recorded At",
+            "type": "string"
+          },
+          "release_commit": {
+            "pattern": "^[a-f0-9]{40}$",
+            "title": "Release Commit",
+            "type": "string"
+          },
+          "run_id": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          },
+          "source": {
+            "const": "live_receipt",
+            "title": "Source",
+            "type": "string"
+          },
+          "status": {
+            "const": "verified",
+            "title": "Status",
+            "type": "string"
+          },
+          "title": {
+            "maxLength": 160,
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          },
+          "verification": {
+            "$ref": "#/components/schemas/RunVerificationView"
+          }
+        },
+        "required": [
+          "run_id",
+          "title",
+          "project",
+          "status",
+          "source",
+          "recorded_at",
+          "release_commit",
+          "model_id",
+          "codex_thread_id",
+          "codex_turn_id",
+          "initial_snapshot_sha256",
+          "final_snapshot_sha256",
+          "changed_paths",
+          "verification",
+          "events"
+        ],
+        "title": "RunEvidenceView",
+        "type": "object"
+      },
+      "RunVerificationView": {
+        "additionalProperties": false,
+        "properties": {
+          "duration_ms": {
+            "minimum": 0.0,
+            "title": "Duration Ms",
+            "type": "integer"
+          },
+          "output_sha256": {
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Output Sha256",
+            "type": "string"
+          },
+          "snapshot_sha256": {
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Snapshot Sha256",
+            "type": "string"
+          },
+          "status": {
+            "const": "passed",
+            "title": "Status",
+            "type": "string"
+          },
+          "suite_digest": {
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Suite Digest",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "snapshot_sha256",
+          "suite_digest",
+          "output_sha256",
+          "duration_ms"
+        ],
+        "title": "RunVerificationView",
         "type": "object"
       },
       "UsageAdviceView": {
@@ -360,6 +555,77 @@
           }
         },
         "summary": "Codex Usage"
+      }
+    },
+    "/api/v1/runs/{run_id}": {
+      "get": {
+        "operationId": "run_evidence_api_v1_runs__run_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "title": "Run Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "x-dovet-bridge",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dovet-Bridge"
+            }
+          },
+          {
+            "in": "cookie",
+            "name": "dovet_session",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Dovet Session"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunEvidenceView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Run Evidence"
       }
     },
     "/api/v1/runs/{run_id}/pause": {

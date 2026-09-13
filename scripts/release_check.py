@@ -157,6 +157,20 @@ def video_check() -> Check:
     )
 
 
+def recording_preflight_check() -> Check:
+    path = ARTIFACTS / "recording-preflight.json"
+    if not path.exists():
+        return Check("recording_preflight", "BLOCKED", "recording preflight is missing")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    current = data.get("status")
+    detail = data.get("detail")
+    return Check(
+        "recording_preflight",
+        "PASS" if current == "PASS" else "BLOCKED",
+        str(detail) if detail else "recording preflight has no detail",
+    )
+
+
 def file_check(name: str, path: Path, minimum_bytes: int) -> Check:
     size = path.stat().st_size if path.exists() else 0
     return Check(name, "PASS" if size >= minimum_bytes else "FAIL", f"{size} bytes")
@@ -171,6 +185,7 @@ def main() -> int:
         secret_scan(),
         test_report(),
         bedrock_check(),
+        recording_preflight_check(),
         public_page("vercel_site", "https://dovet-site.vercel.app"),
         public_page("dovet_site", "https://dovet.site"),
         video_check(),
