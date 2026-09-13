@@ -1,0 +1,11 @@
+{
+  "schema_version": "1",
+  "status": "PASS",
+  "checked_at": "2026-09-13T07:08:41Z",
+  "command": "aws cloudformation validate-template --template-body file://infra/template.yaml --region us-east-1",
+  "parameter_count": 4,
+  "required_capability": "CAPABILITY_NAMED_IAM",
+  "change_set_created": false,
+  "stack_executed": false,
+  "account_identity_included": false
+}

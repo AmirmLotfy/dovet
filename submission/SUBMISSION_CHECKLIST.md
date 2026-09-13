@@ -33,6 +33,7 @@ recording, upload processing, and form troubleshooting.
 - PREPARED — three distinct Builder.aws story drafts
 - PREPARED — YouTube title and metadata structure
 - PREPARED — ordered owner-only action sheet for model terms, publication review, and legal fields
+- PREPARED — owner delivery index separating current review files from the final upload set
 - BLOCKED — owner eligibility, authorship, contributor, and legal attestations
 - OWNER ACTION — upload the prepared source, site, video, stories, and Devpost entry
 - BLOCKED — Devpost receipt and signed-out verification of all submitted URLs
