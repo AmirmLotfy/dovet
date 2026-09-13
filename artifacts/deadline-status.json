@@ -1,10 +1,10 @@
 {
   "status": "BUILD_WINDOW",
-  "checked_at": "2026-09-13T11:24:29.596041+03:00",
+  "checked_at": "2026-09-14T01:26:59.726744+03:00",
   "deadline_pacific": "2026-09-14T17:00:00-07:00",
   "deadline_cairo": "2026-09-15T03:00:00+03:00",
   "media_reserve_starts_cairo": "2026-09-14T19:00:00+03:00",
-  "remaining_seconds": 142530,
-  "remaining_hours": 39.59,
+  "remaining_seconds": 91980,
+  "remaining_hours": 25.55,
   "source": "handoff/hackathon/REQUIREMENTS.md"
 }

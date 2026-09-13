@@ -1,51 +1,27 @@
 # Dovet owner actions
 
-These actions require the account owner or a final approval that Codex must not infer. Complete them
-in order so later approvals are based on finished, reviewable evidence.
+## Submit before the deadline
 
-## 1. Clear the AWS account-provisioning block
+1. Listen to and watch `submission/video/dovet-submission-disclosed.mp4` once at normal speed.
+2. Publish the source repository with the local `v0.1.0` tag and Apache-2.0 license.
+3. Upload the film through YouTube Studio. Use the supplied thumbnail and English SRT, set the film
+   to **Public**, and verify it in a signed-out browser.
+4. Replace the source and Devpost placeholders in `submission/YOUTUBE_METADATA.json`.
+5. Complete the Devpost form using `submission/DEVPOST.md` and `submission/TESTING_INSTRUCTIONS.md`.
+6. Enter the account-owned AWS Builder ID and personally confirm every eligibility, authorship,
+   contributor, rights, and legal field.
+7. Save the Devpost receipt and all public URLs.
+8. If time remains, publish up to three Builder.aws stories from `submission/BUILDER_STORIES.md`.
 
-- **Complete:** the owner performed the Nova Micro first-use action in the authenticated playground.
-- **Blocked by AWS:** the playground and API return `Operation not allowed`; authorization remains
-  `NOT_AUTHORIZED`, and both non-adjustable on-demand quotas are `0.0`.
-- **Complete:** the owner-approved sanitized follow-up in
-  `artifacts/private/aws-bedrock-support-reply.md` was submitted to the existing account-verification
-  case at 2026-09-13 07:37 UTC. It remained Unassigned immediately afterward.
-- Monitor that case for AWS provisioning or an exact owner identity/payment prerequisite. The live
-  runner still enforces the verified model ID, deterministic policy, bounded Strands and worker
-  token limits, and an explicit run cost cap.
-- Once Nova Micro reports `AUTHORIZED`, the local finish path is one fail-closed command. Its
-  explicit 5,000-microusd ceiling is five-tenths of one cent:
+## Preserve the disclosure
 
-  ```sh
-  DOVET_LIVE_BEDROCK=approved pnpm release:finish-after-aws -- \
-    --price-card artifacts/private/nova-micro-price-card.json \
-    --budget-microusd 5000
-  ```
+Keep the statement that AWS account provisioning blocked all Bedrock text-model invocations. Do not
+describe the Strands/Bedrock vertical, AgentCore deployment, protected importer recovery, deterministic
+fixture UI, or recorded replay as a live cloud success. The observed managed Codex interruption and
+byte-identical checkpoint restore are real and may be described as passed.
 
-  It runs the real recovery, 1920x1080 recording, narration render, full checks, and release report.
-  It performs no deployment, upload, public publishing, or legal attestation.
+## If AWS authorizes before upload
 
-## 2. Review the finished release
-
-After the live recovery, protected tests, recording, and final video pass:
-
-- Review the exact public repository contents and Apache-2.0 release tag.
-- Review the final video, thumbnail, captions, description, chapters, Devpost copy, and three
-  Builder.aws stories.
-- Confirm the package still matches the release you intend to publish. Publication remains an
-  owner action, separate from legal attestations.
-
-## 3. Supply account-owned submission fields
-
-- Provide or enter the AWS Builder ID required by the hackathon form.
-- Confirm the eligible participant, authorship, contributors, third-party licenses, and any other
-  legal declarations shown by Devpost.
-- Upload the finished MP4 through your normal YouTube Studio account and set it to Public.
-- Deploy the reviewed marketing build and publish the reviewed source repository and release tag.
-- Paste the prepared Builder.aws stories and submit the final Devpost form.
-- Verify the YouTube watch URL, source URL, website, and Devpost entry in a signed-out browser, then
-  preserve the submission confirmation receipt.
-
-Do not place private legal identifiers, credentials, judge-only access details, or account tokens in
-the public repository.
+Run the bounded finish command already documented in `docs/BUILD_STATE.md`. Use its evidence-gated
+`dovet-demo.mp4` only if the live request, protected tests, recording manifest, and release report all
+pass. Otherwise submit the disclosed cut without changing its limitation text.

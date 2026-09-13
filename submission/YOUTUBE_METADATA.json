@@ -1,41 +1,44 @@
 {
-  "schema_version": "1",
-  "status": "BLOCKED",
-  "title": "Dovet - Keep the work. Change the agent. | Agents for Humans",
+  "schema_version": "2",
+  "status": "OWNER_READY_WITH_DISCLOSED_AWS_BLOCKER",
+  "title": "Dovet — Keep the work. Change the agent. | Agents for Humans",
   "description_lines": [
-    "Dovet helps developers recover interrupted managed coding-agent work.",
-    "This demo shows a real interrupted run, an immutable portable checkpoint, Strands-supervised recovery, deterministic authorization, and independent verification.",
+    "Dovet is a local-first recovery supervisor for interrupted, explicitly managed coding-agent work.",
+    "",
+    "This film demonstrates the working local product: a real managed Codex interruption, immutable checkpoint and byte-identical restore, durable local service, deterministic authorization controls, portable recovery, and independent verification design.",
+    "",
+    "AWS account provisioning blocked every Bedrock text-model invocation before the deadline. Cloud-dependent scenes are visibly labelled. The Strands recovery integration is implemented, but this build records zero successful provider requests and does not claim a live Bedrock recovery or AgentCore deployment.",
     "",
     "Project: https://dovet.site",
-    "Source and setup: BLOCKED until the public tagged release exists",
-    "Hackathon submission: BLOCKED until Devpost returns a verified receipt",
+    "Source: REPLACE_WITH_PUBLIC_REPOSITORY_URL",
+    "Hackathon: REPLACE_WITH_PUBLIC_DEVPOST_URL",
     "",
-    "Built for Agents for Humans, Professional Agents.",
+    "Built for Agents for Humans — Professional Agents.",
     "",
-    "This demonstration uses synthetic code and an intentionally triggered interruption. Hosted and local adapter differences are labelled in the video.",
-    "The short opening visual and synthetic narration were produced with Higgsfield. The product interaction and recovery evidence are recordings of the working Dovet application."
+    "The fixture code and UI replay are synthetic. The interruption and checkpoint evidence are real. The opening visual and neutral American synthetic narration were produced with Higgsfield; product footage comes from the working Dovet application."
   ],
   "chapters": [
     "00:00 Keep the work",
     "00:12 The recovery problem",
     "00:30 Authorized boundaries",
-    "00:50 Managed interruption",
+    "00:50 Managed Codex interruption",
     "01:12 Immutable checkpoint",
-    "01:42 Strands recommendation",
+    "01:42 Strands integration and AWS blocker",
     "02:10 Deterministic policy",
-    "02:35 Restricted worker",
+    "02:35 Restricted worker contract",
     "03:03 Independent verification",
     "03:33 Portable recovery",
     "03:53 Durable local daemon",
     "04:20 Evidence-linked history"
   ],
-  "thumbnail": "submission/video/thumbnail.png",
-  "captions": "submission/video/captions.srt",
-  "required_before_upload": [
-    "Finished MP4 passes playback QA and is under five minutes",
-    "Source and Devpost URLs replace blocked lines",
-    "Chapters are derived from the final edit",
-    "Owner approves metadata and audience setting",
-    "Public signed-out playback is verified"
+  "upload_file": "submission/video/dovet-submission-disclosed.mp4",
+  "thumbnail": "submission/video/thumbnail-disclosed.png",
+  "captions": "submission/video/captions-disclosed.srt",
+  "visibility": "PUBLIC",
+  "owner_checks_before_upload": [
+    "Listen through and watch the complete 4:40 film once at normal speed",
+    "Replace the source and Devpost placeholders when those public URLs exist",
+    "Upload the SRT as English captions and use the supplied thumbnail",
+    "Set visibility to Public and verify playback signed out"
   ]
 }

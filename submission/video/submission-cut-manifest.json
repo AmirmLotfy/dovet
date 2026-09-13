@@ -1,0 +1,37 @@
+{
+  "schema_version": "1",
+  "generated_at": "2026-09-13T22:48:02.010347+00:00",
+  "status": "READY_WITH_DISCLOSED_AWS_BLOCKER",
+  "evidence_status": "BLOCKED",
+  "path": "submission/video/dovet-submission-disclosed.mp4",
+  "sha256": "3d109cce14b973d1ac8ee7eb2b5d5efb0b372dcb6d6a7c88ce400d9a5e9e4c0e",
+  "duration_seconds": 280.048,
+  "video": {
+    "codec": "h264",
+    "width": 1920,
+    "height": 1080
+  },
+  "audio": {
+    "codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2
+  },
+  "captions": [
+    "submission/video/captions-disclosed.srt",
+    "submission/video/captions-disclosed.vtt"
+  ],
+  "thumbnail": "submission/video/thumbnail-disclosed.png",
+  "claims": {
+    "managed_codex_interruption": "PASS",
+    "immutable_checkpoint_and_restore": "PASS",
+    "deterministic_policy_and_local_engine": "PASS",
+    "strands_bedrock_invocation": "BLOCKED_ZERO_SUCCESSFUL_REQUESTS",
+    "agentcore_deployment": "NOT_DEPLOYED_OPTIONAL_REQUIREMENT"
+  },
+  "limitations": [
+    "The film is suitable for an honest deadline submission, not proof of a live Bedrock recovery.",
+    "Cloud-dependent scenes carry a persistent AWS account-provisioning blocker label.",
+    "The deterministic UI fixture is a contract demonstration and recorded replay, not a live cloud run.",
+    "The owner must listen through once and perform all public uploads and legal attestations."
+  ]
+}

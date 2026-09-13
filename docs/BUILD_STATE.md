@@ -1,10 +1,12 @@
 # Dovet build state
 
-Last updated: 2026-09-13
+Last updated: 2026-09-14
 
 ## Active gate
 
-**G3 — BLOCKED (AWS ACCOUNT PROVISIONING):** the owner completed the Nova Micro first-use attempt, but AWS still denies inference and exposes zero, non-adjustable on-demand quotas.
+**Submission freeze — READY WITH DISCLOSED AWS BLOCKER:** the owner can submit the tested local
+product and a visibly disclosed 4:40 film now. The evidence-gated live Strands/Bedrock release stays
+BLOCKED because AWS still denies inference and exposes zero, non-adjustable on-demand quotas.
 
 ## Completed evidence
 
@@ -50,6 +52,13 @@ Last updated: 2026-09-13
   evidence recording, locked narration render, full checks, and release report under an explicit
   microusd ceiling. Its current dry invocation exits BLOCKED before provider use and performs no
   deployment or publication.
+- **PASS:** the deadline fallback packager checksum-verifies the 4:40 Higgsfield-narrated review
+  edit, preserves its visible cloud-blocked labels, checks H.264/AAC 1920x1080 media properties, and
+  copies it to the distinct `dovet-submission-disclosed.mp4` filename. It cannot produce the
+  evidence-gated `dovet-demo.mp4`.
+- **PASS:** owner-ready Devpost copy, YouTube metadata, captions, thumbnail, judge testing
+  instructions, disclosure, URL ledger, legal confirmation sheet, and exact submission order now
+  form a complete manual-upload package.
 - **BLOCKED:** the playground, Strands `ConverseStream`, and a direct one-token `Converse` call all return `ValidationException: Operation not allowed`. Nova Micro authorization remains `NOT_AUTHORIZED`; its on-demand requests-per-minute and tokens-per-minute quotas are both `0.0` and non-adjustable. Agreement, entitlement, region, model discovery, and the active inference profile all pass. The account is outside AWS Organizations and the account root reproduces the error, isolating this to AWS account verification/provisioning. An existing verification case is still unassigned after 10 days. No working model invocation is claimed.
 
 ## Current commands
@@ -74,10 +83,12 @@ curl -I https://dovet.site
 
 ## Next actions
 
-1. Monitor the existing AWS account-verification case for a provisioning change or an exact owner prerequisite; do not open a duplicate case or upgrade support without approval.
-2. As soon as authorization changes, rerun the bounded live vertical: managed Codex interruption, Strands recommendation, deterministic authorization, restricted recovery worker, and independent protected verification.
-3. Review a least-privilege CloudFormation change set, record and render the evidence-linked demo,
-   then prepare the final source, website and submission package for owner-controlled publication.
+1. Freeze and tag the tested source, generate its archive and checksum, and preserve the full-suite
+   reports.
+2. Owner publishes the source and disclosed video, completes legal fields, submits Devpost, and
+   saves the receipt before the deadline.
+3. Continue monitoring the AWS case. If authorization appears before upload, run the bounded live
+   vertical and use the evidence-gated film only if every release check passes.
 
 ## Working commit evidence
 

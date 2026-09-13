@@ -28,8 +28,8 @@ Statuses describe evidence from this checkout only.
 | Media encoding | PASS | FFmpeg 9.0.1 exposes libx264 and AAC |
 | Thumbnail/title rasterization | PASS | ImageMagick 7.1.2-3; used because the installed FFmpeg build does not expose `drawtext` |
 | Higgsfield opening insert | PASS | One restrained 1920x1080 Kling 3.0 Pro insert generated and checksum-bound; 9 credits spent |
-| Higgsfield narration audition | PARTIAL | Dylan preset passed duration/pause/rate gates; owner normal-speed accent and timbre review remains pending before the full batch |
-| Higgsfield media | PARTIAL | 1920x1080 opening insert, timing-gated Dylan voice audition, and labelled 8.6-second production look test pass; final evidence-bound narration and edit remain blocked on live recovery |
+| Higgsfield narration | TIMING PASS / OWNER LISTENING PENDING | All 12 Dylan scenes pass duration, pause, and rate gates; owner must listen once at normal speed before upload |
+| Higgsfield media | READY WITH DISCLOSURE | 1920x1080 opener, 12-scene narration, original music bed, 4:40 H.264/AAC film, captions, and thumbnail are prepared; live-dependent scenes remain visibly AWS-blocked |
 | GitHub authentication | PASS | Authenticated CLI; public repository not created |
 | Vercel authentication | PASS | Authenticated CLI; `dovet-site` preview deployed and anonymous access verified |
 | `dovet.site` ownership and routing | PASS | Public DNS delegates to Vercel; apex and `www` were verified signed out |

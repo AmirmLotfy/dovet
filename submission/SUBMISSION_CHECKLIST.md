@@ -1,40 +1,46 @@
 # Submission completion checklist
 
-Deadline clock: run `python scripts/deadline_status.py`. The authoritative deadline is September
-14, 2026 at 17:00 Pacific (September 15 at 03:00 Cairo), with the final eight hours reserved for
-recording, upload processing, and form troubleshooting.
+Checked at 2026-09-14 01:27 Cairo: **25.55 hours remained** before the September 15
+03:00 Cairo deadline. Re-run `uv run python scripts/deadline_status.py` before upload.
 
 ## Working product
 
 - PASS — local checkpoint, policy, approval, budget, lease, verifier, daemon, MCP bridge, and Codex usage code
 - PASS — real managed Codex interruption and byte-identical checkpoint restore
 - PASS — 54 local unit, integration, and tooling tests plus six desktop/mobile browser checks
-- PASS — deterministic portable checkpoint bundle validation and separate-directory restore
-- PASS — authenticated, validated recovery-receipt API and evidence-rail UI
-- PASS — fail-closed 1920x1080 recording preflight and checksum-bound manifest tooling
-- PASS — isolated wheel installation, CLI, packaged migration, supervisor, and worker smoke test
-- FAIL baseline — 13 protected importer checks before recovery
-- BLOCKED — Amazon Nova Micro account authorization and successful live Strands/Bedrock recovery
-- BLOCKED — AgentCore Runtime and Code Interpreter deployment proof
+- PASS — portable checkpoint validation and separate-directory restore
+- PASS — authenticated recovery-receipt API and evidence-rail UI
+- PASS — isolated wheel install, packaged migration, supervisor, and worker imports
+- FAIL baseline — 13 protected importer checks before the blocked cloud recovery
+- BLOCKED — successful Strands/Bedrock request; current successful provider requests: zero
+- NOT DEPLOYED — AgentCore Runtime and Code Interpreter; optional for the hackathon
 
-## Public assets
+## Upload assets
 
-- PASS — https://dovet.site works signed out at the previously deployed release
-- PREPARED — updated marketing build and responsive QA evidence; owner will deploy it
-- PASS — architecture diagram, Apache-2.0 license, security policy, and disclosures
-- BLOCKED — public GitHub repository and immutable release tag
-- BLOCKED — live hosted fixture run and labelled recorded replay
-- PASS — Higgsfield opening insert and all 12 narration takes pass measurable timing gates
-- PREPARED — 4:40 review-only picture edit, captions, and thumbnail carry explicit cloud-blocked labels
-- BLOCKED — evidence-bound finished video and public watch URL
+- READY WITH DISCLOSURE — `submission/video/dovet-submission-disclosed.mp4`, 4:40, H.264/AAC, 1920x1080
+- READY — `submission/video/thumbnail-disclosed.png`, 1280x720
+- READY — `submission/video/captions-disclosed.srt` and `.vtt`
+- READY — `submission/YOUTUBE_METADATA.json`
+- READY — `submission/DEVPOST.md`
+- READY — public-site source and https://dovet.site
+- READY — README, Apache-2.0 license, architecture diagram, security policy, and AI/dependency disclosure
+- READY AFTER LOCAL TAG — source archive and SHA-256 checksum
+- READY — three Builder.aws drafts; optional bonus posts
 
-## Submission
+## Owner-only completion
 
-- PREPARED — Devpost copy and field map
-- PREPARED — three distinct Builder.aws story drafts
-- PREPARED — YouTube title and metadata structure
-- PREPARED — ordered owner-only action sheet for model terms, publication review, and legal fields
-- PREPARED — owner delivery index separating current review files from the final upload set
-- BLOCKED — owner eligibility, authorship, contributor, and legal attestations
-- OWNER ACTION — upload the prepared source, site, video, stories, and Devpost entry
-- BLOCKED — Devpost receipt and signed-out verification of all submitted URLs
+- Publish the source repository and `v0.1.0` tag.
+- Upload the disclosed film to YouTube, set it to **Public**, add the thumbnail and English captions,
+  and verify playback signed out.
+- Replace the source and Devpost URL placeholders in the YouTube description.
+- Confirm eligibility, authorship, contributor, third-party rights, AWS Builder ID, and legal fields.
+- Submit Devpost and save the confirmation receipt.
+- Optionally publish up to three Builder.aws stories after inserting the public source URL.
+
+## Submission risk
+
+The rules require Strands Agents for real work. The repository contains a real Strands recovery
+implementation and tested deterministic boundaries, but AWS account authorization blocked every
+model invocation. Submit with that limitation exactly as written. This is weaker evidence than the
+intended live vertical slice, but it is an honest working-project submission and better than missing
+the deadline.

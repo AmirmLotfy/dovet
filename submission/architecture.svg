@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Dovet recovery architecture</title>
+  <desc id="desc">A local Codex bridge connects to a durable local daemon, checkpoint store, managed workers and verifier. A bounded Strands supervisor connects to Bedrock, with AgentCore deployment still blocked. The public site is isolated from local control.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#734436"/>
+    </marker>
+    <style>
+      .canvas { fill: #f2eee5; }
+      .zone { fill: #faf8f2; stroke: #b8afa1; stroke-width: 2; }
+      .box { fill: #fffdf8; stroke: #171512; stroke-width: 2; }
+      .oxide { fill: #734436; stroke: #734436; stroke-width: 2; }
+      .blocked { fill: #f5ebe7; stroke: #9d5b47; stroke-width: 2; stroke-dasharray: 10 8; }
+      .title { font: 700 42px -apple-system, BlinkMacSystemFont, sans-serif; fill: #171512; }
+      .zone-title { font: 700 18px -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: 2px; fill: #734436; }
+      .label { font: 650 20px -apple-system, BlinkMacSystemFont, sans-serif; fill: #171512; }
+      .inverse { font: 650 20px -apple-system, BlinkMacSystemFont, sans-serif; fill: #fffdf8; }
+      .detail { font: 400 15px -apple-system, BlinkMacSystemFont, sans-serif; fill: #625d55; }
+      .status { font: 650 13px -apple-system, BlinkMacSystemFont, sans-serif; fill: #9d5b47; letter-spacing: 1px; }
+      .line { stroke: #734436; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .dash { stroke-dasharray: 8 7;}
+    </style>
+  </defs>
+  <rect class="canvas" width="1600" height="900"/>
+  <text class="title" x="70" y="72">Dovet recovery architecture</text>
+  <text class="detail" x="70" y="104">Keep the work. Change the agent. • release evidence status shown in the diagram</text>
+
+  <rect class="zone" x="60" y="145" width="980" height="680" rx="16"/>
+  <text class="zone-title" x="90" y="185">LOCAL WORKSTATION</text>
+
+  <rect class="box" x="105" y="235" width="240" height="112" rx="10"/>
+  <text class="label" x="130" y="276">Codex plugin</text>
+  <text class="detail" x="130" y="305">Short-lived stdio MCP bridge</text>
+  <text class="detail" x="130" y="328">No durability ownership</text>
+
+  <rect class="oxide" x="440" y="218" width="310" height="146" rx="10"/>
+  <text class="inverse" x="470" y="264">Independent local daemon</text>
+  <text class="inverse" x="470" y="296">Policy • budget • approvals</text>
+  <text class="inverse" x="470" y="327">Lease and worker reconciliation</text>
+
+  <rect class="box" x="825" y="215" width="170" height="152" rx="10"/>
+  <text class="label" x="850" y="257">Local state</text>
+  <text class="detail" x="850" y="287">SQLite ledger</text>
+  <text class="detail" x="850" y="312">SHA-256 artifacts</text>
+  <text class="detail" x="850" y="337">Owner-only paths</text>
+
+  <rect class="box" x="105" y="485" width="260" height="130" rx="10"/>
+  <text class="label" x="130" y="526">Managed Codex worker</text>
+  <text class="detail" x="130" y="556">Owned run and process identity</text>
+  <text class="detail" x="130" y="581">Confirmed interruption: PASS</text>
+
+  <rect class="box" x="440" y="485" width="260" height="130" rx="10"/>
+  <text class="label" x="465" y="526">Checkpoint engine</text>
+  <text class="detail" x="465" y="556">Quiescent, scoped capture</text>
+  <text class="detail" x="465" y="581">Corrupt fallback: PASS</text>
+
+  <rect class="box" x="775" y="485" width="220" height="130" rx="10"/>
+  <text class="label" x="800" y="526">Verifier</text>
+  <text class="detail" x="800" y="556">Protected acceptance suite</text>
+  <text class="detail" x="800" y="581">Independent exit status</text>
+
+  <rect class="box" x="350" y="690" width="390" height="90" rx="10"/>
+  <text class="label" x="380" y="729">Local console • Work / Needs you / History</text>
+  <text class="detail" x="380" y="756">Loopback session, Origin and CSRF checks</text>
+
+  <path class="line" d="M345 291 H430"/>
+  <path class="line" d="M750 291 H815"/>
+  <path class="line" d="M530 364 V455 H235 V475"/>
+  <path class="line" d="M595 364 V475"/>
+  <path class="line" d="M660 364 V445 H885 V475"/>
+  <path class="line" d="M545 680 V625"/>
+
+  <rect class="zone" x="1090" y="145" width="450" height="450" rx="16"/>
+  <text class="zone-title" x="1120" y="185">AUTHORIZED AWS PATH</text>
+
+  <rect class="blocked" x="1140" y="230" width="350" height="110" rx="10"/>
+  <text class="label" x="1170" y="270">Strands recovery supervisor</text>
+  <text class="detail" x="1170" y="299">Typed recommendation implemented</text>
+  <text class="status" x="1170" y="323">LIVE INVOCATION BLOCKED</text>
+
+  <rect class="blocked" x="1140" y="390" width="350" height="110" rx="10"/>
+  <text class="label" x="1170" y="430">Bedrock • AgentCore</text>
+  <text class="detail" x="1170" y="459">Least-privilege infrastructure validated</text>
+  <text class="status" x="1170" y="483">DEPLOYMENT BLOCKED</text>
+
+  <path class="line dash" d="M1040 285 H1130"/>
+  <path class="line dash" d="M1315 340 V380"/>
+
+  <rect class="zone" x="1090" y="645" width="450" height="180" rx="16"/>
+  <text class="zone-title" x="1120" y="685">PUBLIC SURFACE</text>
+  <text class="label" x="1120" y="732">dovet.site • HTTPS verified</text>
+  <text class="detail" x="1120" y="762">Marketing, docs, pending recorded evidence</text>
+  <text class="detail" x="1120" y="790">No route to local-machine control</text>
+</svg>

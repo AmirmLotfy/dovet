@@ -185,7 +185,7 @@ def review_recordings() -> list[dict[str, object]]:
     if not path.is_file():
         return []
     data = json.loads(path.read_text(encoding="utf-8"))
-    return [
+    recordings = [
         {
             "path": data.get("path"),
             "sha256": data.get("sha256"),
@@ -193,6 +193,18 @@ def review_recordings() -> list[dict[str, object]]:
             "status": data.get("status"),
         }
     ]
+    disclosed = ROOT / "submission" / "video" / "submission-cut-manifest.json"
+    if disclosed.is_file():
+        submission_data = json.loads(disclosed.read_text(encoding="utf-8"))
+        recordings.append(
+            {
+                "path": submission_data.get("path"),
+                "sha256": submission_data.get("sha256"),
+                "duration_seconds": submission_data.get("duration_seconds"),
+                "status": submission_data.get("status"),
+            }
+        )
+    return recordings
 
 
 def recording_preflight_check() -> Check:
@@ -273,6 +285,18 @@ def main() -> int:
             "intended_domain": "https://dovet.site",
         },
         "recordings": review_recordings(),
+        "submission_readiness": "OWNER_READY_WITH_DISCLOSED_AWS_BLOCKER",
+        "tested_versions": {
+            "python": "3.12.12",
+            "node": "24.19.0",
+            "pnpm": "11.19.0",
+            "codex_cli": "0.154.0-alpha.6.2",
+            "strands_agents": "1.55.1",
+            "boto3": "1.43.93",
+            "agentcore": "1.23.0",
+            "playwright": "1.63.0",
+            "ffmpeg": "9.0.1",
+        },
         "test_reports": ["artifacts/test-report-core.xml"],
         "unresolved_items": [check.name for check in checks if check.status != "PASS"],
         "public_submission_links": {},

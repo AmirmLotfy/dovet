@@ -1,0 +1,15 @@
+{
+  "schema_version": "1",
+  "website": "https://dovet.site",
+  "source": "REPLACE_WITH_PUBLIC_REPOSITORY_URL",
+  "source_tag": "REPLACE_WITH_PUBLIC_TAG_URL",
+  "video": "REPLACE_WITH_PUBLIC_YOUTUBE_URL",
+  "devpost": "REPLACE_WITH_PUBLIC_DEVPOST_URL",
+  "builder_stories": [],
+  "verification": {
+    "website": "PASS_SIGNED_OUT",
+    "source": "OWNER_PENDING",
+    "video": "OWNER_PENDING",
+    "devpost": "OWNER_PENDING"
+  }
+}

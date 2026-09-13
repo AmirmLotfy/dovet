@@ -35,6 +35,19 @@ def title_for(scene_id: str) -> str:
     return scene_id.split("-", 1)[1].replace("-", " ").upper()
 
 
+def visual_label(scene: dict[str, Any]) -> str:
+    labels = {
+        "04-interruption": "Observed PASS — intentional managed Codex interruption",
+        "05-checkpoint": "Observed PASS — immutable checkpoint and byte-identical restore",
+        "06-strands": "Contract fixture — live Strands invocation blocked",
+        "07-policy": "Tested local policy — cloud dispatch not run",
+        "08-worker": "Restricted worker contract — live cloud execution blocked",
+        "09-verification": "Protected suite baseline FAIL — live recovery not run",
+        "12-close": "History UI contract — live cloud receipt unavailable",
+    }
+    return labels.get(str(scene["id"]), str(scene["visual"]))
+
+
 def make_card(source: Path, output: Path, scene: dict[str, Any]) -> None:
     dependency = str(scene["evidence_dependency"])
     label = (
@@ -75,7 +88,7 @@ def make_card(source: Path, output: Path, scene: dict[str, Any]) -> None:
             "#554d43",
             "-annotate",
             "+88+158",
-            str(scene["visual"]),
+            visual_label(scene),
             "-fill",
             "#171512e8",
             "-draw",

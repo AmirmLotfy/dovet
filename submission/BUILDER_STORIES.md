@@ -1,8 +1,7 @@
 # Builder.aws story drafts
 
-These drafts are complete enough for editorial review. Publication remains blocked until each story
-can link the public tagged source. Story two additionally requires a successful live Strands and
-Bedrock trace.
+These drafts are ready for editorial review and publication after each story links the public tagged
+source. Story two preserves the AWS blocker instead of presenting the missing invocation as a pass.
 
 ## Agents for Humans: What Survives When a Coding Agent Stops?
 
@@ -59,9 +58,10 @@ completed the console's first-use action, but the listed Nova profile rejected b
 streaming and direct boto3 invocation with “Operation not allowed,” so Dovet records zero successful
 requests. Checks across four documented Nova regions and every discovered callable Nova text model
 found no authorized fallback. The account root reproduces the denial, and AWS Support has the exact
-request and zero-quota evidence. This story must not be published as a working Strands recovery
-until a bounded request succeeds and the protected fixture passes. A reviewed least-privilege role
-is required before hosted deployment.
+request and zero-quota evidence. The submitted build therefore describes the Strands recovery as
+implemented but not live-proven. A bounded request and the protected fixture must pass before Dovet
+advertises the provider adapter as working. A reviewed least-privilege role is required before
+hosted deployment.
 
 That blocked result is part of the architecture, not something to polish away. Agentic judgment and
 reliable control complement each other only when the integration itself is proven.
@@ -88,8 +88,8 @@ trusted argv templates. Policy tests reject a changed snapshot, replayed state, 
 writer.
 
 Once the authorized Strands recovery runs, the same protected suite will decide the outcome. If any
-case remains red, the task remains open. The final video and public evidence rows are also blocked
-on that report.
+case remains red, the task remains open. The disclosed submission film keeps that cloud-dependent
+sequence visibly blocked.
 
 The result is a more precise promise. Dovet cannot make generated code universally safe, and it does
 not claim that it can. It can show exactly which version was checked, what the independent process
