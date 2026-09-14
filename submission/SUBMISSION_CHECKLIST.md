@@ -15,7 +15,8 @@ Status: **OWNER READY WITH DISCLOSED AWS BLOCKER**
 ## Owner upload set
 
 - READY — `submission/video/dovet-submission-final-disclosed.mp4`, 2:57.255, H.264/AAC, 1920x1080.
-- READY — `submission/video/thumbnail-final.png`, 1280x720.
+- READY — `submission/video/thumbnail-youtube-4k.png`, 3840x2160, plus 1280x720 fallback.
+- READY — `submission/gallery/dovet-devpost-cover-3x2.png`, 1800x1200, under 5 MB.
 - READY — `submission/video/captions-final.srt` and `.vtt`.
 - READY — `submission/YOUTUBE_METADATA.json`.
 - READY — `submission/DEVPOST.md` and `submission/TESTING_INSTRUCTIONS.md`.

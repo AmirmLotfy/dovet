@@ -7,6 +7,7 @@ import json
 import shutil
 import subprocess
 from pathlib import Path
+from typing import cast
 
 ROOT = Path(__file__).resolve().parents[1]
 ARTIFACTS = ROOT / "artifacts"
@@ -15,13 +16,17 @@ MANIFEST = VIDEO / "final-film-manifest.json"
 
 DELIVERY_FILES = (
     "submission/video/dovet-submission-final-disclosed.mp4",
-    "submission/video/thumbnail-final.png",
+    "submission/video/thumbnail-youtube-4k.png",
+    "submission/video/thumbnail-youtube-1280.png",
+    "submission/gallery/dovet-devpost-cover-3x2.png",
     "submission/video/captions-final.srt",
     "submission/video/captions-final.vtt",
     "submission/video/final-film-manifest.json",
     "submission/video/DISCLOSED_QA_REPORT.md",
     "submission/YOUTUBE_METADATA.json",
+    "submission/DEVPOST_FORM_COPY.md",
     "submission/DEVPOST.md",
+    "submission/BUILDER_ARTICLE_FINAL.md",
     "submission/TESTING_INSTRUCTIONS.md",
     "submission/SUBMIT_NOW.md",
     "submission/OWNER_CONFIRMATIONS.md",
@@ -55,7 +60,7 @@ def probe(path: Path) -> dict[str, object]:
     )
     if result.returncode != 0:
         raise RuntimeError("ffprobe failed for final submission cut")
-    return json.loads(result.stdout)
+    return cast(dict[str, object], json.loads(result.stdout))
 
 
 def main() -> int:

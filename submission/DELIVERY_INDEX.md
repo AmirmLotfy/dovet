@@ -5,7 +5,7 @@ Codex performs no upload, submission, public repository creation, DNS change, or
 | Owner task | File | Status |
 |---|---|---|
 | Watch and upload the 2:57 film | `submission/video/dovet-submission-final-disclosed.mp4` | READY WITH AWS DISCLOSURE |
-| Upload thumbnail | `submission/video/thumbnail-final.png` | READY |
+| Upload thumbnail | `submission/video/thumbnail-youtube-4k.png` | READY |
 | Upload English captions | `submission/video/captions-final.srt` | READY |
 | Copy YouTube title, description, chapters, and tags | `submission/YOUTUBE_METADATA.json` | READY; replace URL placeholders |
 | Copy Devpost narrative | `submission/DEVPOST.md` | READY |

@@ -8,7 +8,7 @@ Verify signed out that the repository opens and shows `README.md`, `LICENSE`, `d
 
 ## 2. Upload the film
 
-Upload `submission/video/dovet-submission-final-disclosed.mp4` in YouTube Studio. Use `submission/video/thumbnail-final.png`, add `submission/video/captions-final.srt` as English (United States) captions, and copy the title, description, chapters, and tags from `submission/YOUTUBE_METADATA.json`.
+Upload `submission/video/dovet-submission-final-disclosed.mp4` in YouTube Studio. Use `submission/video/thumbnail-youtube-4k.png`, add `submission/video/captions-final.srt` as English (United States) captions, and copy the title, description, chapters, and tags from `submission/YOUTUBE_METADATA.json`.
 
 Set visibility to **Public**. Open the watch URL signed out and verify video, audio, thumbnail, captions, and the 2:57 duration.
 

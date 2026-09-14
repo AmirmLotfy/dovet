@@ -12,7 +12,7 @@ BLOCKED because AWS still denies inference and exposes zero, non-adjustable on-d
 
 - **PASS:** four Playwright recordings capture the actual local console and site at explicit 1920x1080 without network route mocks.
 - **PASS:** the final 2:57.255 edit uses the user-approved Higgsfield narration, an original OpenAI-generated editorial opener/close, and real product footage throughout its evidence body.
-- **PASS:** H.264 1920x1080 video, 48 kHz stereo AAC, end-to-end decode, 1280x720 thumbnail, SRT/VTT sidecars, scene source hashes, and AWS-blocker labels are verified.
+- **PASS:** H.264 1920x1080 video, 48 kHz stereo AAC, end-to-end decode, generated 3840x2160 YouTube thumbnail with a 1280x720 fallback, generated 1800x1200 Devpost cover below 5 MB, SRT/VTT sidecars, scene source hashes, and AWS-blocker labels are verified.
 - **PASS:** the rejected Higgsfield motion opener and rejected 4:40 edit are not used in the final film.
 - **BLOCKED:** the film makes no live Strands/Bedrock or AgentCore claim; AWS authorization still records zero successful provider requests.
 
@@ -68,6 +68,11 @@ Changed files include `video/render_story.py`, `apps/console/tests/record-local-
 - **PASS:** owner-ready Devpost copy, YouTube metadata, captions, thumbnail, judge testing
   instructions, disclosure, URL ledger, legal confirmation sheet, and exact submission order now
   form a complete manual-upload package.
+- **PASS:** the final raster submission artwork was generated with OpenAI image generation using
+  the Dovet editorial illustration and actual console evidence as references. The Devpost cover is
+  1800x1200 PNG at 2.97 MB; the YouTube master is 3840x2160 PNG at 8.75 MB with a 1280x720 fallback.
+- **PASS:** the exact Devpost form copy and one final Builder Center article are included in the
+  owner package. Both preserve the zero-successful-request Bedrock disclosure.
 - **BLOCKED:** the playground, Strands `ConverseStream`, and a direct one-token `Converse` call all return `ValidationException: Operation not allowed`. Nova Micro authorization remains `NOT_AUTHORIZED`; its on-demand requests-per-minute and tokens-per-minute quotas are both `0.0` and non-adjustable. Agreement, entitlement, region, model discovery, and the active inference profile all pass. The account is outside AWS Organizations and the account root reproduces the error, isolating this to AWS account verification/provisioning. An existing verification case is still unassigned after 10 days. No working model invocation is claimed.
 
 ## Current commands
@@ -92,10 +97,12 @@ curl -I https://dovet.site
 
 ## Next actions
 
-1. Tag the verified source as `v0.1.1`, generate its archive, checksum, and owner upload ZIP.
+1. Tag the final submission-artwork and copy update as `v0.1.2`, generate its archive, checksum,
+   and owner upload ZIP.
 2. Owner publishes the source and disclosed video, completes legal fields, submits Devpost, and
    saves the receipt before the deadline.
-3. Continue monitoring the AWS case. If authorization appears before upload, run the bounded live
+3. Publish the prepared Builder Center article after the authenticated Builder ID sign-in gate.
+4. Continue monitoring the AWS case. If authorization appears before upload, run the bounded live
    vertical and use the evidence-gated film only if every release check passes.
 
 ## Working commit evidence

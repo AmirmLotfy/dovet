@@ -3,7 +3,9 @@
 The owner upload set is:
 
 - `dovet-submission-final-disclosed.mp4` — 2:57.255, 1920x1080 H.264/AAC
-- `thumbnail-final.png` — 1280x720
+- `thumbnail-youtube-4k.png` — 3840x2160 YouTube master
+- `thumbnail-youtube-1280.png` — 1280x720 fallback
+- `../gallery/dovet-devpost-cover-3x2.png` — 1800x1200 Devpost cover
 - `captions-final.srt` and `captions-final.vtt` — English sidecars
 - `final-film-manifest.json` — source, audio, duration, and checksum evidence
 
