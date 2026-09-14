@@ -1,6 +1,6 @@
 # Dovet submission checklist
 
-Status: **DEVPOST DRAFT COMPLETE — OWNER LEGAL ATTESTATION REQUIRED**
+Status: **SUBMITTED — PUBLIC URL VERIFIED**
 
 ## Verified build
 
@@ -27,12 +27,12 @@ Status: **DEVPOST DRAFT COMPLETE — OWNER LEGAL ATTESTATION REQUIRED**
 - PASS — timed English captions and a custom thumbnail are present in YouTube Studio.
 - PASS — Builder Center article published at `https://builder.aws.com/content/3JIVnXnvc2pqUUKrSMCzqPep6k7/agents-for-humans-what-survives-when-a-coding-agent-stops`.
 - PASS — Devpost draft is 4/5 steps complete with 15 captioned gallery images, the real architecture file, Professional Agents track, repository, film, live judge guide, Builder ID, Builder story, and testing instructions.
+- PASS — Devpost displayed `Project submitted!`; `https://devpost.com/software/dovet` returns HTTP 200 and shows the submitted project.
 
-## Owner-only completion
+## Judging-period preservation
 
-- Review the Devpost draft and complete eligibility, authorship, contributor, rights, and legal attestations personally.
-- Submit Devpost and save the confirmation receipt and public URL.
-- Add the final public Devpost URL to the YouTube description and release URL ledger.
+- Keep the public project, source, video, Builder story, and evidence URLs available.
+- Do not edit the submission, repository, or video after the deadline.
 
 ## Required limitation
 

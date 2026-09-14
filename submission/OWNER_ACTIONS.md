@@ -1,14 +1,15 @@
 # Dovet owner actions
 
-## Submit before the deadline
+## Submitted
 
-1. Review the completed Devpost draft at `https://devpost.com/submit-to/30317-agents-for-humans-hackathon/manage/submissions/1179989-dovet/finalization`.
-2. Personally read and accept the Official Rules and Devpost Terms only if every eligibility, authorship, contributor, and rights statement is true.
-3. Submit the project before the deadline.
-4. Save the confirmation receipt and public Devpost URL.
-5. Add the public Devpost URL to the YouTube description and `submission/links.json`.
+The Dovet project was submitted and Devpost displayed `Project submitted!`.
 
-The public repository, `v0.1.6` release, three-minute YouTube film, timed English captions, custom thumbnail, Builder Center article, architecture file, AWS Builder ID, testing instructions, and 15-image Devpost gallery are already entered and verified.
+- Public project: https://devpost.com/software/dovet
+- Public film: https://youtu.be/t5Zaa6VoHc0
+- Builder story: https://builder.aws.com/content/3JIVnXnvc2pqUUKrSMCzqPep6k7/agents-for-humans-what-survives-when-a-coding-agent-stops
+- Source: https://github.com/AmirmLotfy/dovet
+
+The YouTube description and release URL ledger include the public Devpost URL. Preserve the submitted project, repository, film, and public evidence surfaces through the judging period.
 
 ## Preserve the disclosure
 

@@ -4,12 +4,11 @@ Last updated: 2026-09-14
 
 ## Active gate
 
-**Submission freeze — DEVPOST DRAFT COMPLETE:** the public source, `v0.1.6` release, Vercel site,
-2:57 film, captions, thumbnail, Builder Center article, architecture file, and 15-image Devpost
-gallery are live or entered. The Devpost draft is 4/5 complete. Only the owner's Rules/Terms and
-eligibility attestation plus final submission remain. The evidence-gated live Strands/Bedrock
-release stays BLOCKED because AWS still denies inference and exposes zero, non-adjustable on-demand
-quotas.
+**Submission freeze — SUBMITTED:** Devpost displayed `Project submitted!`, and the public Dovet
+project returns HTTP 200 at `https://devpost.com/software/dovet`. The public source, `v0.1.6`
+release, Vercel site, 2:57 film, captions, thumbnail, Builder Center article, architecture file, and
+15-image gallery are live. The evidence-gated live Strands/Bedrock release stays BLOCKED because
+AWS still denies inference and exposes zero, non-adjustable on-demand quotas.
 
 ## Submission publication gate
 
@@ -17,10 +16,10 @@ quotas.
 - **PASS:** public YouTube film `https://youtu.be/t5Zaa6VoHc0` is 2:58, Public, HD processed, and has a custom thumbnail plus timed English captions. Anonymous watch-page and oEmbed requests return 200.
 - **PASS:** YouTube description links the source, product, and published Builder Center story without placeholders.
 - **PASS:** Builder Center article `Agents for Humans: What Survives When a Coding Agent Stops?` is published on the Amir Lotfy profile and publicly reachable.
-- **PASS:** the Devpost draft is 4/5 complete with Professional Agents, public source and film, `dovet.site/judges`, `amirmolotfy@gmail.com`, the Builder story, real architecture file, testing instructions, and 15 captioned images.
+- **PASS:** the Devpost project is submitted to Professional Agents with the public source and film, `dovet.site/judges`, verified AWS Builder ID, Builder story, real architecture file, testing instructions, and 15 captioned images.
 - **PASS:** `pnpm submission:capture-gallery` generated 13 reproducible screenshots from the authenticated loopback console and public evidence surfaces; Playwright passed and `submission/screenshots/gallery/manifest.json` records dimensions, SHA-256 hashes, and provenance.
 - **PASS:** `dovet.site/judges` and `/changelog` now identify the `v0.1.6` production submission release; the Vercel production routes return 200.
-- **OWNER ACTION:** personally review the Official Rules and Devpost Terms, make the eligibility/rights attestation, submit, and preserve the public URL/receipt.
+- **PASS:** Devpost displayed `Project submitted!`; the public project URL returns HTTP 200 and the YouTube description links back to it.
 
 ## Final three-minute film gate
 
@@ -113,9 +112,8 @@ curl -I https://dovet.site
 
 ## Next actions
 
-1. Owner reviews and completes the Devpost legal/eligibility attestation, submits, and saves the receipt/public URL.
-2. Add the public Devpost URL to the YouTube description and release URL ledger.
-3. Continue monitoring the AWS case. If authorization appears before the deadline, run the bounded live
+1. Preserve the submitted Devpost project, public repository, film, Builder story, and evidence site through the judging period.
+2. Continue monitoring the AWS case. If authorization appears before the deadline, run the bounded live
    vertical and use the evidence-gated film only if every release check passes.
 
 ## Working commit evidence

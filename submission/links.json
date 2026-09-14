@@ -4,7 +4,7 @@
   "source": "https://github.com/AmirmLotfy/dovet",
   "source_tag": "https://github.com/AmirmLotfy/dovet/releases/tag/v0.1.6",
   "video": "https://youtu.be/t5Zaa6VoHc0",
-  "devpost": null,
+  "devpost": "https://devpost.com/software/dovet",
   "devpost_draft": "https://devpost.com/submit-to/30317-agents-for-humans-hackathon/manage/submissions/1179989-dovet/finalization",
   "builder_stories": [
     "https://builder.aws.com/content/3JIVnXnvc2pqUUKrSMCzqPep6k7/agents-for-humans-what-survives-when-a-coding-agent-stops"
@@ -14,6 +14,6 @@
     "source": "PASS_SIGNED_OUT",
     "video": "PASS_PUBLIC_ANONYMOUS_OEMBED",
     "builder_story": "PASS_PUBLIC",
-    "devpost": "DRAFT_4_OF_5_OWNER_LEGAL_ATTESTATION_PENDING"
+    "devpost": "PASS_SUBMITTED_PUBLIC"
   }
 }

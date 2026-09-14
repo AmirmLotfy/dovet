@@ -35,4 +35,4 @@ Statuses describe evidence from this checkout only.
 | `dovet.site` ownership and routing | PASS | Public DNS delegates to Vercel; apex and `www` were verified signed out |
 | YouTube delivery path | PASS | Public `t5Zaa6VoHc0` contains the 2:58 H.264/AAC film, custom thumbnail, timed English captions, corrected source/Builder links, and anonymous HTTP/oEmbed verification |
 | Builder Center article | PASS | Published on Amir Lotfy's profile; public article URL returns HTTP 200 |
-| Devpost account readiness | PASS — DRAFT | Authenticated Dovet submission is 4/5 complete with 15 captioned images and all non-legal fields; owner must personally accept rules and submit |
+| Devpost submission | PASS | Devpost displayed `Project submitted!`; public project `https://devpost.com/software/dovet` returns HTTP 200 with the film, 15-image gallery, story, track, source, Builder ID, architecture, and testing details |
