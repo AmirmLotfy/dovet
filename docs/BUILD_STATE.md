@@ -97,7 +97,7 @@ curl -I https://dovet.site
 
 ## Next actions
 
-1. Tag the final submission-artwork and copy update as `v0.1.2`, generate its archive, checksum,
+1. Tag the final submission-artwork and copy update as `v0.1.3`, generate its archive, checksum,
    and owner upload ZIP.
 2. Owner publishes the source and disclosed video, completes legal fields, submits Devpost, and
    saves the receipt before the deadline.

@@ -7,7 +7,7 @@ Complete these fields personally before submitting. Do not commit private identi
 - [ ] I listed every contributor required by the submission form.
 - [ ] I reviewed the Apache-2.0 license and third-party dependency rights.
 - [ ] I reviewed the Codex, OpenAI image generation, Higgsfield, Emergit, and open-source disclosures.
-- [ ] I confirmed the source repository and `v0.1.1` tag are public.
+- [ ] I confirmed the source repository and `v0.1.3` tag are public.
 - [ ] I watched the full 2:57 film and accepted its narration, real product footage, and original illustration.
 - [ ] I confirmed the YouTube video is Public and works signed out.
 - [ ] I entered my own AWS Builder ID.

@@ -3,7 +3,7 @@
 ## Submit before the deadline
 
 1. Watch and listen to `submission/video/dovet-submission-final-disclosed.mp4` once at normal speed.
-2. Publish the source repository with the local `v0.1.1` tag and Apache-2.0 license.
+2. Publish the source repository with the local `v0.1.3` tag and Apache-2.0 license.
 3. Upload the film through YouTube Studio. Use `thumbnail-youtube-4k.png` and `captions-final.srt`, set it to **Public**, and verify it in a signed-out browser.
 4. Replace the source and Devpost placeholders in `submission/YOUTUBE_METADATA.json`.
 5. Complete the Devpost form using `submission/DEVPOST.md` and `submission/TESTING_INSTRUCTIONS.md`.

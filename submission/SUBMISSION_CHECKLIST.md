@@ -21,11 +21,11 @@ Status: **OWNER READY WITH DISCLOSED AWS BLOCKER**
 - READY — `submission/YOUTUBE_METADATA.json`.
 - READY — `submission/DEVPOST.md` and `submission/TESTING_INSTRUCTIONS.md`.
 - READY — architecture diagram, Apache-2.0 license, AI/dependency disclosure, and three Builder.aws drafts.
-- READY AFTER TAG — source archive, checksum, and owner upload ZIP.
+- READY — source archive, checksum, and owner upload ZIP for the final tagged commit.
 
 ## Owner-only completion
 
-- Publish the source repository and immutable `v0.1.1` tag.
+- Publish the source repository and immutable `v0.1.3` tag.
 - Upload the video, thumbnail, and captions to YouTube; set visibility to **Public** and verify signed out.
 - Replace the public source and Devpost URL placeholders.
 - Complete eligibility, authorship, contributor, rights, AWS Builder ID, and legal fields personally.
