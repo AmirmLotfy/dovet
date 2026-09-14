@@ -25,7 +25,7 @@ def main() -> int:
     commit = command("git", "rev-parse", "HEAD")
     if command("git", "status", "--porcelain", "--untracked-files=no"):
         raise RuntimeError("release packaging requires a clean committed tracked tree")
-    tag = os.environ.get("DOVET_RELEASE_TAG", "v0.1.3")
+    tag = os.environ.get("DOVET_RELEASE_TAG", "v0.1.4")
     if not TAG_PATTERN.fullmatch(tag):
         raise RuntimeError("DOVET_RELEASE_TAG must be a semantic version tag")
     tags = command("git", "tag", "--points-at", "HEAD").splitlines()

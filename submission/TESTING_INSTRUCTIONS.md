@@ -17,7 +17,7 @@ AWS credentials are not required for the local test suite.
 ## Install and test
 
 ```sh
-git clone REPLACE_WITH_PUBLIC_REPOSITORY_URL
+git clone https://github.com/AmirmLotfy/dovet.git
 cd dovet
 pnpm setup
 pnpm doctor

@@ -82,7 +82,7 @@ Strands Agents, Amazon Bedrock, Python, FastAPI, Pydantic, SQLite, TypeScript, R
 
 - Product and documentation: https://dovet.site
 - Judge evidence page: https://dovet.site/judges
-- Public source: REPLACE_WITH_PUBLIC_GITHUB_URL
+- Public source: https://github.com/AmirmLotfy/dovet
 - Public film: REPLACE_WITH_PUBLIC_YOUTUBE_URL
 
 ## Image gallery
@@ -98,7 +98,7 @@ Professional Agents
 
 ## Public repository
 
-REPLACE_WITH_PUBLIC_GITHUB_URL
+https://github.com/AmirmLotfy/dovet
 
 ## Architecture diagram
 
@@ -119,7 +119,7 @@ Dovet runs locally on macOS. The public site cannot control the judge's machine.
 Prerequisites: Python 3.12, uv, Node.js 24, pnpm 11, Git, and FFmpeg.
 
 ```sh
-git clone REPLACE_WITH_PUBLIC_GITHUB_URL
+git clone https://github.com/AmirmLotfy/dovet.git
 cd dovet
 pnpm setup
 pnpm doctor

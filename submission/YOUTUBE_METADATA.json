@@ -12,7 +12,7 @@
     "AWS account provisioning blocked every Bedrock text-model invocation before submission. The Strands recovery worker is implemented, but this build records zero successful provider requests and does not claim a live Bedrock recovery or AgentCore deployment. Cloud-dependent moments are labelled in the film.",
     "",
     "Project: https://dovet.site",
-    "Source: REPLACE_WITH_PUBLIC_REPOSITORY_URL",
+    "Source: https://github.com/AmirmLotfy/dovet",
     "Hackathon: REPLACE_WITH_PUBLIC_DEVPOST_URL",
     "",
     "Built for Agents for Humans \u2014 Professional Agents.",

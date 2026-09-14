@@ -2,9 +2,9 @@
 
 ## 1. Publish source
 
-Create a public GitHub repository named `dovet` and publish this branch and the immutable `v0.1.3` tag. Keep the Apache-2.0 license. Add the generated source archive and checksum to the GitHub release if convenient.
+The public repository is `https://github.com/AmirmLotfy/dovet`. Use the immutable `v0.1.4` release and keep the Apache-2.0 license visible.
 
-Verify signed out that the repository opens and shows `README.md`, `LICENSE`, `docs/architecture.svg`, setup commands, and tag `v0.1.3` at the submitted commit.
+Verify signed out that the repository opens and shows `README.md`, `LICENSE`, `docs/architecture.svg`, setup commands, and tag `v0.1.4` at the submitted commit.
 
 ## 2. Upload the film
 

@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "website": "https://dovet.site",
-  "source": "REPLACE_WITH_PUBLIC_REPOSITORY_URL",
-  "source_tag": "REPLACE_WITH_PUBLIC_TAG_URL",
+  "source": "https://github.com/AmirmLotfy/dovet",
+  "source_tag": "https://github.com/AmirmLotfy/dovet/releases/tag/v0.1.4",
   "video": "REPLACE_WITH_PUBLIC_YOUTUBE_URL",
   "devpost": "REPLACE_WITH_PUBLIC_DEVPOST_URL",
   "builder_stories": [],
   "verification": {
     "website": "PASS_SIGNED_OUT",
-    "source": "OWNER_PENDING",
+    "source": "PASS_SIGNED_OUT",
     "video": "OWNER_PENDING",
     "devpost": "OWNER_PENDING"
   }

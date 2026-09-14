@@ -73,6 +73,8 @@ Changed files include `video/render_story.py`, `apps/console/tests/record-local-
   1800x1200 PNG at 2.97 MB; the YouTube master is 3840x2160 PNG at 8.75 MB with a 1280x720 fallback.
 - **PASS:** the exact Devpost form copy and one final Builder Center article are included in the
   owner package. Both preserve the zero-successful-request Bedrock disclosure.
+- **PASS:** the source repository is public at `https://github.com/AmirmLotfy/dovet`; anonymous
+  HTTP verification returned 200. The final public release target is `v0.1.4`.
 - **BLOCKED:** the playground, Strands `ConverseStream`, and a direct one-token `Converse` call all return `ValidationException: Operation not allowed`. Nova Micro authorization remains `NOT_AUTHORIZED`; its on-demand requests-per-minute and tokens-per-minute quotas are both `0.0` and non-adjustable. Agreement, entitlement, region, model discovery, and the active inference profile all pass. The account is outside AWS Organizations and the account root reproduces the error, isolating this to AWS account verification/provisioning. An existing verification case is still unassigned after 10 days. No working model invocation is claimed.
 
 ## Current commands
@@ -97,9 +99,8 @@ curl -I https://dovet.site
 
 ## Next actions
 
-1. Tag the final submission-artwork and copy update as `v0.1.3`, generate its archive, checksum,
-   and owner upload ZIP.
-2. Owner publishes the source and disclosed video, completes legal fields, submits Devpost, and
+1. Tag the public-link update as `v0.1.4`, generate its archive, checksum, and owner upload ZIP.
+2. Owner publishes the disclosed video, completes legal fields, submits Devpost, and
    saves the receipt before the deadline.
 3. Publish the prepared Builder Center article after the authenticated Builder ID sign-in gate.
 4. Continue monitoring the AWS case. If authorization appears before upload, run the bounded live
