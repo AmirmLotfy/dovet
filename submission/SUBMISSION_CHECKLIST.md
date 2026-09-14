@@ -26,7 +26,7 @@ Status: **SUBMITTED — PUBLIC URL VERIFIED**
 - PASS — public YouTube film `https://youtu.be/t5Zaa6VoHc0`; anonymous oEmbed and watch-page requests return 200.
 - PASS — timed English captions and a custom thumbnail are present in YouTube Studio.
 - PASS — Builder Center article published at `https://builder.aws.com/content/3JIVnXnvc2pqUUKrSMCzqPep6k7/agents-for-humans-what-survives-when-a-coding-agent-stops`.
-- PASS — Devpost draft is 4/5 steps complete with 15 captioned gallery images, the real architecture file, Professional Agents track, repository, film, live judge guide, Builder ID, Builder story, and testing instructions.
+- PASS — Devpost contains 15 captioned gallery images, the real architecture file, Professional Agents track, repository, film, live judge guide, Builder ID, Builder story, and testing instructions.
 - PASS — Devpost displayed `Project submitted!`; `https://devpost.com/software/dovet` returns HTTP 200 and shows the submitted project.
 
 ## Judging-period preservation

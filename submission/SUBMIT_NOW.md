@@ -1,37 +1,23 @@
-# Submit Dovet now
+# Dovet submission receipt
 
-## 1. Publish source
+Status: **SUBMITTED**
 
-The public repository is `https://github.com/AmirmLotfy/dovet`. Use the immutable `v0.1.6` release and keep the Apache-2.0 license visible.
+Devpost displayed `Project submitted!` for Dovet in the Agents for Humans Hackathon. The public project and supporting artifacts were verified after submission.
 
-Verify signed out that the repository opens and shows `README.md`, `LICENSE`, `docs/architecture.svg`, setup commands, and tag `v0.1.6` at the submitted commit.
+## Public entry
 
-## 2. Upload the film
+- Devpost: https://devpost.com/software/dovet
+- Product and documentation: https://dovet.site
+- Judge evidence: https://dovet.site/judges
+- Source: https://github.com/AmirmLotfy/dovet
+- Release: https://github.com/AmirmLotfy/dovet/releases/tag/v0.1.6
+- Film: https://youtu.be/t5Zaa6VoHc0
+- Builder story: https://builder.aws.com/content/3JIVnXnvc2pqUUKrSMCzqPep6k7/agents-for-humans-what-survives-when-a-coding-agent-stops
 
-Upload `submission/video/dovet-submission-final-disclosed.mp4` in YouTube Studio. Use `submission/video/thumbnail-youtube-4k.png`, add `submission/video/captions-final.srt` as English (United States) captions, and copy the title, description, chapters, and tags from `submission/YOUTUBE_METADATA.json`.
+## Judging-period freeze
 
-Set visibility to **Public**. Open the watch URL signed out and verify video, audio, thumbnail, captions, and the 2:57 duration.
+Keep the project, repository, film, article, website, and evidence routes publicly available. Do not edit judged materials after the deadline.
 
-## 3. Complete Devpost
-
-Use these fields:
-
-- Project: **Dovet**
-- Tagline: **Keep the work. Change the agent.**
-- Track: **Agents for Humans — Professional Agents**
-- Website: **https://dovet.site**
-- Source: public GitHub URL
-- Video: public YouTube watch URL
-- Description: `submission/DEVPOST.md`
-- Testing instructions: `submission/TESTING_INSTRUCTIONS.md`
-- Architecture: `submission/architecture.png` or `submission/architecture.svg`
-
-Enter your AWS Builder ID. Personally review and accept only eligibility, ownership, contributor, third-party-rights, and legal statements that are true for you. Save the confirmation receipt and final public entry URL.
-
-## 4. Preserve the AWS disclosure
+## Required AWS disclosure
 
 > AWS account provisioning blocked all Bedrock text-model invocations before submission. The Strands recovery integration is implemented, but this build records zero successful provider requests and does not claim a live Bedrock recovery or AgentCore deployment.
-
-## 5. Optional build stories
-
-Publish up to three drafts from `submission/BUILDER_STORIES.md` only after inserting the public tagged source. Add those URLs to Devpost if the form permits.

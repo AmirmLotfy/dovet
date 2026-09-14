@@ -58,7 +58,7 @@ Changed files include `video/render_story.py`, `apps/console/tests/record-local-
 - **PASS:** the built `dovet-0.1.0` wheel installs in a fresh Python 3.12 environment; its CLI, packaged SQLite migration, supervisor import, and restricted worker import pass outside the checkout.
 - **PASS:** the live vertical runner stops before provider invocation when Nova is unauthorized, enforces a current official price card and run cap, keeps capability tokens out of model-visible schemas, and binds protected verification to the recovered candidate root.
 - **PASS:** full Apache-2.0 text, security policy, AI/dependency disclosure, architecture diagram and fail-closed release/video scripts.
-- **PASS:** Devpost and Builder.aws drafts now match the 54-test report, isolated-install evidence,
+- **PASS:** the submitted Devpost story and published Builder Center article match the 54-test report, isolated-install evidence,
   validated receipt UI, recording gate, and exact Nova authorization blocker; owner-only actions are
   ordered in `submission/OWNER_ACTIONS.md`.
 - **PASS:** the generated deadline clock confirms the build window and records the eight-hour media
@@ -71,7 +71,7 @@ Changed files include `video/render_story.py`, `apps/console/tests/record-local-
 - **PASS:** the owner-approved diagnostic follow-up was submitted to the existing AWS account-verification case through the authenticated in-app browser. The newest correspondence visibly contains the Nova authorization, active profile, zero non-adjustable quota, organization, root reproduction, request ID, bounded-use, and deadline evidence. No attachment, credential, or personal identifier was sent.
 - **PASS:** a read-only fallback audit checked Nova Micro in `us-east-1`, `us-west-2`, `eu-west-1`, and `ap-southeast-2`; every route remained `NOT_AUTHORIZED` with zero request/token quota. Every discovered callable Amazon Nova text model in `us-east-1` was also unauthorized. A region or Nova-model switch cannot unblock the live proof.
 - **PASS:** a broader read-only sweep checked all 89 discovered Bedrock text models in `us-east-1`; zero were authorized across 17 providers. There is no already-authorized Bedrock fallback on this account.
-- **PASS:** all 12 Higgsfield Dylan narration scenes pass measured duration, rate, and pause gates. One short scene was rewritten once. The accepted assets, job IDs, hashes, rejection, and estimated 11.7-credit batch cost are recorded; owner normal-speed listening remains pending.
+- **PASS:** all 12 Higgsfield Dylan narration scenes pass measured duration, rate, and pause gates. One short scene was rewritten once. The accepted assets, job IDs, hashes, rejection, estimated 11.7-credit batch cost, and owner's positive voice review are recorded.
 - **SUPERSEDED:** the earlier 4:40 review renderer and disclosed cut remain as local provenance only. The owner rejected that edit, and neither file is in the final upload package.
 - **PASS:** `release:finish-after-aws` checks authorization before cost, then runs the real vertical,
   evidence recording, locked narration render, full checks, and release report under an explicit

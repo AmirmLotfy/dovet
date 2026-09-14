@@ -8,8 +8,8 @@
   "voice_type": "preset",
   "model": "Text to Speech V2 / ElevenLabs",
   "voice_direction": "neutral American product narrator, clear dry timbre, calm authority, conversational pace, no trailer voice, starts immediately",
-  "voice_review": "PENDING_OWNER_NORMAL_SPEED_REVIEW",
-  "generation_status": "TIMING_PASS_OWNER_LISTENING_PENDING",
+  "voice_review": "PASS_OWNER_APPROVED",
+  "generation_status": "TIMING_PASS_OWNER_APPROVED_PUBLISHED",
   "narration_target_seconds": 210,
   "edit_target_seconds": 280,
   "scenes": [
