@@ -1,0 +1,134 @@
+{
+  "schema_version": "1",
+  "status": "READY_WITH_DISCLOSED_AWS_BLOCKER",
+  "path": "submission/video/dovet-submission-final-disclosed.mp4",
+  "sha256": "b8d4bb655c39713f0a166d3cf94a8eecff094a878d29deb4c0038b68fcc25de2",
+  "duration_seconds": 177.255333,
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "voice": "Higgsfield Dylan preset; 12 previously timing-gated scenes",
+  "generated_visual": {
+    "provider": "OpenAI built-in image generation",
+    "purpose": "opening and closing editorial illustration only",
+    "path": "private-artifacts/video/dovet-editorial-opener.png"
+  },
+  "recording": "Four Playwright captures of the actual local console and site",
+  "scenes": [
+    {
+      "id": "01-promise",
+      "seconds": 8.17,
+      "source": "private-artifacts/video/dovet-editorial-opener.png",
+      "source_sha256": "4864a1ddfa07b872bbd1a8213c550b8c0e713840bd7e54c70d1bba4ddcb80bf5",
+      "source_start": 0.0,
+      "audio_sha256": "cf4b2eb7bb190e473cc9542b5c7358de0688da201df5f2f03e5e8bce21a1f083",
+      "status_label": ""
+    },
+    {
+      "id": "02-problem",
+      "seconds": 15.61,
+      "source": "private-artifacts/video/story/marketing.webm",
+      "source_sha256": "a674cefe9c762a61fe05033764e7cb0782c3bcdcbd289e35801393404e4f56e5",
+      "source_start": 0.0,
+      "audio_sha256": "030b7e05cb99ac9473e4b6144568603d95b03c95b842448eedd06a5769da0bff",
+      "status_label": ""
+    },
+    {
+      "id": "03-boundary",
+      "seconds": 14.809999999999999,
+      "source": "private-artifacts/video/story/graphics/console-still.png",
+      "source_sha256": "f8e0b2009d1e19052920b689638fc609d075f75ae00a545700feeb4276d549b0",
+      "source_start": 0.0,
+      "audio_sha256": "71923a5acba67774dcb20e2def964b3fa9f630653c8599071379f0cf96f3ade7",
+      "status_label": ""
+    },
+    {
+      "id": "04-interruption",
+      "seconds": 14.41,
+      "source": "private-artifacts/video/story/evidence.webm",
+      "source_sha256": "6f7426eefdd23808b0dca305ef1e90a985810a5ac2d42cab531fa930986be2af",
+      "source_start": 0.0,
+      "audio_sha256": "7637b2d68801dcabfaf685a2a147ddedc491da7e31097f2514b72afea9da0246",
+      "status_label": "PASS \u2014 MANAGED CODEX INTERRUPTION"
+    },
+    {
+      "id": "05-checkpoint",
+      "seconds": 17.45,
+      "source": "private-artifacts/video/story/graphics/checkpoint-graphic.png",
+      "source_sha256": "01ac971d7a19383bc8fe1add06929a6b44d6c11990b46fcd3f5e229d128ca5f0",
+      "source_start": 0.0,
+      "audio_sha256": "9602b18315b3b2327b9ae494c2e48da3f56b1d430efc7bc04d5689736e9bdb1f",
+      "status_label": "PASS \u2014 BYTE-IDENTICAL RESTORE"
+    },
+    {
+      "id": "06-strands",
+      "seconds": 15.45,
+      "source": "private-artifacts/video/story/graphics/provider-still.png",
+      "source_sha256": "6f80d801c209b275bc49b1ca56798198c8ad7b5a83d6b31aa627432e818edfe7",
+      "source_start": 0.0,
+      "audio_sha256": "75e042bbae0f34811e054935b0e10c0325ce1ccf9392f2999743987846af7946",
+      "status_label": "BLOCKED \u2014 0 SUCCESSFUL BEDROCK REQUESTS"
+    },
+    {
+      "id": "07-policy",
+      "seconds": 15.69,
+      "source": "private-artifacts/video/story/graphics/policy-graphic.png",
+      "source_sha256": "3776ea70bc3d4ea0ff2789f61b7b2b63c99e105d68cc350a9fe52c7845b101b2",
+      "source_start": 0.0,
+      "audio_sha256": "ca2a263303ff05c8b15c7635cf01a7e38a760fdd9f0e1ef6fdb895af225670fa",
+      "status_label": "PASS \u2014 LOCAL POLICY TESTS"
+    },
+    {
+      "id": "08-worker",
+      "seconds": 14.729999999999999,
+      "source": "private-artifacts/video/story/graphics/worker-graphic.png",
+      "source_sha256": "15a24b7edea22f1968f742134ad235f2aa970426d2c77ded8f1431e34b42bcaf",
+      "source_start": 0.0,
+      "audio_sha256": "743a62ac10f4c65a118aee8477793447defdfc28bae5d1a1427d886d02379264",
+      "status_label": "LIVE CLOUD EXECUTION NOT RUN"
+    },
+    {
+      "id": "09-verification",
+      "seconds": 15.77,
+      "source": "private-artifacts/video/story/graphics/verify-graphic.png",
+      "source_sha256": "baafbdbfce713821a71ded01721355c4e9691d9eb3b0fb1d2f347ce4027c280b",
+      "source_start": 0.0,
+      "audio_sha256": "3be0471ddf55c491e16221163c67532a73c8879ed59e6faeabad9667e872df60",
+      "status_label": "BASELINE: 13 FAILURES \u2014 RECOVERY NOT RUN"
+    },
+    {
+      "id": "10-portable",
+      "seconds": 15.37,
+      "source": "private-artifacts/video/story/marketing.webm",
+      "source_sha256": "a674cefe9c762a61fe05033764e7cb0782c3bcdcbd289e35801393404e4f56e5",
+      "source_start": 5.5,
+      "audio_sha256": "ca723a31626b80bd1fe410c4aec94f6104dd31a99e548c0029acad271f69408d",
+      "status_label": "PASS \u2014 HASH AND PATH VALIDATION"
+    },
+    {
+      "id": "11-durable",
+      "seconds": 15.85,
+      "source": "private-artifacts/video/story/graphics/daemon-graphic.png",
+      "source_sha256": "d4a6285599de05d02e3a21ab51bd02a04fefd4eb7012271e7e6e66bbcd0ac920",
+      "source_start": 0.0,
+      "audio_sha256": "87fabbbeb01a83705d239b6ce6e102544ca7096cdb5f744d1a8380ed03100ba7",
+      "status_label": "PASS \u2014 SERVICE SURVIVES BRIDGE EXIT"
+    },
+    {
+      "id": "12-close",
+      "seconds": 13.77,
+      "source": "private-artifacts/video/dovet-editorial-opener.png",
+      "source_sha256": "4864a1ddfa07b872bbd1a8213c550b8c0e713840bd7e54c70d1bba4ddcb80bf5",
+      "source_start": 0.0,
+      "audio_sha256": "997de4a9a487d04e9b58ab92800a917d451194ac45e5177c0191d76b5f6ce4d8",
+      "status_label": "PROFESSIONAL AGENTS"
+    }
+  ],
+  "limitations": [
+    "AWS authorization blocked all Bedrock model invocations.",
+    "The film claims no successful Strands/Bedrock recovery or AgentCore deployment.",
+    "The owner must perform a normal-speed playback review before upload."
+  ],
+  "native_graphics": "Five deterministic ImageMagick diagrams for checkpoint, policy, worker, verification, and daemon concepts"
+}

@@ -17,6 +17,7 @@
     "video:sound": "uv run python video/sound_design.py",
     "video:preview": "uv run python video/style_preview.py",
     "video:draft": "uv run python video/render_draft.py",
+    "video:story": "uv run python video/render_story.py",
     "submission:prepare": "uv run python scripts/prepare_disclosed_submission.py",
     "video:render": "uv run python video/render.py",
     "release:check": "uv run python scripts/release_check.py",

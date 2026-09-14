@@ -31,8 +31,7 @@ Expected submitted-build evidence:
 
 - 54 Python unit, integration, and tooling tests pass.
 - TypeScript package tests and builds pass.
-- Six desktop/mobile browser checks pass; the evidence-recording case remains skipped without a
-  validated live recovery receipt.
+- Six normal desktop/mobile browser checks pass. Four separate 1920x1080 story-recording checks capture the actual local console and website. The evidence-gated live-recovery recorder remains skipped without a validated receipt.
 - A fresh Python 3.12 install imports the packaged Strands supervisor and restricted worker and runs
   the packaged database migration.
 - `pnpm release:check` returns **BLOCKED**, by design, because the submitted build has zero successful

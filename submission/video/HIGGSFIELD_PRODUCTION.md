@@ -1,11 +1,10 @@
 # Dovet Higgsfield production record
 
-Status: **TIMING PASS — opening, full narration, and blocked review edit prepared; final evidence cut remains gated.**
+Status: **NARRATION APPROVED — generated motion opener rejected and excluded from the final film.**
 
 ## Direction
 
-The working application remains the film's primary image. Higgsfield assets are limited to a short
-opening motif, restrained motion bridges, a consistent synthetic voice, and post-production. They
+The working application is the film's primary image. The owner approved the consistent synthetic voice and rejected the generated motion opener. The final film uses no Higgsfield video; it keeps the voice and uses real application captures plus one original OpenAI-generated editorial illustration. They
 must not depict a fake Dovet interaction or replace the actual managed interruption, Strands trace,
 worker changes, or protected test result.
 
@@ -48,8 +47,7 @@ once for an estimated 0.9 credits. The accepted replacement is job
 `3675851d-ceaa-4bdc-b989-318b511c9218`; it measures 13.57 seconds, 2.73 words per second, and no
 internal pause of 0.8 seconds or longer. All twelve accepted takes use the same `voice_id`,
 `voice_type`, model, variant, and direction. They pass the measurable duration, rate, and pause
-gates. Audio is never time-stretched. Accent and timbre remain pending until the owner listens to
-`private-artifacts/video/higgsfield/dovet-narration-review.wav` at normal speed.
+gates. Audio is never time-stretched. The owner explicitly approved the final voice direction in the assembled film.
 
 ## Edit and sound
 

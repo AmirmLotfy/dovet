@@ -74,7 +74,7 @@ Dovet records zero successful provider requests and keeps the live recovery gate
 - A real Dovet-managed Codex turn was intentionally interrupted through the installed SDK.
 - Its immutable checkpoint restored byte-for-byte from a SHA-256-bound snapshot.
 - Fifty-four local unit, integration, and tooling tests pass, with six desktop and mobile browser
-  checks.
+  checks plus four 1920x1080 real-footage recording checks.
 - Tests cover corrupt blobs, secret exclusion, stale approvals, replay, unknown cost, competing
   writers, and portable checkpoint validation.
 - The plugin validates, and the independent launchd daemon survives bridge exit.
@@ -115,7 +115,7 @@ Amazon Bedrock AgentCore, boto3, Codex supported APIs, Playwright, FFmpeg, Higgs
 ## Disclosure
 
 OpenAI Codex assisted with implementation, research, testing, documentation, and submission
-preparation. Higgsfield produced the opening visual and synthetic narration. Standard open-source
+preparation. OpenAI image generation produced the opening and closing editorial illustration. Higgsfield produced the synthetic narration. Standard open-source
 frameworks and SDKs are pinned in lockfiles. Emergit, a separate pre-existing recovery project,
 informed four independently implemented safety behaviors described in the repository disclosure;
 no Emergit source code or artwork was copied. The owner must confirm eligibility, dates,

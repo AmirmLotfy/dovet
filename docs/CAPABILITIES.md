@@ -27,9 +27,9 @@ Statuses describe evidence from this checkout only.
 | Demo recording preflight | BLOCKED | 1920x1080 recorder and manifest pipeline are ready; it refuses to record before the live recovery receipt exists |
 | Media encoding | PASS | FFmpeg 9.0.1 exposes libx264 and AAC |
 | Thumbnail/title rasterization | PASS | ImageMagick 7.1.2-3; used because the installed FFmpeg build does not expose `drawtext` |
-| Higgsfield opening insert | PASS | One restrained 1920x1080 Kling 3.0 Pro insert generated and checksum-bound; 9 credits spent |
-| Higgsfield narration | TIMING PASS / OWNER LISTENING PENDING | All 12 Dylan scenes pass duration, pause, and rate gates; owner must listen once at normal speed before upload |
-| Higgsfield media | READY WITH DISCLOSURE | 1920x1080 opener, 12-scene narration, original music bed, 4:40 H.264/AAC film, captions, and thumbnail are prepared; live-dependent scenes remain visibly AWS-blocked |
+| Higgsfield opening insert | REJECTED / NOT USED | The generated Kling insert is preserved as private provenance but excluded from the owner upload film |
+| Higgsfield narration | PASS — OWNER APPROVED | All 12 Dylan scenes pass duration, pause, and rate gates; the owner explicitly approved the voice |
+| Final submission media | READY WITH DISCLOSURE | 2:57.255 H.264/AAC film, real 1920x1080 product recordings, original OpenAI-generated illustration, approved Higgsfield narration, music bed, captions, and thumbnail; live-dependent claims remain visibly AWS-blocked |
 | GitHub authentication | PASS | Authenticated CLI; public repository not created |
 | Vercel authentication | PASS | Authenticated CLI; `dovet-site` preview deployed and anonymous access verified |
 | `dovet.site` ownership and routing | PASS | Public DNS delegates to Vercel; apex and `www` were verified signed out |

@@ -5,8 +5,20 @@ Last updated: 2026-09-14
 ## Active gate
 
 **Submission freeze — READY WITH DISCLOSED AWS BLOCKER:** the owner can submit the tested local
-product and a visibly disclosed 4:40 film now. The evidence-gated live Strands/Bedrock release stays
+product and a visibly disclosed 2:57 film now. The evidence-gated live Strands/Bedrock release stays
 BLOCKED because AWS still denies inference and exposes zero, non-adjustable on-demand quotas.
+
+## Final three-minute film gate
+
+- **PASS:** four Playwright recordings capture the actual local console and site at explicit 1920x1080 without network route mocks.
+- **PASS:** the final 2:57.255 edit uses the user-approved Higgsfield narration, an original OpenAI-generated editorial opener/close, and real product footage throughout its evidence body.
+- **PASS:** H.264 1920x1080 video, 48 kHz stereo AAC, end-to-end decode, 1280x720 thumbnail, SRT/VTT sidecars, scene source hashes, and AWS-blocker labels are verified.
+- **PASS:** the rejected Higgsfield motion opener and rejected 4:40 edit are not used in the final film.
+- **BLOCKED:** the film makes no live Strands/Bedrock or AgentCore claim; AWS authorization still records zero successful provider requests.
+
+Verification: `pnpm check` PASS; `pnpm test` PASS with 54 Python tests; `pnpm build` PASS with 16 site routes; normal `pnpm test:e2e` PASS with six browser checks and five explicitly gated recording skips; four real story-recording checks passed during capture; FFmpeg end-to-end decode PASS.
+
+Changed files include `video/render_story.py`, `apps/console/tests/record-local-story.spec.ts`, `apps/site/app/judges/page.tsx`, `apps/site/app/site.css`, `submission/video/final-film-manifest.json`, and the submission delivery documents. Commands: `pnpm video:story`, FFmpeg full decode/probe, Playwright story recording at 1920x1080, and the full release suite. Next action: owner publishes the tagged source, uploads the supplied media, completes legal fields, and submits using the supplied copy.
 
 ## Completed evidence
 
@@ -47,15 +59,12 @@ BLOCKED because AWS still denies inference and exposes zero, non-adjustable on-d
 - **PASS:** a read-only fallback audit checked Nova Micro in `us-east-1`, `us-west-2`, `eu-west-1`, and `ap-southeast-2`; every route remained `NOT_AUTHORIZED` with zero request/token quota. Every discovered callable Amazon Nova text model in `us-east-1` was also unauthorized. A region or Nova-model switch cannot unblock the live proof.
 - **PASS:** a broader read-only sweep checked all 89 discovered Bedrock text models in `us-east-1`; zero were authorized across 17 providers. There is no already-authorized Bedrock fallback on this account.
 - **PASS:** all 12 Higgsfield Dylan narration scenes pass measured duration, rate, and pause gates. One short scene was rewritten once. The accepted assets, job IDs, hashes, rejection, and estimated 11.7-credit batch cost are recorded; owner normal-speed listening remains pending.
-- **PASS:** the recording/render contract now emits checksum-bound scene entries and pads each scene with silence instead of stretching narration. The final renderer enforces the required 4:35–4:50 window. A separate 4:40 review renderer keeps every live-dependent scene visibly cloud-blocked and cannot create the final submission filename.
+- **SUPERSEDED:** the earlier 4:40 review renderer and disclosed cut remain as local provenance only. The owner rejected that edit, and neither file is in the final upload package.
 - **PASS:** `release:finish-after-aws` checks authorization before cost, then runs the real vertical,
   evidence recording, locked narration render, full checks, and release report under an explicit
   microusd ceiling. Its current dry invocation exits BLOCKED before provider use and performs no
   deployment or publication.
-- **PASS:** the deadline fallback packager checksum-verifies the 4:40 Higgsfield-narrated review
-  edit, preserves its visible cloud-blocked labels, checks H.264/AAC 1920x1080 media properties, and
-  copies it to the distinct `dovet-submission-disclosed.mp4` filename. It cannot produce the
-  evidence-gated `dovet-demo.mp4`.
+- **PASS:** the owner packager checksum-verifies the final 2:57 film, media contract, captions, thumbnail, source archive, and curated submission documents. It excludes the rejected edit and cannot create the evidence-gated `dovet-demo.mp4`.
 - **PASS:** owner-ready Devpost copy, YouTube metadata, captions, thumbnail, judge testing
   instructions, disclosure, URL ledger, legal confirmation sheet, and exact submission order now
   form a complete manual-upload package.
@@ -83,8 +92,7 @@ curl -I https://dovet.site
 
 ## Next actions
 
-1. Freeze and tag the tested source, generate its archive and checksum, and preserve the full-suite
-   reports.
+1. Tag the verified source as `v0.1.1`, generate its archive, checksum, and owner upload ZIP.
 2. Owner publishes the source and disclosed video, completes legal fields, submits Devpost, and
    saves the receipt before the deadline.
 3. Continue monitoring the AWS case. If authorization appears before upload, run the bounded live

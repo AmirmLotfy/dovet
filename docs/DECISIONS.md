@@ -49,12 +49,6 @@ interactive environment and stores that non-secret executable path as DOVET_CODE
 LaunchAgent. The restarted daemon returned a known usage window through its authenticated loopback
 API.
 
-## D-009 — Higgsfield enriches the evidence film without replacing it
+## D-009 — Use Higgsfield narration, real application footage, and an original illustration
 
-The owner explicitly requested Higgsfield voice, motion, short video, sound, and editing support and
-will perform all uploads and submissions personally. The final film still uses the real Dovet run as
-its primary footage. A single six-second Higgsfield insert establishes the checkpoint motif, native
-motion graphics preserve exact interface geometry, and one locked synthetic voice carries the
-narration. Unsupported music generation is not inferred from a speech tool; the edit uses a locally
-generated original bed. This replaces the earlier Polly preference for final narration while keeping
-the same evidence, timing, caption, and listening gates.
+The owner approved the Higgsfield Dylan narration but rejected the generated motion opener and the 4:40 edit. The final 2:57 submission cut therefore uses no Higgsfield video. It opens and closes on one original OpenAI-generated editorial illustration, while every middle scene uses Playwright recordings of the actual Dovet console, website, evidence page, architecture, or provider-status surface. The deterministic edit preserves exact UI geometry and clearly labels the AWS blocker. The original locally generated music bed remains beneath the narration.

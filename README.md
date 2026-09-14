@@ -50,7 +50,7 @@ Without the explicit live flag, the provider test is reported as skipped and sen
 The local daemon binds to loopback, stores operational truth in SQLite, and uses a separate app-data directory for immutable artifacts and managed worktrees. The Codex plugin is a short-lived MCP bridge; it is not the durability layer.
 
 The current public documentation site is [dovet.site](https://dovet.site). The deadline submission
-package includes a clearly labelled 4:40 film of the working local product. AWS account provisioning
+package includes a clearly labelled 2:57 film of the working local product, built from real 1920x1080 application recordings and an original editorial illustration. AWS account provisioning
 blocked every Bedrock text-model invocation, so the release records zero successful provider
 requests and no AgentCore deployment. See `submission/SUBMIT_NOW.md` and
 `submission/SUBMISSION_CHECKLIST.md` for the exact evidence and owner upload steps.

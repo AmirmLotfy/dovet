@@ -1,46 +1,35 @@
-# Submission completion checklist
+# Dovet submission checklist
 
-Checked at 2026-09-14 01:27 Cairo: **25.55 hours remained** before the September 15
-03:00 Cairo deadline. Re-run `uv run python scripts/deadline_status.py` before upload.
+Status: **OWNER READY WITH DISCLOSED AWS BLOCKER**
 
-## Working product
+## Verified build
 
-- PASS — local checkpoint, policy, approval, budget, lease, verifier, daemon, MCP bridge, and Codex usage code
-- PASS — real managed Codex interruption and byte-identical checkpoint restore
-- PASS — 54 local unit, integration, and tooling tests plus six desktop/mobile browser checks
-- PASS — portable checkpoint validation and separate-directory restore
-- PASS — authenticated recovery-receipt API and evidence-rail UI
-- PASS — isolated wheel install, packaged migration, supervisor, and worker imports
-- FAIL baseline — 13 protected importer checks before the blocked cloud recovery
-- BLOCKED — successful Strands/Bedrock request; current successful provider requests: zero
-- NOT DEPLOYED — AgentCore Runtime and Code Interpreter; optional for the hackathon
+- PASS — 54 Python unit, integration, and tooling tests.
+- PASS — TypeScript checks, package tests, and production builds.
+- PASS — six normal desktop/mobile browser checks plus four 1920x1080 real-footage recording checks.
+- PASS — real Dovet-managed Codex interruption and byte-identical checkpoint restore.
+- PASS — immutable portable bundle, single-writer policy, durable daemon, and independent verification controls.
+- BLOCKED — zero successful Bedrock requests; no live Strands recovery claim.
+- NOT DEPLOYED — AgentCore runtime; no hosted recovery claim.
 
-## Upload assets
+## Owner upload set
 
-- READY WITH DISCLOSURE — `submission/video/dovet-submission-disclosed.mp4`, 4:40, H.264/AAC, 1920x1080
-- READY — `submission/video/thumbnail-disclosed.png`, 1280x720
-- READY — `submission/video/captions-disclosed.srt` and `.vtt`
-- READY — `submission/YOUTUBE_METADATA.json`
-- READY — `submission/DEVPOST.md`
-- READY — public-site source and https://dovet.site
-- READY — README, Apache-2.0 license, architecture diagram, security policy, and AI/dependency disclosure
-- READY AFTER LOCAL TAG — source archive and SHA-256 checksum
-- READY — three Builder.aws drafts; optional bonus posts
+- READY — `submission/video/dovet-submission-final-disclosed.mp4`, 2:57.255, H.264/AAC, 1920x1080.
+- READY — `submission/video/thumbnail-final.png`, 1280x720.
+- READY — `submission/video/captions-final.srt` and `.vtt`.
+- READY — `submission/YOUTUBE_METADATA.json`.
+- READY — `submission/DEVPOST.md` and `submission/TESTING_INSTRUCTIONS.md`.
+- READY — architecture diagram, Apache-2.0 license, AI/dependency disclosure, and three Builder.aws drafts.
+- READY AFTER TAG — source archive, checksum, and owner upload ZIP.
 
 ## Owner-only completion
 
-- Publish the source repository and `v0.1.0` tag.
-- Upload the disclosed film to YouTube, set it to **Public**, add the thumbnail and English captions,
-  and verify playback signed out.
-- Replace the source and Devpost URL placeholders in the YouTube description.
-- Confirm eligibility, authorship, contributor, third-party rights, AWS Builder ID, and legal fields.
-- Submit Devpost and save the confirmation receipt.
-- Optionally publish up to three Builder.aws stories after inserting the public source URL.
+- Publish the source repository and immutable `v0.1.1` tag.
+- Upload the video, thumbnail, and captions to YouTube; set visibility to **Public** and verify signed out.
+- Replace the public source and Devpost URL placeholders.
+- Complete eligibility, authorship, contributor, rights, AWS Builder ID, and legal fields personally.
+- Submit Devpost and save the confirmation receipt and public URL.
 
-## Submission risk
+## Required limitation
 
-The rules require Strands Agents for real work. The repository contains a real Strands recovery
-implementation and tested deterministic boundaries, but AWS account authorization blocked every
-model invocation. Submit with that limitation exactly as written. This is weaker evidence than the
-intended live vertical slice, but it is an honest working-project submission and better than missing
-the deadline.
+> AWS account provisioning blocked all Bedrock text-model invocations before submission. The Strands recovery integration is implemented, but this build records zero successful provider requests and does not claim a live Bedrock recovery or AgentCore deployment.

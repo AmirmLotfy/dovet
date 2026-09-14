@@ -1,8 +1,4 @@
-"""Prepare an upload-ready hackathon cut with the AWS blocker disclosed.
-
-This command never converts the review edit into live recovery evidence. It copies
-only a checksum-verified, visibly blocked edit to a distinct submission filename.
-"""
+"""Verify and package the exact owner-upload set without publishing it."""
 
 from __future__ import annotations
 
@@ -10,71 +6,72 @@ import hashlib
 import json
 import shutil
 import subprocess
-from datetime import UTC, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PRIVATE = ROOT / "private-artifacts" / "video"
-SUBMISSION = ROOT / "submission" / "video"
-SOURCE_MANIFEST = PRIVATE / "picture-edit-manifest.json"
-OUTPUT = SUBMISSION / "dovet-submission-disclosed.mp4"
+ARTIFACTS = ROOT / "artifacts"
+VIDEO = ROOT / "submission" / "video"
+MANIFEST = VIDEO / "final-film-manifest.json"
+
+DELIVERY_FILES = (
+    "submission/video/dovet-submission-final-disclosed.mp4",
+    "submission/video/thumbnail-final.png",
+    "submission/video/captions-final.srt",
+    "submission/video/captions-final.vtt",
+    "submission/video/final-film-manifest.json",
+    "submission/video/DISCLOSED_QA_REPORT.md",
+    "submission/YOUTUBE_METADATA.json",
+    "submission/DEVPOST.md",
+    "submission/TESTING_INSTRUCTIONS.md",
+    "submission/SUBMIT_NOW.md",
+    "submission/OWNER_CONFIRMATIONS.md",
+    "submission/BUILDER_STORIES.md",
+    "submission/BUILD_DISCLOSURE.md",
+    "submission/architecture.png",
+    "submission/architecture.svg",
+    "docs/architecture.svg",
+    "docs/BUILD_STATE.md",
+    "docs/BLOCKERS.md",
+    "docs/CAPABILITIES.md",
+    "README.md",
+    "LICENSE",
+)
 
 
 def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def probe(path: Path) -> dict[str, object]:
     result = subprocess.run(  # noqa: S603
-        (
-            "ffprobe",
-            "-v",
-            "error",
-            "-show_streams",
-            "-show_format",
-            "-of",
-            "json",
-            str(path),
-        ),
+        ("ffprobe", "-v", "error", "-show_streams", "-show_format", "-of", "json", str(path)),
         capture_output=True,
         text=True,
         check=False,
     )
     if result.returncode != 0:
-        raise RuntimeError("ffprobe failed for disclosed submission cut")
+        raise RuntimeError("ffprobe failed for final submission cut")
     return json.loads(result.stdout)
 
 
 def main() -> int:
-    source = json.loads(SOURCE_MANIFEST.read_text(encoding="utf-8"))
-    if source.get("status") != "REVIEW_ONLY_BLOCKED":
-        raise RuntimeError("source edit must remain REVIEW_ONLY_BLOCKED")
-    limitations = source.get("limitations")
-    if not isinstance(limitations, list) or not any(
-        "not live recovery evidence" in str(item) for item in limitations
-    ):
-        raise RuntimeError("source manifest is missing its evidence limitation")
-
-    source_video = ROOT / str(source["path"])
-    expected_digest = str(source["sha256"])
-    if sha256(source_video) != expected_digest:
-        raise RuntimeError("source picture-edit checksum does not match its manifest")
-
-    SUBMISSION.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(source_video, OUTPUT)
-    shutil.copyfile(PRIVATE / "captions.srt", SUBMISSION / "captions-disclosed.srt")
-    shutil.copyfile(PRIVATE / "captions.vtt", SUBMISSION / "captions-disclosed.vtt")
-    shutil.copyfile(PRIVATE / "thumbnail-blocked.png", SUBMISSION / "thumbnail-disclosed.png")
-
-    media = probe(OUTPUT)
-    streams = media.get("streams", [])
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    video_path = ROOT / str(manifest["path"])
+    if sha256(video_path) != manifest["sha256"]:
+        raise RuntimeError("final film checksum does not match its manifest")
+    media = probe(video_path)
+    streams = media.get("streams")
     if not isinstance(streams, list):
-        raise RuntimeError("ffprobe returned an invalid stream list")
+        raise RuntimeError("ffprobe returned invalid streams")
     video = next(item for item in streams if item.get("codec_type") == "video")
     audio = next(item for item in streams if item.get("codec_type") == "audio")
-    duration = float(media["format"]["duration"])  # type: ignore[index]
+    seconds = float(media["format"]["duration"])  # type: ignore[index]
     valid = (
-        duration < 300
+        174 <= seconds < 180
         and video.get("codec_name") == "h264"
         and video.get("width") == 1920
         and video.get("height") == 1080
@@ -83,49 +80,63 @@ def main() -> int:
         and audio.get("channels") == 2
     )
     if not valid:
-        raise RuntimeError("disclosed submission cut failed media requirements")
+        raise RuntimeError("final film failed the three-minute media contract")
 
-    manifest = {
-        "schema_version": "1",
-        "generated_at": datetime.now(UTC).isoformat(),
-        "status": "READY_WITH_DISCLOSED_AWS_BLOCKER",
-        "evidence_status": "BLOCKED",
-        "path": str(OUTPUT.relative_to(ROOT)),
-        "sha256": sha256(OUTPUT),
-        "duration_seconds": duration,
-        "video": {"codec": "h264", "width": 1920, "height": 1080},
-        "audio": {"codec": "aac", "sample_rate": 48000, "channels": 2},
-        "captions": [
-            "submission/video/captions-disclosed.srt",
-            "submission/video/captions-disclosed.vtt",
-        ],
-        "thumbnail": "submission/video/thumbnail-disclosed.png",
-        "claims": {
-            "managed_codex_interruption": "PASS",
-            "immutable_checkpoint_and_restore": "PASS",
-            "deterministic_policy_and_local_engine": "PASS",
-            "strands_bedrock_invocation": "BLOCKED_ZERO_SUCCESSFUL_REQUESTS",
-            "agentcore_deployment": "NOT_DEPLOYED_OPTIONAL_REQUIREMENT",
-        },
-        "limitations": [
-            (
-                "The film is suitable for an honest deadline submission, not proof of a live "
-                "Bedrock recovery."
-            ),
-            "Cloud-dependent scenes carry a persistent AWS account-provisioning blocker label.",
-            (
-                "The deterministic UI fixture is a contract demonstration and recorded replay, "
-                "not a live cloud run."
-            ),
-            (
-                "The owner must listen through once and perform all public uploads and legal "
-                "attestations."
-            ),
-        ],
-    }
-    manifest_path = SUBMISSION / "submission-cut-manifest.json"
-    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps(manifest, indent=2))
+    archives = sorted(
+        ARTIFACTS.glob("dovet-source-*.tar.gz"), key=lambda item: item.stat().st_mtime
+    )
+    if not archives:
+        raise RuntimeError("run pnpm release:package after tagging the committed tree")
+    source = archives[-1]
+    checksum = source.with_suffix(source.suffix + ".sha256")
+    expected = checksum.read_text(encoding="utf-8").split()[0]
+    if sha256(source) != expected:
+        raise RuntimeError("source archive checksum is invalid")
+
+    commit = subprocess.run(
+        ("git", "rev-parse", "--short=12", "HEAD"),
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=True,
+    ).stdout.strip()
+    bundle = ARTIFACTS / f"dovet-owner-upload-{commit}"
+    if bundle.exists():
+        raise RuntimeError(f"owner bundle already exists: {bundle.name}")
+    bundle.mkdir(parents=True)
+    for relative in DELIVERY_FILES:
+        source_file = ROOT / relative
+        if not source_file.is_file():
+            raise FileNotFoundError(f"delivery file is missing: {relative}")
+        target = bundle / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source_file, target)
+    shutil.copy2(source, bundle / source.name)
+    shutil.copy2(checksum, bundle / checksum.name)
+    (bundle / "START-HERE.txt").write_text(
+        "DOVET OWNER UPLOAD PACK\n\n"
+        "1. Read submission/SUBMIT_NOW.md.\n"
+        "2. Watch submission/video/dovet-submission-final-disclosed.mp4.\n"
+        "3. Upload the video, thumbnail, and captions yourself.\n"
+        "4. Publish the source and fill Devpost using the supplied copy.\n"
+        "5. Preserve the AWS blocker disclosure.\n",
+        encoding="utf-8",
+    )
+    archive_path = Path(shutil.make_archive(str(bundle), "zip", root_dir=bundle))
+    digest = sha256(archive_path)
+    archive_path.with_suffix(archive_path.suffix + ".sha256").write_text(
+        f"{digest}  {archive_path.name}\n", encoding="utf-8"
+    )
+    print(
+        json.dumps(
+            {
+                "bundle": str(archive_path.relative_to(ROOT)),
+                "sha256": digest,
+                "duration_seconds": seconds,
+            },
+            indent=2,
+        )
+    )
     return 0
 
 

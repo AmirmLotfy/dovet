@@ -4,10 +4,10 @@ Codex performs no upload, submission, public repository creation, DNS change, or
 
 | Owner task | File | Status |
 |---|---|---|
-| Watch and upload the film | `submission/video/dovet-submission-disclosed.mp4` | READY WITH AWS DISCLOSURE |
-| Upload thumbnail | `submission/video/thumbnail-disclosed.png` | READY |
-| Upload English captions | `submission/video/captions-disclosed.srt` | READY |
-| Copy YouTube title, description, chapters | `submission/YOUTUBE_METADATA.json` | READY; replace URL placeholders |
+| Watch and upload the 2:57 film | `submission/video/dovet-submission-final-disclosed.mp4` | READY WITH AWS DISCLOSURE |
+| Upload thumbnail | `submission/video/thumbnail-final.png` | READY |
+| Upload English captions | `submission/video/captions-final.srt` | READY |
+| Copy YouTube title, description, chapters, and tags | `submission/YOUTUBE_METADATA.json` | READY; replace URL placeholders |
 | Copy Devpost narrative | `submission/DEVPOST.md` | READY |
 | Follow exact order | `submission/SUBMIT_NOW.md` | READY |
 | Publish source archive | `artifacts/dovet-source-<commit>.tar.gz` | GENERATED AFTER LOCAL TAG |
@@ -17,6 +17,4 @@ Codex performs no upload, submission, public repository creation, DNS change, or
 | Publish optional build posts | `submission/BUILDER_STORIES.md` | READY WITH DISCLOSURES |
 | Complete legal fields | `submission/OWNER_CONFIRMATIONS.md` | OWNER ONLY |
 
-The upload video intentionally remains named `dovet-submission-disclosed.mp4`. The absent
-`dovet-demo.mp4` remains the evidence-gated live-recovery output, preventing the AWS block from being
-mistaken for a passed provider integration.
+The absent `dovet-demo.mp4` remains the evidence-gated live-recovery output. The final disclosed film cannot be mistaken for a passed Bedrock integration because every cloud-dependent claim is visibly labelled.

@@ -1,0 +1,47 @@
+1
+00:00:00,000 --> 00:00:07,970
+When a coding agent stops Dovet preserves the working evidence and changes the agent safely before independent checks verify the recovered result.
+
+2
+00:00:08,170 --> 00:00:23,580
+An interrupted coding session leaves more than unfinished code. The developer still has to reconstruct the objective, inspect partial edits, remember what failed, and decide what another worker may safely do. Dovet keeps that recovery work attached to the task.
+
+3
+00:00:23,780 --> 00:00:38,390
+Before a run begins, Dovet records the project, allowed paths, verification commands, provider list, and spending limit. It supervises only runs it starts. It never rotates accounts, copies Codex credentials, or claims control over arbitrary desktop sessions.
+
+4
+00:00:38,590 --> 00:00:52,800
+Here is the real failure. Dovet starts this managed Codex worker, observes its events, and triggers an intentional interruption. The supervisor waits for confirmed termination. A lease timeout by itself can never authorize a second writer.
+
+5
+00:00:53,000 --> 00:01:10,250
+After the process stops, Dovet captures the approved working set into immutable content objects. The manifest binds paths, modes, sizes, operations, and source hashes. Every object is checked again before restore, and credential-like or generated files stay outside the checkpoint.
+
+6
+00:01:10,450 --> 00:01:25,700
+A real Strands supervisor reads bounded evidence and recommends the next action. Its typed result includes the checkpoint, target worker, evidence identifiers, uncertainty, and a short explanation. The model does not receive a tool that can grant permissions or approve its own proposal.
+
+7
+00:01:25,900 --> 00:01:41,390
+Deterministic policy decides whether that recommendation may execute. It checks the current snapshot, one-use approval, known request cost, budget reservation, worker allowlist, and confirmed workspace ownership. A changed or replayed action stops here and moves to Needs you.
+
+8
+00:01:41,590 --> 00:01:56,120
+The authorized fallback runs in a restricted candidate workspace. Its file tools require the expected source hash and an active lease generation. Its command tool exposes fixed argument templates. Prompts, repository notes, diffs, and log output remain untrusted input.
+
+9
+00:01:56,320 --> 00:02:11,890
+Then Dovet checks the result outside the worker's writable scope. Thirteen protected importer cases cover quoted fields, leading zero identifiers, byte order marks, decimals, duplicates, formula-like text, and structured errors. The agent saying done never counts as a passed test.
+
+10
+00:02:12,090 --> 00:02:27,260
+The same verified checkpoint can travel in a portable Dovet bundle. The importer rejects traversal, symlinks, unexpected members, prohibited paths, conflicting sizes, and corrupt hashes before it writes anything, then restores into a separate empty directory.
+
+11
+00:02:27,460 --> 00:02:43,110
+The Codex plugin is only a bridge. An independent local daemon owns the durable event ledger, checkpoint store, approvals, budgets, and leases, so recovery state survives when the host process exits. Public demo services never expose control of the local machine.
+
+12
+00:02:43,310 --> 00:02:56,880
+The final History view keeps every claim tied to its source: observed, reported, inferred, or independently verified. Each acceptance check stays attached to the run that produced it. That is Dovet. Keep the work. Change the agent.
