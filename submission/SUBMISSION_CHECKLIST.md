@@ -1,6 +1,6 @@
 # Dovet submission checklist
 
-Status: **OWNER READY WITH DISCLOSED AWS BLOCKER**
+Status: **DEVPOST DRAFT COMPLETE — OWNER LEGAL ATTESTATION REQUIRED**
 
 ## Verified build
 
@@ -22,14 +22,17 @@ Status: **OWNER READY WITH DISCLOSED AWS BLOCKER**
 - READY — `submission/DEVPOST.md` and `submission/TESTING_INSTRUCTIONS.md`.
 - READY — architecture diagram, Apache-2.0 license, AI/dependency disclosure, and three Builder.aws drafts.
 - READY — source archive, checksum, and owner upload ZIP for the final tagged commit.
+- PASS — 13 reproducible 1800x1200/1200x1800 submission screenshots with hashes and provenance in `submission/screenshots/gallery/manifest.json`.
+- PASS — public YouTube film `https://youtu.be/t5Zaa6VoHc0`; anonymous oEmbed and watch-page requests return 200.
+- PASS — timed English captions and a custom thumbnail are present in YouTube Studio.
+- PASS — Builder Center article published at `https://builder.aws.com/content/3JIVnXnvc2pqUUKrSMCzqPep6k7/agents-for-humans-what-survives-when-a-coding-agent-stops`.
+- PASS — Devpost draft is 4/5 steps complete with 15 captioned gallery images, the real architecture file, Professional Agents track, repository, film, live judge guide, Builder ID, Builder story, and testing instructions.
 
 ## Owner-only completion
 
-- Verify the public source repository and immutable `v0.1.6` tag signed out.
-- Upload the video, thumbnail, and captions to YouTube; set visibility to **Public** and verify signed out.
-- Replace the public source and Devpost URL placeholders.
-- Complete eligibility, authorship, contributor, rights, AWS Builder ID, and legal fields personally.
+- Review the Devpost draft and complete eligibility, authorship, contributor, rights, and legal attestations personally.
 - Submit Devpost and save the confirmation receipt and public URL.
+- Add the final public Devpost URL to the YouTube description and release URL ledger.
 
 ## Required limitation
 

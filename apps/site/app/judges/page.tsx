@@ -13,7 +13,7 @@ export default function JudgesPage() {
       <p className="eyebrow">Agents for Humans / Professional Agents</p>
       <h1>Judge the evidence path.</h1>
       <p className="intro">Dovet preserves approved coding state across a managed worker interruption. Every claim below is tied to observed, tested, or unavailable evidence.</p>
-      <div className="release-line"><span>Submission build</span><code>v0.1.1</code><span>Local-first</span><strong>AWS invocation blocked</strong></div>
+      <div className="release-line"><span>Submission build</span><code>v0.1.6</code><span>Local-first</span><strong>AWS invocation blocked</strong></div>
     </section>
 
     <section className="judge-evidence wrap" data-film="evidence">

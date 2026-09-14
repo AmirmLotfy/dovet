@@ -30,8 +30,9 @@ Statuses describe evidence from this checkout only.
 | Higgsfield opening insert | REJECTED / NOT USED | The generated Kling insert is preserved as private provenance but excluded from the owner upload film |
 | Higgsfield narration | PASS — OWNER APPROVED | All 12 Dylan scenes pass duration, pause, and rate gates; the owner explicitly approved the voice |
 | Final submission media | READY WITH DISCLOSURE | 2:57.255 H.264/AAC film, real 1920x1080 product recordings, original OpenAI-generated illustration, approved Higgsfield narration, music bed, captions, and thumbnail; live-dependent claims remain visibly AWS-blocked |
-| GitHub authentication | PASS | Authenticated CLI; public repository not created |
+| GitHub authentication | PASS | Authenticated CLI; public repository and immutable `v0.1.6` release verified |
 | Vercel authentication | PASS | Authenticated CLI; `dovet-site` preview deployed and anonymous access verified |
 | `dovet.site` ownership and routing | PASS | Public DNS delegates to Vercel; apex and `www` were verified signed out |
-| YouTube delivery path | PASS | Authenticated YouTube Studio dashboard exists; owner requested manual upload, so no media was uploaded |
-| Devpost account readiness | UNKNOWN | Correct hackathon page loaded, but the browser accessibility surface did not expose account controls; owner will submit personally |
+| YouTube delivery path | PASS | Public `t5Zaa6VoHc0` contains the 2:58 H.264/AAC film, custom thumbnail, timed English captions, corrected source/Builder links, and anonymous HTTP/oEmbed verification |
+| Builder Center article | PASS | Published on Amir Lotfy's profile; public article URL returns HTTP 200 |
+| Devpost account readiness | PASS — DRAFT | Authenticated Dovet submission is 4/5 complete with 15 captioned images and all non-legal fields; owner must personally accept rules and submit |

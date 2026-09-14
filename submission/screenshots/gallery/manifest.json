@@ -1,0 +1,117 @@
+{
+  "schema_version": "1",
+  "captured_at": "2026-09-14T02:26:53.926613+00:00",
+  "release": "v0.1.6",
+  "public_site": "https://dovet.site",
+  "repository": "https://github.com/AmirmLotfy/dovet",
+  "limitations": [
+    "The product receipt image is a deterministic contract fixture and is disclosed in the filename and page caption.",
+    "The live Strands/Bedrock recovery remains blocked and no screenshot claims otherwise."
+  ],
+  "captures": [
+    {
+      "file": "01-console-work-real.png",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 48347,
+      "sha256": "ef3844b83d87ad7c42592e36d4377c39680dc295634ff46c2ff84efe455fc513",
+      "provenance": "actual loopback console paired to independent daemon"
+    },
+    {
+      "file": "02-console-connections-real.png",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 76791,
+      "sha256": "a5be66786e02692b9e6f1555f7abec882b6bd5cad8fbbf18d2d55b9a942002a5",
+      "provenance": "actual daemon capability response"
+    },
+    {
+      "file": "03-public-home-real.png",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 130446,
+      "sha256": "5d8f0ea222a1ef7e593d726c227b4e3b7c4d3981f54a088fcbc162719bc0eb0d",
+      "provenance": "deployed public home page"
+    },
+    {
+      "file": "04-public-evidence-real.png",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 178676,
+      "sha256": "9b8a25b69afcedd6589b5cb23ff72c95c3ab16a13a2f2e8245be0e9aba78eb97",
+      "provenance": "deployed public evidence section"
+    },
+    {
+      "file": "05-product-receipt-fixture-disclosed.png",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 189622,
+      "sha256": "6069303c20222a6838aaf8ab82215edb81686407c6c65616a5191fb0f1518b54",
+      "provenance": "deployed deterministic UI fixture with visible disclosure"
+    },
+    {
+      "file": "06-managed-interruption-evidence-real.png",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 69923,
+      "sha256": "25e8bafd7f38f3a52af70dba47418916c3633225b45a764cb1414cf084c2abe0",
+      "provenance": "deployed judge page backed by the observed managed interruption artifact"
+    },
+    {
+      "file": "07-architecture-page-real.png",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 139935,
+      "sha256": "a2c06b04b6201e2c74e3dee10e1e1bcaf9db71978134c507120c9f82419c1b0a",
+      "provenance": "deployed architecture evidence page"
+    },
+    {
+      "file": "08-provider-blocker-real.png",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 75748,
+      "sha256": "35eeca8f5c769928ea30fc66cac5a2b1f0b487d07eb024e08d9d9606c7922969",
+      "provenance": "deployed provider blocker disclosure"
+    },
+    {
+      "file": "09-security-boundaries-real.png",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 112594,
+      "sha256": "8c672157bc2e44274618d4233935ca6436cf5cf94f73cea5d3c39b05160e053f",
+      "provenance": "deployed security documentation"
+    },
+    {
+      "file": "10-public-repository-real.png",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 262284,
+      "sha256": "f27049d54788fe269b16502e474f5dd980f51739ff15784202359ac8e860b53c",
+      "provenance": "anonymous public GitHub repository"
+    },
+    {
+      "file": "11-public-release-real.png",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 188430,
+      "sha256": "525cbd90f53a9155680083101541a8b583940c96b607c8b6b89eff889bd7311a",
+      "provenance": "anonymous public v0.1.6 release"
+    },
+    {
+      "file": "12-hosted-ci-pass-real.png",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 72078,
+      "sha256": "402af1e6aa06af575d21c926262cd7f5f940003d0b723ea0ccc2ea72f6a9abcf",
+      "provenance": "anonymous hosted CI run"
+    },
+    {
+      "file": "13-public-home-mobile-real.png",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 235017,
+      "sha256": "17ac22939d4e411829a073991bd8aafe259db903b035dee522a543415ae9e8d6",
+      "provenance": "deployed public home page at narrow width"
+    }
+  ]
+}

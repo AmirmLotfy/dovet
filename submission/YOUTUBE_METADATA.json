@@ -1,6 +1,7 @@
 {
   "schema_version": "3",
-  "status": "OWNER_READY_WITH_DISCLOSED_AWS_BLOCKER",
+  "status": "PUBLISHED_PUBLIC_WITH_DISCLOSED_AWS_BLOCKER",
+  "public_url": "https://youtu.be/t5Zaa6VoHc0",
   "title": "Dovet \u2014 Keep the work. Change the agent. | Agents for Humans",
   "description_lines": [
     "A coding agent stops. The files remain. The thread of the work disappears.",
@@ -13,7 +14,7 @@
     "",
     "Project: https://dovet.site",
     "Source: https://github.com/AmirmLotfy/dovet",
-    "Hackathon: REPLACE_WITH_PUBLIC_DEVPOST_URL",
+    "Builder story: https://builder.aws.com/content/3JIVnXnvc2pqUUKrSMCzqPep6k7/agents-for-humans-what-survives-when-a-coding-agent-stops",
     "",
     "Built for Agents for Humans \u2014 Professional Agents.",
     "",
@@ -52,11 +53,12 @@
   "thumbnail": "submission/video/thumbnail-youtube-4k.png",
   "captions": "submission/video/captions-final.srt",
   "visibility": "PUBLIC",
-  "owner_checks_before_upload": [
-    "Watch and listen to the complete 2:57 film once at normal speed",
-    "Replace the source and Devpost placeholders when those public URLs exist",
-    "Upload the SRT as English (United States) captions and use the supplied thumbnail",
-    "Set visibility to Public and verify playback in a signed-out browser"
+  "verified_delivery_checks": [
+    "Public visibility shown in authenticated YouTube Studio",
+    "HD processing complete",
+    "Timed English captions present",
+    "Custom thumbnail present",
+    "Anonymous watch page and oEmbed return HTTP 200"
   ],
   "thumbnail_fallback": "submission/video/thumbnail-youtube-1280.png"
 }

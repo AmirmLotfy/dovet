@@ -2,14 +2,13 @@
 
 ## Submit before the deadline
 
-1. Watch and listen to `submission/video/dovet-submission-final-disclosed.mp4` once at normal speed.
-2. Verify the public repository and `v0.1.6` release at `https://github.com/AmirmLotfy/dovet`.
-3. Upload the film through YouTube Studio. Use `thumbnail-youtube-4k.png` and `captions-final.srt`, set it to **Public**, and verify it in a signed-out browser.
-4. Replace the source and Devpost placeholders in `submission/YOUTUBE_METADATA.json`.
-5. Complete the Devpost form using `submission/DEVPOST.md` and `submission/TESTING_INSTRUCTIONS.md`.
-6. Enter the account-owned AWS Builder ID and personally confirm every eligibility, authorship, contributor, rights, and legal field.
-7. Save the Devpost receipt and every public URL.
-8. If time remains, publish up to three Builder.aws stories from `submission/BUILDER_STORIES.md`.
+1. Review the completed Devpost draft at `https://devpost.com/submit-to/30317-agents-for-humans-hackathon/manage/submissions/1179989-dovet/finalization`.
+2. Personally read and accept the Official Rules and Devpost Terms only if every eligibility, authorship, contributor, and rights statement is true.
+3. Submit the project before the deadline.
+4. Save the confirmation receipt and public Devpost URL.
+5. Add the public Devpost URL to the YouTube description and `submission/links.json`.
+
+The public repository, `v0.1.6` release, three-minute YouTube film, timed English captions, custom thumbnail, Builder Center article, architecture file, AWS Builder ID, testing instructions, and 15-image Devpost gallery are already entered and verified.
 
 ## Preserve the disclosure
 

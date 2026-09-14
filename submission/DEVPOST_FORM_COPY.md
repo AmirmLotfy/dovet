@@ -83,14 +83,25 @@ Strands Agents, Amazon Bedrock, Python, FastAPI, Pydantic, SQLite, TypeScript, R
 - Product and documentation: https://dovet.site
 - Judge evidence page: https://dovet.site/judges
 - Public source: https://github.com/AmirmLotfy/dovet
-- Public film: REPLACE_WITH_PUBLIC_YOUTUBE_URL
+- Public film: https://youtu.be/t5Zaa6VoHc0
 
 ## Image gallery
 
 1. `submission/gallery/dovet-devpost-cover-3x2.png` — primary 3:2 cover.
 2. `submission/screenshots/console-evidence-fixture.png` — evidence-linked recovery receipt.
 3. `submission/screenshots/marketing-desktop.png` — public product story.
-4. `submission/architecture.png` — system architecture.
+4. `submission/screenshots/gallery/01-console-work-real.png` — real loopback Work view.
+5. `submission/screenshots/gallery/02-console-connections-real.png` — real local integration state.
+6. `submission/screenshots/gallery/03-public-home-real.png` — public home page.
+7. `submission/screenshots/gallery/04-public-evidence-real.png` — public evidence section.
+8. `submission/screenshots/gallery/05-product-receipt-fixture-disclosed.png` — disclosed deterministic fixture.
+9. `submission/screenshots/gallery/06-managed-interruption-evidence-real.png` — real managed interruption evidence.
+10. `submission/screenshots/gallery/07-architecture-page-real.png` — public architecture page.
+11. `submission/screenshots/gallery/08-provider-blocker-real.png` — real provider blocker.
+12. `submission/screenshots/gallery/09-security-boundaries-real.png` — public security boundaries.
+13. `submission/screenshots/gallery/10-public-repository-real.png` — public source repository.
+14. `submission/screenshots/gallery/11-public-release-real.png` — immutable release.
+15. `submission/screenshots/gallery/12-hosted-ci-pass-real.png` — hosted CI evidence.
 
 ## Track
 
@@ -106,11 +117,13 @@ Upload `submission/architecture.png`.
 
 ## AWS Builder ID
 
-OWNER ENTERS THEIR OWN AWS BUILDER ID.
+amirmolotfy@gmail.com
 
 ## Optional live demo URL
 
-Leave blank. The public `/judges` route is an evidence page and recorded replay, not a live hosted recovery integration.
+https://dovet.site/judges
+
+This is the public judge experience and evidence replay. It does not expose local-machine control or claim a live hosted recovery integration.
 
 ## Testing instructions
 
@@ -133,4 +146,4 @@ Expected submitted-build evidence: 54 Python tests pass; TypeScript checks and b
 
 ## Bonus Builder.aws URL
 
-REPLACE_WITH_PUBLIC_BUILDER_AWS_ARTICLE_URL
+https://builder.aws.com/content/3JIVnXnvc2pqUUKrSMCzqPep6k7/agents-for-humans-what-survives-when-a-coding-agent-stops

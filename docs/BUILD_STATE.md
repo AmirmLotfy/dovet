@@ -4,9 +4,23 @@ Last updated: 2026-09-14
 
 ## Active gate
 
-**Submission freeze — READY WITH DISCLOSED AWS BLOCKER:** the owner can submit the tested local
-product and a visibly disclosed 2:57 film now. The evidence-gated live Strands/Bedrock release stays
-BLOCKED because AWS still denies inference and exposes zero, non-adjustable on-demand quotas.
+**Submission freeze — DEVPOST DRAFT COMPLETE:** the public source, `v0.1.6` release, Vercel site,
+2:57 film, captions, thumbnail, Builder Center article, architecture file, and 15-image Devpost
+gallery are live or entered. The Devpost draft is 4/5 complete. Only the owner's Rules/Terms and
+eligibility attestation plus final submission remain. The evidence-gated live Strands/Bedrock
+release stays BLOCKED because AWS still denies inference and exposes zero, non-adjustable on-demand
+quotas.
+
+## Submission publication gate
+
+- **PASS:** public repository and immutable `v0.1.6` release return HTTP 200.
+- **PASS:** public YouTube film `https://youtu.be/t5Zaa6VoHc0` is 2:58, Public, HD processed, and has a custom thumbnail plus timed English captions. Anonymous watch-page and oEmbed requests return 200.
+- **PASS:** YouTube description links the source, product, and published Builder Center story without placeholders.
+- **PASS:** Builder Center article `Agents for Humans: What Survives When a Coding Agent Stops?` is published on the Amir Lotfy profile and publicly reachable.
+- **PASS:** the Devpost draft is 4/5 complete with Professional Agents, public source and film, `dovet.site/judges`, `amirmolotfy@gmail.com`, the Builder story, real architecture file, testing instructions, and 15 captioned images.
+- **PASS:** `pnpm submission:capture-gallery` generated 13 reproducible screenshots from the authenticated loopback console and public evidence surfaces; Playwright passed and `submission/screenshots/gallery/manifest.json` records dimensions, SHA-256 hashes, and provenance.
+- **PASS:** `dovet.site/judges` and `/changelog` now identify the `v0.1.6` production submission release; the Vercel production routes return 200.
+- **OWNER ACTION:** personally review the Official Rules and Devpost Terms, make the eligibility/rights attestation, submit, and preserve the public URL/receipt.
 
 ## Final three-minute film gate
 
@@ -51,7 +65,7 @@ Changed files include `video/render_story.py`, `apps/console/tests/record-local-
 - **PASS:** the generated deadline clock confirms the build window and records the eight-hour media
   reserve boundary without hard-coding a stale remaining-time claim in submission copy.
 - **PASS:** Higgsfield produced one restrained 1920x1080 opening insert and an accepted timing-gated Dylan narration audition; IDs, hashes, cost and rejection evidence are recorded without claiming an accent review.
-- **PASS:** the updated marketing site presents the evidence UI, daemon durability, portable recovery, isolated install, and exact cloud blocker. Local 1920x1080 and 390x844 QA passed. Vercel production deployment `dpl_GtN2bEVANC6BEb3X63CjvEArkU3Z` is Ready, and anonymous checks for `dovet.site`, `/judges`, and `dovet-site.vercel.app` returned 200.
+- **PASS:** the updated marketing site presents the evidence UI, daemon durability, portable recovery, isolated install, and exact cloud blocker. Local 1920x1080 and 390x844 QA passed. Vercel production deployment `dpl_2aVhVBRpyjU5FhG1n7tgSy9QYBUt` is Ready, and anonymous checks for `dovet.site`, `/judges`, `/changelog`, and `dovet-site.vercel.app` returned 200.
 - **PASS:** an 8.6-second Higgsfield production look test combines the accepted opening, Dylan audition, actual site footage, restrained motion, and an original deterministic music bed. It is labelled `NOT RECOVERY EVIDENCE`, probes as 1920x1080 H.264 with 48 kHz stereo AAC, and remains local.
 - **FAIL (pre-recovery baseline):** 13 protected importer acceptance cases cannot import `parcel_import`; these remain red until the authorized recovery worker produces and independently verifies the fixture.
 - **PASS:** the owner completed the Nova Micro first-use action in the authenticated playground after the model EULA gate was surfaced.
@@ -99,11 +113,9 @@ curl -I https://dovet.site
 
 ## Next actions
 
-1. Publish the immutable `v0.1.6` release containing the hosted-CI and Vercel production evidence.
-2. Owner publishes the disclosed video, completes legal fields, submits Devpost, and
-   saves the receipt before the deadline.
-3. Publish the prepared Builder Center article after the authenticated Builder ID sign-in gate.
-4. Continue monitoring the AWS case. If authorization appears before upload, run the bounded live
+1. Owner reviews and completes the Devpost legal/eligibility attestation, submits, and saves the receipt/public URL.
+2. Add the public Devpost URL to the YouTube description and release URL ledger.
+3. Continue monitoring the AWS case. If authorization appears before the deadline, run the bounded live
    vertical and use the evidence-gated film only if every release check passes.
 
 ## Working commit evidence

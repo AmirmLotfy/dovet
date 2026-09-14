@@ -1,5 +1,7 @@
 # Agents for Humans: What Survives When a Coding Agent Stops?
 
+Published: https://builder.aws.com/content/3JIVnXnvc2pqUUKrSMCzqPep6k7/agents-for-humans-what-survives-when-a-coding-agent-stops
+
 Coding agents reduce typing, but a stopped session can still leave a developer reconstructing the objective, inspecting unfinished edits, remembering failed approaches, and deciding whether another worker can safely continue.
 
 Dovet starts from a narrower question: **what observable evidence survives the agent?**
@@ -78,4 +80,4 @@ Dovet is built for the Professional Agents track of Agents for Humans. The produ
 
 **Suggested tags:** `agents-for-humans`, `strands-agents`, `amazon-bedrock`, `developer-tools`, `open-source`
 
-**Cover image:** `submission/gallery/dovet-devpost-cover-3x2.png`
+**Cover image:** `submission/video/thumbnail-youtube-1280.png`
