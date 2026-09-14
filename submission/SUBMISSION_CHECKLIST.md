@@ -25,7 +25,7 @@ Status: **OWNER READY WITH DISCLOSED AWS BLOCKER**
 
 ## Owner-only completion
 
-- Verify the public source repository and immutable `v0.1.5` tag signed out.
+- Verify the public source repository and immutable `v0.1.6` tag signed out.
 - Upload the video, thumbnail, and captions to YouTube; set visibility to **Public** and verify signed out.
 - Replace the public source and Devpost URL placeholders.
 - Complete eligibility, authorship, contributor, rights, AWS Builder ID, and legal fields personally.

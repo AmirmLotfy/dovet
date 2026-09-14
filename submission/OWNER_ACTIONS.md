@@ -3,7 +3,7 @@
 ## Submit before the deadline
 
 1. Watch and listen to `submission/video/dovet-submission-final-disclosed.mp4` once at normal speed.
-2. Verify the public repository and `v0.1.5` release at `https://github.com/AmirmLotfy/dovet`.
+2. Verify the public repository and `v0.1.6` release at `https://github.com/AmirmLotfy/dovet`.
 3. Upload the film through YouTube Studio. Use `thumbnail-youtube-4k.png` and `captions-final.srt`, set it to **Public**, and verify it in a signed-out browser.
 4. Replace the source and Devpost placeholders in `submission/YOUTUBE_METADATA.json`.
 5. Complete the Devpost form using `submission/DEVPOST.md` and `submission/TESTING_INSTRUCTIONS.md`.

@@ -51,7 +51,7 @@ Changed files include `video/render_story.py`, `apps/console/tests/record-local-
 - **PASS:** the generated deadline clock confirms the build window and records the eight-hour media
   reserve boundary without hard-coding a stale remaining-time claim in submission copy.
 - **PASS:** Higgsfield produced one restrained 1920x1080 opening insert and an accepted timing-gated Dylan narration audition; IDs, hashes, cost and rejection evidence are recorded without claiming an accent review.
-- **PASS:** the updated marketing site now presents the evidence UI, daemon durability, portable recovery, isolated install, and exact cloud blocker. Local 1920x1080 and 390x844 QA passed; the updated build remains intentionally undeployed for owner publication.
+- **PASS:** the updated marketing site presents the evidence UI, daemon durability, portable recovery, isolated install, and exact cloud blocker. Local 1920x1080 and 390x844 QA passed. Vercel production deployment `dpl_GtN2bEVANC6BEb3X63CjvEArkU3Z` is Ready, and anonymous checks for `dovet.site`, `/judges`, and `dovet-site.vercel.app` returned 200.
 - **PASS:** an 8.6-second Higgsfield production look test combines the accepted opening, Dylan audition, actual site footage, restrained motion, and an original deterministic music bed. It is labelled `NOT RECOVERY EVIDENCE`, probes as 1920x1080 H.264 with 48 kHz stereo AAC, and remains local.
 - **FAIL (pre-recovery baseline):** 13 protected importer acceptance cases cannot import `parcel_import`; these remain red until the authorized recovery worker produces and independently verifies the fixture.
 - **PASS:** the owner completed the Nova Micro first-use action in the authenticated playground after the model EULA gate was surfaced.
@@ -74,7 +74,7 @@ Changed files include `video/render_story.py`, `apps/console/tests/record-local-
 - **PASS:** the exact Devpost form copy and one final Builder Center article are included in the
   owner package. Both preserve the zero-successful-request Bedrock disclosure.
 - **PASS:** the source repository is public at `https://github.com/AmirmLotfy/dovet`; anonymous
-  HTTP verification returned 200. The final public release target is `v0.1.5`.
+  HTTP verification returned 200. The final public release target is `v0.1.6`.
 - **BLOCKED:** the playground, Strands `ConverseStream`, and a direct one-token `Converse` call all return `ValidationException: Operation not allowed`. Nova Micro authorization remains `NOT_AUTHORIZED`; its on-demand requests-per-minute and tokens-per-minute quotas are both `0.0` and non-adjustable. Agreement, entitlement, region, model discovery, and the active inference profile all pass. The account is outside AWS Organizations and the account root reproduces the error, isolating this to AWS account verification/provisioning. An existing verification case is still unassigned after 10 days. No working model invocation is claimed.
 
 ## Current commands
@@ -99,7 +99,7 @@ curl -I https://dovet.site
 
 ## Next actions
 
-1. Publish the pinned GitHub Actions workflow and immutable `v0.1.5` release, then record its result.
+1. Publish the immutable `v0.1.6` release containing the hosted-CI and Vercel production evidence.
 2. Owner publishes the disclosed video, completes legal fields, submits Devpost, and
    saves the receipt before the deadline.
 3. Publish the prepared Builder Center article after the authenticated Builder ID sign-in gate.
