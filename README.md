@@ -1,5 +1,7 @@
 # Dovet
 
+[![CI](https://github.com/AmirmLotfy/dovet/actions/workflows/ci.yml/badge.svg)](https://github.com/AmirmLotfy/dovet/actions/workflows/ci.yml)
+
 **Keep the work. Change the agent.**
 
 Dovet is a local-first supervisor for recovering interrupted, explicitly managed coding-agent work. It preserves selected working state, asks a Strands agent for a bounded recovery recommendation, enforces permissions and budget in deterministic code, starts an authorized replacement worker, and independently verifies the result.
